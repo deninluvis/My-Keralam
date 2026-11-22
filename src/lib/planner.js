@@ -275,3 +275,12 @@ export function decodeInput(query) {
   const p = new URLSearchParams(query);
   return normalise(Object.fromEntries(p.entries()));
 }
+
+// Google Maps driving route through the stops in order (Maps URLs API; up to 9 waypoints, the planner has at most 9 stops).
+export function mapsLink(stops) {
+  const at = (s) => `${s.name}, Kerala, India`; // town names read better in Google than coordinates (which show the nearest shop)
+  const p = new URLSearchParams({ api: '1', travelmode: 'driving', destination: at(stops[stops.length - 1]) });
+  if (stops.length > 1) p.set('origin', at(stops[0]));
+  if (stops.length > 2) p.set('waypoints', stops.slice(1, -1).map(at).join('|'));
+  return `https://www.google.com/maps/dir/?${p}`;
+}

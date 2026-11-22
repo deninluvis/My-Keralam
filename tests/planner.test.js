@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { loadFolder } from './load-content.js';
-import { buildTrip, encodeInput, decodeInput } from '../src/lib/planner.js';
+import { buildTrip, encodeInput, decodeInput, mapsLink } from '../src/lib/planner.js';
 
 const load = (f) => JSON.parse(readFileSync(new URL(`../src/data/${f}.json`, import.meta.url)));
 const data = {
@@ -124,4 +124,21 @@ test('stops survive encode and decode', () => {
   const q = encodeInput({ ...base, stops: 'munnar:2,kochi:1' });
   assert.deepEqual(decodeInput(q).stops, [{ id: 'munnar', days: 2 }, { id: 'kochi', days: 1 }]);
   assert.equal(new URLSearchParams(encodeInput(base)).has('stops'), false);
+});
+
+test('mapsLink gives a Google Maps driving route through every stop in order', () => {
+  const trip = buildTrip({ ...base, stops: 'kochi:1,munnar:2,alappuzha:1' }, data);
+  const u = new URL(mapsLink(trip.stops));
+  assert.equal(u.origin + u.pathname, 'https://www.google.com/maps/dir/');
+  assert.equal(u.searchParams.get('api'), '1');
+  assert.equal(u.searchParams.get('travelmode'), 'driving');
+  assert.equal(u.searchParams.get('origin'), 'Kochi, Kerala, India');
+  assert.equal(u.searchParams.get('waypoints'), 'Munnar, Kerala, India');
+  assert.equal(u.searchParams.get('destination'), 'Alappuzha, Kerala, India');
+});
+
+test('mapsLink with one stop just points at it', () => {
+  const u = new URL(mapsLink([{ name: 'Munnar', lat: 10.1, lng: 77.06 }]));
+  assert.equal(u.searchParams.get('destination'), 'Munnar, Kerala, India');
+  assert.equal(u.searchParams.has('waypoints'), false);
 });

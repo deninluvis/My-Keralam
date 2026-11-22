@@ -15,6 +15,7 @@ const { festivals } = Astro.props;
           <button class="btn small" id="print" type="button"><Icon name="print" />Print</button>
           <button class="btn small ghost" id="share" type="button"><Icon name="share" />Share link</button>
           <button class="btn small ghost" id="edit" type="button">Edit answers</button>
+          <a class="btn small ghost" id="gmaps" href="https://www.google.com/maps" target="_blank" rel="noopener">Open route in Google Maps</a>
         </div>
         <p class="small muted" id="share-msg" aria-live="polite"></p>
         <form class="save-row no-print" id="save-form">
@@ -39,6 +40,7 @@ const { festivals } = Astro.props;
           <ol class="days" id="days"></ol>
           <div>
             <div id="route-map" class="map" role="img" aria-label="Map of your route"></div>
+            <p class="small" style="margin:8px 0 0"><a id="gmaps-2" href="https://www.google.com/maps" target="_blank" rel="noopener">Open this route in Google Maps →</a> <span class="muted">(driving directions, stop by stop)</span></p>
             <div class="card" style="margin-top:16px">
               <h3>Festivals during your trip</h3>
               <ul id="fests" class="small"></ul>
@@ -91,7 +93,7 @@ const { festivals } = Astro.props;
 <script>
   import L from 'leaflet';
   import 'leaflet/dist/leaflet.css';
-  import { buildTrip, decodeInput, encodeInput } from '../lib/planner.js';
+  import { buildTrip, decodeInput, encodeInput, mapsLink } from '../lib/planner.js';
   import { listTrips, saveTrip } from '../lib/trips.js';
   import bases from '../data/bases.json';
   import journeys from '../data/journeys.json';
@@ -116,6 +118,9 @@ const { festivals } = Astro.props;
     const trip = buildTrip(decodeInput(query), data);
     const shareQuery = encodeInput(trip.input);
     render(trip);
+    const route = mapsLink(trip.stops);
+    ($('gmaps') as HTMLAnchorElement).href = route;
+    ($('gmaps-2') as HTMLAnchorElement).href = route;
     setupTabs();
     const nameInput = $('trip-name') as HTMLInputElement;
     const savedTrip = tid ? listTrips().find((t) => t.id === tid) : undefined;
