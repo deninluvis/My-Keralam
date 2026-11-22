@@ -1,4 +1,5 @@
 ---
+import CommunityNote from '../../components/CommunityNote.astro';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import DestCard from '../../components/DestCard.astro';
@@ -25,6 +26,7 @@ const regionName = { south: 'South Kerala', central: 'Central Kerala', north: 'N
       <h1>{d.name}</h1>
       <p class="lead">{d.summary}</p>
     </header>
+    <CommunityNote />
     <div class="facts">
       <div class="card"><span class="muted small">Time needed</span><strong>{d.days}</strong></div>
       <div class="card"><span class="muted small">Nearest airport</span><strong>{d.airport}</strong></div>

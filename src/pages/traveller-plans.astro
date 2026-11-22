@@ -1,4 +1,5 @@
 ---
+import CommunityNote from '../components/CommunityNote.astro';
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 import Icon from '../components/Icon.astro';
@@ -15,6 +16,7 @@ const plannerQuery = (p: (typeof plans)[number]) => `stops=${p.stops}&interests=
   <PageHead eyebrow="Plan" title="Plans by travellers" lead="Routes shared by well-known travellers, writers and experts, with a note from each of them. Pick a theme, read the plan, then open it in the planner to set your own dates.">
     <p class="small muted">Real people appear here only with their permission. Entries marked <em>fictional</em> are examples of the format.</p>
   </PageHead>
+  <div class="wrap"><CommunityNote /></div>
   <div class="wrap">
     <div class="chips" role="group" aria-label="Filter by theme">
       <button class="chip" type="button" aria-pressed="true" data-tag="">All</button>

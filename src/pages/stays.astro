@@ -1,4 +1,5 @@
 ---
+import CommunityNote from '../components/CommunityNote.astro';
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 import ImportedSection from '../components/ImportedSection.astro';
@@ -10,9 +11,8 @@ const areas = [...new Set(stays.map((s) => s.area))].sort();
 const pins = stays.map((s) => ({ slug: s.slug, name: s.name, lat: s.lat, lng: s.lng }));
 ---
 <Base title="Hotels & stays" description="Hotels, homestays, rentals and houseboats in Kerala, added by the community.">
-  <PageHead eyebrow="Explore" title="Hotels & stays" lead="Hotels, homestays, rentals and houseboats added by the community.">
-    <p class="callout small">Listings are added by the community and are not checked or endorsed. Check reviews and licences, and book directly with the property or a trusted platform. Look for Kerala Tourism approval on houseboats.</p>
-  </PageHead>
+  <PageHead eyebrow="Explore" title="Hotels & stays" lead="Hotels, homestays, rentals and houseboats added by the community." />
+  <div class="wrap"><CommunityNote> Check reviews and licences, and book directly with the property or a trusted platform. Look for Kerala Tourism approval on houseboats.</CommunityNote></div>
   <div class="wrap">
     <div class="card filters">
       <div class="chips" role="group" aria-label="Type of stay">

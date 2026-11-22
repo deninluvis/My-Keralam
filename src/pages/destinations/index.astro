@@ -1,4 +1,5 @@
 ---
+import CommunityNote from '../../components/CommunityNote.astro';
 import ImportedSection from '../../components/ImportedSection.astro';
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
@@ -11,6 +12,7 @@ const points = destinations.map((d) => ({ n: d.name, lat: d.lat, lng: d.lng, c: 
 ---
 <Base title="Destinations" description="Kerala destinations by category and region, with a map: backwaters, beaches, hill stations, wildlife, waterfalls and heritage.">
   <PageHead eyebrow="Explore" title="Destinations" lead={`${destinations.length} places across Kerala's 14 districts. Filter by type or region, or switch to the map.`} />
+  <div class="wrap"><CommunityNote /></div>
   <div class="wrap">
     <div class="filters card">
       <div class="field"><label for="q">Search</label><input id="q" type="search" placeholder="e.g. Munnar, fort, beach" /></div>
