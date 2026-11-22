@@ -4,6 +4,7 @@ import PageHead from '../components/PageHead.astro';
 import journeys from '../data/journeys.json';
 import bases from '../data/bases.json';
 const name = (id: string) => bases.find((b) => b.id === id)?.name ?? id;
+const sorted = [...bases].sort((a, b) => a.name.localeCompare(b.name));
 const legs = Object.entries(journeys.legs).map(([k, v]) => { const [a, b] = k.split('|'); return { a: name(a), b: name(b), ...v }; })
   .sort((x, y) => x.a.localeCompare(y.a) || x.b.localeCompare(y.b));
 ---
@@ -29,11 +30,44 @@ const legs = Object.entries(journeys.legs).map(([k, v]) => { const [a, b] = k.sp
 
     <h2>Journey times</h2>
     <p class="small muted">{journeys.note}</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>From</th><th>To</th><th>Time</th><th>Distance</th><th>How</th></tr></thead>
-        <tbody>{legs.map((l) => <tr><td>{l.a}</td><td>{l.b}</td><td>~{l.h} h</td><td>{l.km} km / {Math.round(l.km * 0.621)} mi</td><td class="small">{l.mode}</td></tr>)}</tbody>
-      </table>
+    <div class="card jt">
+      <div class="jt-row">
+        <div class="field"><label for="jt-from">From</label><select id="jt-from">{sorted.map((b) => <option value={b.id} selected={b.id === 'kochi'}>{b.name}</option>)}</select></div>
+        <div class="field"><label for="jt-to">To</label><select id="jt-to">{sorted.map((b) => <option value={b.id} selected={b.id === 'munnar'}>{b.name}</option>)}</select></div>
+      </div>
+      <p class="jt-out" id="jt-out" aria-live="polite"></p>
     </div>
+    <details class="jt-all">
+      <summary>Show all journey times</summary>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>From</th><th>To</th><th>Time</th><th>Distance</th><th>How</th></tr></thead>
+          <tbody>{legs.map((l) => <tr><td>{l.a}</td><td>{l.b}</td><td>~{l.h} h</td><td>{l.km} km / {Math.round(l.km * 0.621)} mi</td><td class="small">{l.mode}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </details>
   </div>
+  <script type="application/json" id="jt-data" set:html={JSON.stringify({ bases, journeys })}></script>
 </Base>
+<style>
+  .jt-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .jt-out { font-size: 1.2rem; font-weight: 600; margin: 4px 0 0; }
+  .jt-all { margin-top: 16px; }
+  .jt-all summary { cursor: pointer; font-weight: 600; padding: 8px 0; }
+</style>
+<script>
+  import { getLeg } from '../lib/planner.js';
+  const { bases, journeys } = JSON.parse(document.getElementById('jt-data')!.textContent!);
+  const from = document.getElementById('jt-from') as HTMLSelectElement;
+  const to = document.getElementById('jt-to') as HTMLSelectElement;
+  const out = document.getElementById('jt-out')!;
+  const byId = (id: string) => bases.find((x: { id: string }) => x.id === id);
+  const run = () => {
+    if (from.value === to.value) { out.textContent = 'Choose two different places.'; return; }
+    const l = getLeg(byId(from.value), byId(to.value), journeys);
+    out.textContent = `About ${l.h} h · ${l.km} km / ${Math.round(l.km * 0.621)} mi · ${l.mode}`;
+  };
+  from.addEventListener('change', run);
+  to.addEventListener('change', run);
+  run();
+</script>
