@@ -195,7 +195,10 @@ export function buildTrip(rawInput, data) {
   const input = normalise(rawInput);
   const month = Number(input.start.slice(5, 7));
   const seasonId = monthSeason(month);
-  const stops = chooseStops(input, data, month);
+  const picked = pickedStops(input, data);
+  if (picked) input.days = picked.reduce((s, b) => s + b.days, 0);
+  else delete input.stops;
+  const stops = picked || chooseStops(input, data, month);
   const days = buildDays(stops, input, data);
   const end = days[days.length - 1].date;
 
@@ -218,11 +221,36 @@ export function buildTrip(rawInput, data) {
   };
 }
 
+// Hand-picked stops: known bases only, in route order, total capped at 21 days (later stops trimmed). Null if none.
+function pickedStops(input, data) {
+  if (!input.stops) return null;
+  const seen = new Set();
+  const chosen = input.stops
+    .map((s) => ({ s, b: data.bases.find((x) => x.id === s.id) }))
+    .filter(({ b }) => b && !seen.has(b.id) && seen.add(b.id))
+    .sort((x, y) => x.b.order - y.b.order);
+  let left = 21;
+  const out = [];
+  for (const { s, b } of chosen) {
+    const d = Math.min(s.days, left);
+    if (d > 0) out.push({ ...b, days: d });
+    left -= d;
+  }
+  return out.length ? out : null;
+}
+
+function parseStops(raw) {
+  const list = Array.isArray(raw) ? raw : String(raw || '').split(',').filter(Boolean).map((p) => { const [id, d] = p.split(':'); return { id, days: d }; });
+  const out = list.filter((s) => /^[a-z0-9-]+$/.test(s?.id || '')).map((s) => ({ id: s.id, days: clampInt(s.days, 1, 7, 1) }));
+  return out.length ? out : null;
+}
+
 export function normalise(raw = {}) {
   const today = new Date().toISOString().slice(0, 10);
   const start = /^\d{4}-\d{2}-\d{2}$/.test(raw.start || '') && !Number.isNaN(Date.parse(raw.start)) ? raw.start : today;
   let interests = Array.isArray(raw.interests) ? raw.interests : String(raw.interests || '').split(',');
   interests = INTERESTS.filter((i) => interests.includes(i));
+  const stops = parseStops(raw.stops);
   return {
     start,
     days: clampInt(raw.days, 3, 21, 7),
@@ -231,13 +259,15 @@ export function normalise(raw = {}) {
     pace: PACES.includes(raw.pace) ? raw.pace : 'balanced',
     people: clampInt(raw.people, 1, 12, 2),
     nat: /^[A-Z]{2,5}$/.test(raw.nat || '') ? raw.nat : 'OTHER',
+    ...(stops && { stops }),
   };
 }
 
 export function encodeInput(input) {
   const p = new URLSearchParams();
-  const n = normalise(input);
+  const { stops, ...n } = normalise(input);
   for (const [k, v] of Object.entries(n)) p.set(k, Array.isArray(v) ? v.join(',') : String(v));
+  if (stops) p.set('stops', stops.map((s) => `${s.id}:${s.days}`).join(','));
   return p.toString();
 }
 

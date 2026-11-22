@@ -93,3 +93,35 @@ test('decode rejects junk safely', () => {
   assert.equal(back.budget, 'mid');
   assert.deepEqual(back.interests, []);
 });
+
+test('hand-picked stops are used in route order', () => {
+  const trip = buildTrip({ ...base, stops: 'munnar:2,alappuzha:1,kochi:1' }, data);
+  assert.deepEqual(trip.stops.map((s) => s.id), ['kochi', 'munnar', 'alappuzha']);
+  assert.deepEqual(trip.stops.map((s) => s.days), [1, 2, 1]);
+  assert.equal(trip.days.length, 4);
+  assert.equal(trip.input.days, 4);
+});
+
+test('hand-picked stops drop unknown ids and clamp days to 1-7', () => {
+  const trip = buildTrip({ ...base, stops: 'nowhere:2,munnar:0,thekkady:99' }, data);
+  assert.deepEqual(trip.stops.map((s) => [s.id, s.days]), [['munnar', 1], ['thekkady', 7]]);
+  assert.equal(trip.days.length, 8);
+});
+
+test('hand-picked stops total is capped at 21 days', () => {
+  const trip = buildTrip({ ...base, stops: 'kochi:7,munnar:7,thekkady:7,varkala:7' }, data);
+  assert.equal(trip.days.length, 21);
+  assert.equal(trip.stops.reduce((s, x) => s + x.days, 0), 21);
+});
+
+test('no valid stops falls back to a suggested route', () => {
+  const trip = buildTrip({ ...base, stops: 'nowhere:3' }, data);
+  assert.equal(trip.input.stops, undefined);
+  assert.equal(trip.days.length, 7);
+});
+
+test('stops survive encode and decode', () => {
+  const q = encodeInput({ ...base, stops: 'munnar:2,kochi:1' });
+  assert.deepEqual(decodeInput(q).stops, [{ id: 'munnar', days: 2 }, { id: 'kochi', days: 1 }]);
+  assert.equal(new URLSearchParams(encodeInput(base)).has('stops'), false);
+});
