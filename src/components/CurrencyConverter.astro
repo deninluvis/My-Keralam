@@ -7,11 +7,11 @@ const updated = new Date(meta.ratesUpdated).toLocaleDateString('en-GB', { day: '
   <h3>Rupee converter</h3>
   <div class="conv-row">
     <div class="field">
-      <label for="cc-inr">Indian rupees (₹)</label>
+      <label for="cc-inr">Rupees (₹)</label>
       <input id="cc-inr" type="number" inputmode="decimal" min="0" value="1000" />
     </div>
     <div class="field">
-      <label for="cc-cur">Your currency</label>
+      <label for="cc-cur">Currency</label>
       <select id="cc-cur">{codes.map((c) => <option value={c}>{c}</option>)}</select>
     </div>
   </div>
@@ -19,7 +19,8 @@ const updated = new Date(meta.ratesUpdated).toLocaleDateString('en-GB', { day: '
   <p class="small muted"><strong>Fixed rates, last updated {updated}. Not live:</strong> check your bank or a live rate before paying.</p>
 </div>
 <style>
-  .conv-row { display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px; }
+  .conv-row { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(96px, 1fr); gap: 10px; align-items: end; }
+  .conv-row label { white-space: nowrap; }
   .conv-row .field { margin-bottom: 8px; }
   .cc-out { font-size: 1.3rem; margin: 4px 0; }
 </style>
