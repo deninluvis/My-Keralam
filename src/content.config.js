@@ -12,4 +12,5 @@ export const collections = {
   itineraries: folder('itineraries', 'itinerary'),
   stays: folder('stays', 'stay'),
   travellerPlans: folder('traveller-plans', 'traveller-plan'),
+  food: folder('food', 'food'),
 };

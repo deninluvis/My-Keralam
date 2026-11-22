@@ -1,0 +1,9 @@
+{
+  "slug": "dosa-and-sambar",
+  "name": "Dosa and sambar",
+  "kind": "Breakfast",
+  "spice": 2,
+  "veg": true,
+  "desc": "Crisp fermented rice-lentil crepes with lentil-vegetable stew and chutneys.",
+  "order": 4
+}

@@ -1,0 +1,9 @@
+{
+  "slug": "sadya",
+  "name": "Sadya",
+  "kind": "Feast",
+  "spice": 1,
+  "veg": true,
+  "desc": "A vegetarian feast of up to 28 dishes on a banana leaf, eaten with the right hand. Served at Onam, weddings and some restaurants at lunchtime.",
+  "order": 0
+}

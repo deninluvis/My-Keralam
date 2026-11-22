@@ -1,4 +1,4 @@
-# Adding places, festivals, itineraries and more
+# Adding places, festivals, food, itineraries and more
 
 Plan My Keralam is a fun, independent project. Anyone can add content with a small `.json` file. There are two ways:
 
@@ -24,12 +24,13 @@ The same file works for both.
 | Itinerary | `src/content/itineraries/` | [itinerary.json](examples/itinerary.json) |
 | Hotel, homestay, rental, houseboat | `src/content/stays/` | [stay.json](examples/stay.json) |
 | Plan by a well-known traveller | `src/content/traveller-plans/` | [traveller-plan.json](examples/traveller-plan.json) |
+| Food guide dish | `src/content/food/` | [food.json](examples/food.json) |
 
 4. Open a pull request. The checks run `npm test` and `npm run build`. If a field is wrong, the message names it.
 
 ## Just for you (load in the browser)
 
-Open **Contribute** on the site, choose **Load JSON file**, and pick your file. A file can hold one entry or a list of entries (`[ {...}, {...} ]`). Every entry needs a `"type"` field: `destination`, `festival`, `experience`, `itinerary`, `stay` or `traveller-plan`.
+Open **Contribute** on the site, choose **Load JSON file**, and pick your file. A file can hold one entry or a list of entries (`[ {...}, {...} ]`). Every entry needs a `"type"` field: `destination`, `festival`, `experience`, `itinerary`, `stay`, `traveller-plan` or `food`.
 
 Imported entries show under **Imported by you** on the matching page, and imported destinations can be picked in the trip planner. They are stored only in this browser: clearing your browser data deletes them. You can delete them on the Contribute page.
 
@@ -48,6 +49,7 @@ Fields marked * are required.
 | experience | `icon`*, `text`*, `tips`* (list), `link`* (`{ "href", "label" }`) |
 | itinerary | `who`*, `q`* (planner settings, e.g. `days=7&interests=hills`), `days`* (list of `{ "d", "place", "what" }`) |
 | stay | `kind`* (`hotel`, `homestay`, `rental`, `houseboat`), `area`*, `priceRange`, `website` |
+| food | `kind`* (e.g. `Breakfast`, `Seafood`, `Snack`), `spice`* (0 not spicy – 3 hot), `veg`* (`true`/`false`), `desc`*, `places` (where to try it: list of `{ "name", "area", "mapLink", "website" }`; `mapLink` is a Google Maps or OpenStreetMap link) |
 | traveller-plan | `person`* (`name`, `knownFor`, `note`, `works` list, `links` list), `tags`* (e.g. `ayurveda`, `culture`, `trekking`, `food`, `wildlife`, `backwaters`), `stops`* (planner stops, e.g. `"kochi:2,munnar:2"`, using the base names above), `days`*, `consent`*, `fictional` |
 
 ## Rules

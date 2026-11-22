@@ -1,0 +1,9 @@
+{
+  "slug": "payasam",
+  "name": "Payasam",
+  "kind": "Sweet",
+  "spice": 0,
+  "veg": true,
+  "desc": "Sweet milk or jaggery pudding that ends a Sadya.",
+  "order": 16
+}

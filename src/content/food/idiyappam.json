@@ -1,0 +1,9 @@
+{
+  "slug": "idiyappam",
+  "name": "Idiyappam",
+  "kind": "Breakfast",
+  "spice": 1,
+  "veg": true,
+  "desc": "Steamed rice-noodle nests, usually with egg curry or stew.",
+  "order": 3
+}

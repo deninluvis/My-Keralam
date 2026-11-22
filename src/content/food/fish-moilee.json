@@ -1,0 +1,9 @@
+{
+  "slug": "fish-moilee",
+  "name": "Fish moilee",
+  "kind": "Seafood",
+  "spice": 1,
+  "veg": false,
+  "desc": "A mild, creamy coconut-milk fish curry with Portuguese influence.",
+  "order": 7
+}

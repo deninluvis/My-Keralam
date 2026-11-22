@@ -1,0 +1,9 @@
+{
+  "slug": "banana-chips",
+  "name": "Banana chips",
+  "kind": "Snack",
+  "spice": 0,
+  "veg": true,
+  "desc": "Thin plantain chips fried in coconut oil. Good to take home.",
+  "order": 14
+}

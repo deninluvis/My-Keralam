@@ -1,0 +1,9 @@
+{
+  "slug": "thoran",
+  "name": "Thoran",
+  "kind": "Vegetarian",
+  "spice": 1,
+  "veg": true,
+  "desc": "Dry stir-fry of finely chopped vegetables with grated coconut.",
+  "order": 12
+}

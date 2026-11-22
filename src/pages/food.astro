@@ -1,11 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
-import food from '../data/food.json';
+import CommunityNote from '../components/CommunityNote.astro';
+import ImportedSection from '../components/ImportedSection.astro';
+import { all } from '../lib/content.js';
+const food = await all('food');
 const spiceLabel = ['Not spicy', 'Mild', 'Medium', 'Hot'];
 ---
 <Base title="Food Guide" description="What to eat in Kerala: Sadya, appam, karimeen, Malabar biryani and more, with spice levels and vegetarian tags.">
   <PageHead eyebrow="Explore" title="Food guide" lead="Kerala cooking is built on coconut, rice, seafood and spices. Here's what to try, how spicy it is, and whether it's vegetarian." />
+  <div class="wrap"><CommunityNote /></div>
   <div class="wrap">
     <div class="chips" role="group" aria-label="Filter dishes">
       <button class="chip" aria-pressed="true" data-f="all">All dishes</button>
@@ -15,13 +19,23 @@ const spiceLabel = ['Not spicy', 'Mild', 'Medium', 'Hot'];
     <div class="grid three" id="dishes" style="margin-top:16px">
       {food.map((d) => (
         <div class="card dish" data-veg={String(d.veg)} data-spice={d.spice}>
-          <div class="meta"><span class="tag">{d.type}</span>{d.veg ? <span class="tag veg">Vegetarian</span> : <span class="tag">Non-veg</span>}</div>
+          <div class="meta"><span class="tag">{d.kind}</span>{d.veg ? <span class="tag veg">Vegetarian</span> : <span class="tag">Non-veg</span>}</div>
           <h3>{d.name}</h3>
           <p class="small">{d.desc}</p>
           <p class="small"><span class="spice" aria-hidden="true">{'●'.repeat(d.spice)}{'○'.repeat(3 - d.spice)}</span> {spiceLabel[d.spice]}</p>
+          {d.why && <p class="small"><strong>Why try it:</strong> {d.why}</p>}
+          {d.images?.map((i) => <figure class="dish-img"><img src={i.url} alt={d.name} loading="lazy" /><figcaption class="small muted">{i.credit} · {i.license}</figcaption></figure>)}
+          {d.places && d.places.length > 0 && (
+            <div class="small"><strong>Where to try it:</strong>
+              <ul>{d.places.map((p) => <li><a href={p.mapLink} rel="noopener nofollow">{p.name}</a>{p.area && <>, {p.area}</>}{p.website && <> · <a href={p.website} rel="noopener nofollow">website</a></>}</li>)}</ul>
+            </div>
+          )}
+          {d.author && <p class="small muted">Added by {d.author}</p>}
         </div>
       ))}
     </div>
+
+    <ImportedSection type="food" />
 
     <h2>Sadya etiquette</h2>
     <ol class="steps">
@@ -42,7 +56,7 @@ const spiceLabel = ['Not spicy', 'Mild', 'Medium', 'Hot'];
     </div>
   </div>
 </Base>
-<style>.tag.veg { background: var(--ok-soft); color: var(--green); } .spice { color: #c0392b; }</style>
+<style>.dish-img { margin: 8px 0; } .dish-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; } .tag.veg { background: var(--ok-soft); color: var(--green); } .spice { color: #c0392b; }</style>
 <script>
   const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-f]')];
   const cards = [...document.querySelectorAll<HTMLElement>('.dish')];

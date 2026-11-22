@@ -9,11 +9,11 @@ test('esc escapes html special characters', () => {
 });
 
 test('cardHtml never outputs markup from entry text', () => {
-  for (const type of ['destination', 'festival', 'experience', 'itinerary', 'stay', 'traveller-plan']) {
+  for (const type of ['destination', 'festival', 'experience', 'itinerary', 'stay', 'traveller-plan', 'food']) {
     const html = cardHtml(type, {
       slug: 'x', name: evil, summary: evil, why: evil, where: evil, note: evil, text: evil, who: evil, area: evil,
       tips: [evil], months: [1], bestMonths: [1], days: [{ d: evil, place: evil, what: evil }], tags: [evil],
-      person: { name: evil, knownFor: evil, note: evil, works: [evil], links: [] }, stops: 'kochi:1', kind: 'hotel',
+      person: { name: evil, knownFor: evil, note: evil, works: [evil], links: [] }, stops: 'kochi:1', kind: 'hotel', desc: evil, spice: 1, veg: true, places: [{ name: evil, area: evil, mapLink: 'https://maps.app.goo.gl/x' }],
     });
     assert.equal(html.includes('<img'), false, type);
     assert.match(html, /Imported by you/, type);
@@ -29,4 +29,13 @@ test('images show with their credit', () => {
   const html = cardHtml('stay', { slug: 'x', name: 'X', summary: 's', kind: 'hotel', area: 'Kochi', images: [{ url: 'https://e.com/a.jpg', credit: 'Ann', license: 'CC0' }] });
   assert.match(html, /<img src="https:\/\/e\.com\/a\.jpg"/);
   assert.match(html, /Ann/);
+});
+
+test('food card shows places with map links and drops unsafe ones', () => {
+  const html = cardHtml('food', { slug: 'x', name: 'Appam', kind: 'Breakfast', spice: 1, veg: true, desc: 'd',
+    places: [{ name: 'Kayees', area: 'Kochi', mapLink: 'https://maps.app.goo.gl/abc' }, { name: 'Bad', mapLink: 'javascript:alert(1)' }] });
+  assert.match(html, /href="https:\/\/maps\.app\.goo\.gl\/abc"/);
+  assert.match(html, /Kayees/);
+  assert.equal(html.includes('javascript:'), false);
+  assert.match(html, /Vegetarian/);
 });

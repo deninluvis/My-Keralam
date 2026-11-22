@@ -24,6 +24,11 @@ function body(type, e) {
     case 'experience': return `<p class="small">${esc(e.text)}</p>${list(e.tips)}`;
     case 'itinerary': return `<p class="small muted">${esc(e.who)}</p>${days(e.days)}`;
     case 'stay': return `<p class="meta"><span class="tag">${esc(e.kind)}</span><span>${esc(e.area)}</span>${e.priceRange ? `<span>${esc(e.priceRange)}</span>` : ''}</p><p class="small">${esc(e.summary)}</p>${link(e.website, 'Website')}`;
+    case 'food': {
+      const SPICE = ['Not spicy', 'Mild', 'Medium', 'Hot'];
+      const places = (e.places || []).map((p) => `<li>${link(p.mapLink, p.name) || esc(p.name)}${p.area ? `, ${esc(p.area)}` : ''}${p.website ? ` · ${link(p.website, 'website')}` : ''}</li>`).join('');
+      return `<p class="meta"><span class="tag">${esc(e.kind)}</span><span class="tag">${e.veg ? 'Vegetarian' : 'Non-veg'}</span><span>${esc(SPICE[e.spice] || '')}</span></p><p class="small">${esc(e.desc)}</p>${places ? `<p class="small"><strong>Where to try it:</strong></p><ul class="small">${places}</ul>` : ''}`;
+    }
     case 'traveller-plan': {
       const p = e.person || {};
       return `<p class="small"><strong>${esc(p.name)}</strong>, ${esc(p.knownFor)}</p><blockquote class="small">${esc(p.note)}</blockquote>${list(p.works)}${(p.links || []).map((u) => link(u, u)).join(' ')}${days(e.days)}`;

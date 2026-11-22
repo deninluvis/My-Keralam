@@ -1,0 +1,9 @@
+{
+  "slug": "alleppey-fish-curry",
+  "name": "Alleppey fish curry",
+  "kind": "Seafood",
+  "spice": 2,
+  "veg": false,
+  "desc": "Fish simmered in coconut milk with raw mango.",
+  "order": 6
+}

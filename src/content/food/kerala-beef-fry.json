@@ -1,0 +1,9 @@
+{
+  "slug": "kerala-beef-fry",
+  "name": "Kerala beef fry",
+  "kind": "Meat",
+  "spice": 3,
+  "veg": false,
+  "desc": "Slow-roasted beef with coconut slivers, curry leaves and black pepper.",
+  "order": 9
+}

@@ -1,0 +1,17 @@
+{
+  "type": "food",
+  "slug": "example-dish",
+  "name": "Example Dish (fictional)",
+  "kind": "Snack",
+  "spice": 1,
+  "veg": true,
+  "desc": "One or two sentences: what it is, how it tastes and when people eat it.",
+  "why": "Why a visitor should try it.",
+  "places": [
+    { "name": "Example Café (fictional)", "area": "Fort Kochi", "mapLink": "https://www.google.com/maps/search/?api=1&query=9.9658,76.2421", "website": "https://example.com/" },
+    { "name": "Any busy tea stall", "area": "Statewide", "mapLink": "https://www.openstreetmap.org/#map=13/9.9658/76.2421" }
+  ],
+  "images": [{ "url": "https://upload.wikimedia.org/example.jpg", "credit": "Your name", "license": "CC BY-SA 4.0" }],
+  "videos": ["https://www.youtube.com/watch?v=VIDEO_ID_HERE"],
+  "author": "your-github-name"
+}

@@ -1,0 +1,9 @@
+{
+  "slug": "avial",
+  "name": "Avial",
+  "kind": "Vegetarian",
+  "spice": 1,
+  "veg": true,
+  "desc": "Mixed vegetables in coconut and yoghurt with coconut oil and curry leaves.",
+  "order": 11
+}

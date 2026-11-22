@@ -2,7 +2,7 @@
 // and by the browser import (src/lib/community.js), so both accept exactly the same files.
 import { z } from 'astro/zod';
 
-export const TYPES = ['destination', 'festival', 'experience', 'itinerary', 'stay', 'traveller-plan'];
+export const TYPES = ['destination', 'festival', 'experience', 'itinerary', 'stay', 'traveller-plan', 'food'];
 
 export function youtubeId(url) {
   let u;
@@ -60,6 +60,15 @@ export const schemas = {
     area: z.string(),
     priceRange: z.string().optional(),
     website: https.optional(),
+  }),
+  food: z.object({
+    ...common, ...placeOptional,
+    kind: z.string(),
+    spice: z.number().int().min(0).max(3),
+    veg: z.boolean(),
+    desc: z.string(),
+    // Where to try it: any https map link (Google Maps, OpenStreetMap) and an optional website.
+    places: z.array(z.object({ name: z.string().min(1), area: z.string().optional(), mapLink: https, website: https.optional() })).optional(),
   }),
   'traveller-plan': z.object({
     ...common, ...placeOptional,

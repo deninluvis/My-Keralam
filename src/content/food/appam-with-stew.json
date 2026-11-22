@@ -1,0 +1,9 @@
+{
+  "slug": "appam-with-stew",
+  "name": "Appam with stew",
+  "kind": "Breakfast",
+  "spice": 1,
+  "veg": false,
+  "desc": "Lacy rice pancakes with a mild coconut-milk stew (vegetable, chicken or mutton).",
+  "order": 1
+}

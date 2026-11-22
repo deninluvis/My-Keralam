@@ -7,7 +7,7 @@ const fortKochi = loadFolder('destinations')[0];
 const dest = (extra = {}) => ({ type: 'destination', ...fortKochi, ...extra });
 
 test('TYPES lists every community type', () => {
-  assert.deepEqual(TYPES, ['destination', 'festival', 'experience', 'itinerary', 'stay', 'traveller-plan']);
+  assert.deepEqual(TYPES, ['destination', 'festival', 'experience', 'itinerary', 'stay', 'traveller-plan', 'food']);
 });
 
 test('valid destination parses', () => {
@@ -64,7 +64,7 @@ test('festival, stay and traveller-plan minimal entries parse', () => {
 });
 
 test('every content file passes its schema', () => {
-  const folders = { destinations: 'destination', festivals: 'festival', experiences: 'experience', itineraries: 'itinerary', stays: 'stay', 'traveller-plans': 'traveller-plan' };
+  const folders = { food: 'food', destinations: 'destination', festivals: 'festival', experiences: 'experience', itineraries: 'itinerary', stays: 'stay', 'traveller-plans': 'traveller-plan' };
   for (const [dir, type] of Object.entries(folders)) {
     let entries = [];
     try { entries = loadFolder(dir); } catch { continue; } // folder not created yet
@@ -92,4 +92,15 @@ test('experience link must be https or a site path', () => {
   assert.equal(parseEntry(exp('/destinations/munnar')).ok, true);
   assert.equal(parseEntry(exp('javascript:alert(1)')).ok, false);
   assert.equal(parseEntry(exp('//evil.example')).ok, false);
+});
+
+test('food entry with places and photos parses', () => {
+  const dish = {
+    type: 'food', slug: 'appam', name: 'Appam', kind: 'Breakfast', spice: 1, veg: true, desc: 'Rice pancakes.',
+    images: [{ url: 'https://upload.wikimedia.org/a.jpg', credit: 'Ann', license: 'CC BY-SA 4.0' }],
+    places: [{ name: 'Kayees', area: 'Kochi', mapLink: 'https://maps.app.goo.gl/abc' }, { name: 'Any toddy shop', mapLink: 'https://www.openstreetmap.org/#map=15/9.5/76.3' }],
+  };
+  assert.equal(parseEntry(dish).ok, true);
+  assert.equal(parseEntry({ ...dish, places: [{ name: 'X', mapLink: 'javascript:alert(1)' }] }).ok, false);
+  assert.equal(parseEntry({ ...dish, spice: 4 }).ok, false);
 });

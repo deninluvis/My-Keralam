@@ -1,0 +1,9 @@
+{
+  "slug": "thalassery-malabar-biryani",
+  "name": "Thalassery / Malabar biryani",
+  "kind": "Meat",
+  "spice": 2,
+  "veg": false,
+  "desc": "Fragrant short-grain kaima rice biryani from North Kerala, often with chicken.",
+  "order": 10
+}
