@@ -1,16 +1,16 @@
 {
   "siteName": "Soul of Keralam",
   "lastVerified": "2026-11-22",
-  "ratesNote": "Fixed exchange rates, not live. Check a live rate before you pay.",
+  "ratesNote": "Daily European Central Bank reference rates; banks and money changers add a margin.",
   "rates": {
-    "USD": 89,
-    "EUR": 103,
-    "GBP": 117,
-    "CAD": 63,
-    "AUD": 58,
-    "AED": 24
+    "USD": 92.68,
+    "EUR": 101.85,
+    "GBP": 121.63,
+    "CAD": 64.78,
+    "AUD": 61.77,
+    "AED": 25.24
   },
   "disclaimer": "Soul of Keralam is a fun, independent project. Its information is based on public information from the Kerala Tourism website (keralatourism.org). No information or link here has been verified by any authority. Always use official government websites when planning your trip.",
-  "ratesUpdated": "2026-11-22",
+  "ratesUpdated": "2026-11-20",
   "tagline": "Your insider pass to Kerala."
 }

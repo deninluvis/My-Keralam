@@ -15,6 +15,7 @@ A static Astro website that helps foreign visitors plan a trip to Kerala (Kerala
 | `npm test` | Planner unit tests (`tests/planner.test.js`) |
 | `npm run build` | Build static site into `dist/` |
 | `npm run preview` | Serve the built `dist/` |
+| `npm run rates` | Refresh exchange rates in `src/data/meta.json` (ECB, free; the deploy runs it daily) |
 
 ## Project layout
 - `src/data/*.json`: all content (destinations, festivals, food, visa rules, climate, journey times, emergency numbers, exchange rates). Update `meta.json` → `lastVerified` after re-checking facts.

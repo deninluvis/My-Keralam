@@ -4,6 +4,9 @@ on:
   push:
     branches: [claude]
   workflow_dispatch:
+  # Daily rebuild to refresh exchange rates (the ECB publishes around 16:00 CET on working days).
+  schedule:
+    - cron: '0 17 * * *'
 
 permissions:
   contents: read
@@ -25,6 +28,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm test
+      - run: npm run rates
       - run: npm run build
         env:
           SITE_BASE: /${{ github.event.repository.name }}
