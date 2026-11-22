@@ -1,7 +1,7 @@
 // Offline support: pre-cache the SOS and trip pages, then serve network-first with cache fallback.
-const CACHE = 'keralam-v1';
+const CACHE = 'keralam-v2';
 const scope = self.registration.scope; // e.g. https://user.github.io/My-Keralam/
-const PRECACHE = ['', 'safety/', 'my-trip/', 'plan/', 'etiquette/'].map((p) => new URL(p, scope).href);
+const PRECACHE = ['', 'safety/', 'plan/', 'etiquette/'].map((p) => new URL(p, scope).href);
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(PRECACHE)).then(() => self.skipWaiting()));

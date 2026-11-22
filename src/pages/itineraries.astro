@@ -15,7 +15,7 @@ const its = await all('itineraries');
         <h2>{it.name}</h2>
         <p class="muted">{it.who}</p>
         <ol class="tl">{it.days.map(({ d, place, what }) => <li><span class="d">Day {d}</span><div><strong>{place}</strong><p class="small">{what}</p></div></li>)}</ol>
-        <a class="btn small open-plan" href={`${url('/my-trip')}?${it.q}`} data-q={it.q}>Open in planner <Icon name="arrow" /></a>
+        <a class="btn small open-plan" href={`${url('/plan')}?${it.q}`} data-q={it.q}>Open in planner <Icon name="arrow" /></a>
       </section>
     ))}
     <p class="small muted">Driving times: Kochi–Munnar about 4 h; Munnar–Thekkady about 3.5 h; Thekkady–Alappuzha about 4 h. See <a href={url('/getting-around')}>getting around</a>.</p>

@@ -12,17 +12,35 @@ const interests = [
 const lengths = [5, 7, 10, 14, 21];
 import { all } from '../lib/content.js';
 const festivals = await all('festivals');
+const destinations = await all('destinations');
+const regions = [['north', 'North Kerala (Malabar)'], ['central', 'Central Kerala'], ['south', 'South Kerala']];
+import TripResult from '../components/TripResult.astro';
 ---
 <Base title="Plan My Trip" description="Build a day-by-day Kerala itinerary with travel times, budget, visa advice and packing list.">
-  <PageHead eyebrow="Trip planner" title="Plan My Trip" lead="Answer five quick questions. You get a day-by-day route with travel times, a budget estimate, visa advice and a packing list. Nothing leaves your device." />
+  <PageHead eyebrow="Trip planner" title="Plan My Trip" lead="Answer five quick questions, or choose the places yourself. You get a day-by-day route with travel times, a budget estimate, visa advice and a packing list. Nothing leaves your device." />
 
-  <div class="wrap planner">
-    <form id="planner" class="card" action={url('/my-trip')} method="get" novalidate>
+  <div class="wrap">
+    <section class="card trips no-print" aria-labelledby="trips-h">
+      <div class="trips-head"><h2 id="trips-h">My trips</h2><a class="btn small" href={url('/plan')}>New trip</a></div>
+      <p class="small muted" id="trips-none">No saved trips yet. Build a trip, then press <strong>Save trip</strong>. Trips are saved only in this browser on this device.</p>
+      <ul class="trips-list" id="trips-list"></ul>
+    </section>
+  </div>
+
+  <div class="wrap" id="result-wrap" hidden><TripResult festivals={festivals} /></div>
+
+  <div class="wrap planner" id="wizard">
+    <form id="planner" class="card" action={url('/plan')} method="get" novalidate>
       <div class="progress" aria-hidden="true"><span id="bar"></span></div>
       <p class="small muted" id="step-label" aria-live="polite">Step 1 of 5</p>
 
       <fieldset class="step" data-step="1">
         <legend><h2>When are you travelling?</h2></legend>
+        <p class="label">How do you want to plan?</p>
+        <div class="chips" role="radiogroup" aria-label="Planning mode" style="margin-bottom:16px">
+          <label class="opt"><input class="sr-only" type="radio" name="mode" value="suggest" checked /><span class="chip">Suggest a route for me</span></label>
+          <label class="opt"><input class="sr-only" type="radio" name="mode" value="choose" /><span class="chip">I'll choose the places</span></label>
+        </div>
         <div class="field">
           <label for="start">Arrival date</label>
           <input type="date" id="start" name="start" required />
@@ -40,11 +58,26 @@ const festivals = await all('festivals');
             <label class="opt"><input class="sr-only" type="radio" name="days" value={n} checked={n === 7} /><span class="chip">{n} days</span></label>
           ))}
         </div>
+        <p class="small muted choose-only" hidden>You chose to pick places yourself: your trip length comes from the days you give each place in the next step.</p>
         <p class="small muted" style="margin-top:12px">Tip: 7 days covers the classics. 14 days lets you add North Kerala (Malabar).</p>
       </fieldset>
 
       <fieldset class="step" data-step="3" hidden>
         <legend><h2>What do you enjoy?</h2></legend>
+        <div class="choose-only places" hidden>
+          <p class="label">Choose places and days</p>
+          <p class="small muted">Places are visited in route order, north to south. Nearby places share a base town, so their days are added together (up to 7 per base, 21 in total).</p>
+          {regions.map(([r, label]) => (
+            <fieldset class="region"><legend class="label">{label}</legend>
+              {destinations.filter((d) => d.region === r).map((d) => (
+                <div class="place"><label><input type="checkbox" name="place" value={d.slug} data-base={d.base ?? ''} data-lat={d.lat} data-lng={d.lng} /> {d.name}</label>
+                  <select name={`days-${d.slug}`} aria-label={`Days in ${d.name}`}>{[1, 2, 3, 4, 5, 6, 7].map((n) => <option value={n}>{n} day{n > 1 ? 's' : ''}</option>)}</select></div>
+              ))}
+            </fieldset>
+          ))}
+          <fieldset class="region" id="imported-places" hidden><legend class="label">Imported by you</legend></fieldset>
+          <p class="label" style="margin-top:18px">Interests (used for budget extras such as a houseboat night or Ayurveda)</p>
+        </div>
         <p class="small muted">Pick as many as you like.</p>
         <div class="chips">
           {interests.map(([v, t]) => (
@@ -99,7 +132,6 @@ const festivals = await all('festivals');
       </dl>
     </aside>
   </div>
-  <script type="application/json" id="fest-data" set:html={JSON.stringify(festivals)}></script>
 </Base>
 
 <style>
@@ -117,10 +149,24 @@ const festivals = await all('festivals');
   dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 12px; font-size: .925rem; }
   dt { font-weight: 600; color: var(--muted); }
   dd { margin: 0; }
+  .trips { margin-bottom: 16px; }
+  .trips-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .trips-head h2 { margin: 0; }
+  .trips-list { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 8px; }
+  .trips-list :global(li) { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+  .trips-list :global(.trip-actions) { margin-left: auto; display: flex; gap: 6px; }
+  .region { margin: 12px 0 0; }
+  .place { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .place label { font-weight: 400; margin: 0; }
+  .place select { width: auto; min-width: 90px; }
+  .place :global(select) { width: auto; min-width: 90px; }
 </style>
 
 <script>
   import { buildTrip, encodeInput, decodeInput } from '../lib/planner.js';
+  import { listTrips, renameTrip, deleteTrip } from '../lib/trips.js';
+  import { listImported } from '../lib/community.js';
+  import { esc } from '../lib/render.js';
   import bases from '../data/bases.json';
   import journeys from '../data/journeys.json';
   import months from '../data/months.json';
@@ -139,30 +185,114 @@ const festivals = await all('festivals');
   const start = document.getElementById('start') as HTMLInputElement;
   let step = 0;
 
-  // Default arrival: 60 days from today. Resume a saved plan if there is one.
+  const baseUrl = form.action;
+  const params = new URLSearchParams(location.search);
+  params.delete('tid');
+  const current = params.toString();
+  const wizard = document.getElementById('wizard')!;
+  const resultWrap = document.getElementById('result-wrap')!;
+  // A trip in the URL shows the result; otherwise the questions.
+  wizard.hidden = !!current;
+  resultWrap.hidden = !current;
+  document.getElementById('edit')?.addEventListener('click', () => {
+    resultWrap.hidden = true;
+    wizard.hidden = false;
+    show(0);
+    wizard.scrollIntoView();
+  });
+
+  // My trips (saved in this browser).
+  const tripsList = document.getElementById('trips-list')!;
+  function fmt(iso: string) {
+    return new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+  }
+  function renderTrips() {
+    const trips = listTrips();
+    document.getElementById('trips-none')!.hidden = trips.length > 0;
+    tripsList.innerHTML = trips.map((t) => {
+      const inp = decodeInput(t.query);
+      const len = inp.stops ? inp.stops.reduce((s, x) => s + x.days, 0) : inp.days;
+      return `<li><a href="${esc(`${baseUrl}?${t.query}&tid=${encodeURIComponent(t.id)}`)}"><strong>${esc(t.name)}</strong></a>
+        <span class="small muted">${esc(fmt(inp.start))} · ${len} days</span>
+        <span class="trip-actions"><button type="button" class="btn small ghost" data-act="rename" data-id="${esc(t.id)}">Rename</button><button type="button" class="btn small ghost" data-act="delete" data-id="${esc(t.id)}">Delete</button></span></li>`;
+    }).join('');
+  }
+  tripsList.addEventListener('click', (e) => {
+    const b = (e.target as Element).closest<HTMLButtonElement>('button[data-act]');
+    if (!b) return;
+    const t = listTrips().find((x) => x.id === b.dataset.id);
+    if (!t) return;
+    if (b.dataset.act === 'rename') { const n = prompt('New name for this trip', t.name); if (n) renameTrip(t.id, n); }
+    if (b.dataset.act === 'delete' && confirm(`Delete "${t.name}"? This cannot be undone.`)) deleteTrip(t.id);
+    renderTrips();
+  });
+  document.addEventListener('trips-changed', renderTrips);
+  renderTrips();
+
+  // Imported destinations can be picked too.
+  const imported = listImported('destination') as { slug: string; name: string; base?: string | null; lat: number; lng: number }[];
+  if (imported.length) {
+    const box = document.getElementById('imported-places')!;
+    box.insertAdjacentHTML('beforeend', imported.map((d) => `<div class="place"><label><input type="checkbox" name="place" value="${esc(d.slug)}" data-base="${esc(d.base || '')}" data-lat="${d.lat}" data-lng="${d.lng}" /> ${esc(d.name)}</label>
+      <select name="days-${esc(d.slug)}" aria-label="Days in ${esc(d.name)}">${[1, 2, 3, 4, 5, 6, 7].map((n) => `<option value="${n}">${n} day${n > 1 ? 's' : ''}</option>`).join('')}</select></div>`).join(''));
+    box.hidden = false;
+  }
+
+  // Mode: suggested route or hand-picked places.
+  const mode = () => (form.querySelector<HTMLInputElement>('input[name=mode]:checked')?.value === 'choose' ? 'choose' : 'suggest');
+  function applyMode() {
+    const choose = mode() === 'choose';
+    form.querySelectorAll<HTMLElement>('.choose-only').forEach((el) => (el.hidden = !choose));
+    form.querySelectorAll<HTMLInputElement>('input[name=days]').forEach((r) => (r.disabled = choose));
+  }
+  form.querySelectorAll('input[name=mode]').forEach((r) => r.addEventListener('change', applyMode));
+
+  // A place uses its base town, or the nearest base by distance when it has none.
+  function baseFor(el: HTMLInputElement) {
+    if (el.dataset.base && bases.some((b) => b.id === el.dataset.base)) return el.dataset.base;
+    const lat = Number(el.dataset.lat), lng = Number(el.dataset.lng);
+    return bases.reduce((best, b) => (Math.hypot(b.lat - lat, b.lng - lng) < Math.hypot(best.lat - lat, best.lng - lng) ? b : best)).id;
+  }
+  function stopsFromPlaces() {
+    const days = new Map<string, number>();
+    form.querySelectorAll<HTMLInputElement>('input[name=place]:checked').forEach((c) => {
+      const sel = form.elements.namedItem(`days-${c.value}`) as HTMLSelectElement;
+      const id = baseFor(c);
+      days.set(id, Math.min(7, (days.get(id) || 0) + Number(sel.value)));
+    });
+    return [...days].map(([id, d]) => `${id}:${d}`).join(',');
+  }
+
+  // Default arrival: 60 days from today. When editing, start from the trip being edited.
   const today = new Date();
   start.min = today.toISOString().slice(0, 10);
-  const def = new Date(today.getTime() + 60 * 864e5).toISOString().slice(0, 10);
-  start.value = def;
-  try {
-    const saved = localStorage.getItem('trip');
-    if (saved) {
-      const inp = decodeInput(saved);
-      if (inp.start >= start.min) start.value = inp.start;
-      (form.elements.namedItem('people') as HTMLInputElement).value = String(inp.people);
-      form.querySelectorAll<HTMLInputElement>('input[name=days]').forEach((r) => (r.checked = Number(r.value) === inp.days));
-      form.querySelectorAll<HTMLInputElement>('input[name=interests]').forEach((c) => (c.checked = inp.interests.includes(c.value)));
-      form.querySelectorAll<HTMLInputElement>('input[name=budget]').forEach((r) => (r.checked = r.value === inp.budget));
-      form.querySelectorAll<HTMLInputElement>('input[name=pace]').forEach((r) => (r.checked = r.value === inp.pace));
-      (form.elements.namedItem('nat') as HTMLSelectElement).value = inp.nat;
+  start.value = new Date(today.getTime() + 60 * 864e5).toISOString().slice(0, 10);
+  if (current) {
+    const inp = decodeInput(current);
+    if (inp.start >= start.min) start.value = inp.start;
+    (form.elements.namedItem('people') as HTMLInputElement).value = String(inp.people);
+    form.querySelectorAll<HTMLInputElement>('input[name=days]').forEach((r) => (r.checked = Number(r.value) === inp.days));
+    form.querySelectorAll<HTMLInputElement>('input[name=interests]').forEach((c) => (c.checked = inp.interests.includes(c.value)));
+    form.querySelectorAll<HTMLInputElement>('input[name=budget]').forEach((r) => (r.checked = r.value === inp.budget));
+    form.querySelectorAll<HTMLInputElement>('input[name=pace]').forEach((r) => (r.checked = r.value === inp.pace));
+    (form.elements.namedItem('nat') as HTMLSelectElement).value = inp.nat;
+    if (inp.stops) {
+      form.querySelector<HTMLInputElement>('input[name=mode][value=choose]')!.checked = true;
+      // Tick the first place at each base so the days carry over.
+      inp.stops.forEach((s) => {
+        const box = [...form.querySelectorAll<HTMLInputElement>('input[name=place]')].find((c) => c.value === s.id || baseFor(c) === s.id);
+        if (box) { box.checked = true; (form.elements.namedItem(`days-${box.value}`) as HTMLSelectElement).value = String(s.days); }
+      });
     }
-  } catch (e) {}
+  }
+  applyMode();
 
   function readInput() {
     const fd = new FormData(form);
     return {
       start: String(fd.get('start') || ''), days: fd.get('days'), people: fd.get('people'),
       interests: fd.getAll('interests').map(String), budget: fd.get('budget'), pace: fd.get('pace'), nat: fd.get('nat'),
+      ...(mode() === 'choose' && { stops: stopsFromPlaces() }),
     };
   }
 
@@ -194,9 +324,7 @@ const festivals = await all('festivals');
   form.addEventListener('change', preview);
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const q = encodeInput(readInput());
-    try { localStorage.setItem('trip', q); } catch (err) {}
-    location.href = `${form.action}?${q}`;
+    location.href = `${baseUrl}?${encodeInput(readInput())}`;
   });
   preview();
 </script>
