@@ -1,4 +1,4 @@
-# Plan My Keralam
+# Soul of Keralam
 
 A static Astro website that helps foreign visitors plan a trip to Kerala (Keralam), India.
 

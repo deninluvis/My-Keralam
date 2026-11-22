@@ -1,9 +1,9 @@
 ---
 name: run-site
-description: Start the Plan My Keralam website locally (Astro dev server) and give the user the URL. Use when the user asks to run, start, launch, open or preview the site or app locally.
+description: Start the Soul of Keralam website locally (Astro dev server) and give the user the URL. Use when the user asks to run, start, launch, open or preview the site or app locally.
 ---
 
-# Run the Plan My Keralam site locally
+# Run the Soul of Keralam site locally
 
 Follow these steps in order from the repository root.
 

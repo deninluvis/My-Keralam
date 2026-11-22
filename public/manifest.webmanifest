@@ -1,11 +1,17 @@
 {
-  "name": "Plan My Keralam",
-  "short_name": "Keralam",
-  "description": "Plan a trip to Kerala, India: visas, seasons, itineraries and safety.",
+  "name": "Soul of Keralam",
+  "short_name": "Soul of Keralam",
+  "description": "Your insider pass to Kerala: visas, seasons, itineraries and safety.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#faf7f0",
-  "theme_color": "#1f5e4a",
-  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+  "background_color": "#F9F6F0",
+  "theme_color": "#1B4332",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
 }

@@ -1,4 +1,4 @@
-# Plan My Keralam
+# Soul of Keralam
 
 An independent, mobile-first website that helps foreign visitors plan a trip to Kerala (Keralam), India, all in one place.
 

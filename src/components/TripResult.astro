@@ -216,9 +216,9 @@ const { festivals, destinations } = Astro.props;
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
       // One pin per place, numbered in route order; the dashed line follows the same order as the Google Maps link.
       const pts = places.map((p) => [p.lat, p.lng] as [number, number]);
-      L.polyline(pts, { color: '#2a7f86', weight: 4, dashArray: '6 8' }).addTo(map);
+      L.polyline(pts, { color: '#C89B3C', weight: 4, dashArray: '6 8' }).addTo(map);
       const stopName = (id: string) => t.stops.find((s) => s.id === id)?.name ?? '';
-      places.forEach((p, i) => L.circleMarker([p.lat, p.lng], { radius: 8, color: '#fff', weight: 2, fillColor: '#1f5e4a', fillOpacity: 1 })
+      places.forEach((p, i) => L.circleMarker([p.lat, p.lng], { radius: 8, color: '#fff', weight: 2, fillColor: '#1B4332', fillOpacity: 1 })
         .addTo(map).bindTooltip(`${i + 1}. ${p.name}${p.slug ? ` (near ${stopName(p.stopId)})` : ''}`, { permanent: false }));
       const bounds = L.latLngBounds(pts).pad(0.3);
       map.fitBounds(bounds);

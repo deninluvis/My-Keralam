@@ -86,5 +86,5 @@ const regionName = { south: 'South Kerala', central: 'Central Kerala', north: 'N
   const lat = Number(el.dataset.lat), lng = Number(el.dataset.lng);
   const map = L.map(el, { scrollWheelZoom: false }).setView([lat, lng], 10);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
-  L.circleMarker([lat, lng], { radius: 10, color: '#fff', weight: 2, fillColor: '#1f5e4a', fillOpacity: 1 }).addTo(map).bindTooltip(el.dataset.name!);
+  L.circleMarker([lat, lng], { radius: 10, color: '#fff', weight: 2, fillColor: '#1B4332', fillOpacity: 1 }).addTo(map).bindTooltip(el.dataset.name!);
 </script>

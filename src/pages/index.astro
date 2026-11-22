@@ -1,4 +1,5 @@
 ---
+import meta from '../data/meta.json';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import DestCard from '../components/DestCard.astro';
@@ -20,12 +21,13 @@ const why = [
   { icon: 'ayurveda', title: 'Ayurveda', text: 'Traditional wellness treatments, best in the monsoon.' },
 ];
 ---
-<Base title="Plan My Keralam" nav="home">
+<Base title={meta.siteName} nav="home">
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
         <p class="season-badge" id="season-badge"><span class="dot"></span><span id="season-text">Kerala seasons at a glance</span></p>
-        <h1>Plan your Keralam trip, all in one place</h1>
+        <p class="eyebrow">{meta.tagline}</p>
+        <h1>Plan your <em>Keralam</em> trip, all in one place</h1>
         <p class="lead">Visas, seasons, places, a day-by-day itinerary and a budget for Kerala, South India, built for first-time international visitors.</p>
         <div class="btn-row">
           <a class="btn" href={url('/plan')}>Start planning <Icon name="arrow" /></a>
@@ -35,7 +37,7 @@ const why = [
       <svg class="hero-art" viewBox="0 0 400 300" role="img" aria-label="Illustration of a houseboat on the Kerala backwaters with palm trees and hills">
         <defs>
           <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6d89a"/><stop offset="1" stop-color="#f7efe0"/></linearGradient>
-          <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a7f86"/><stop offset="1" stop-color="#1f5e4a"/></linearGradient>
+          <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a7f86"/><stop offset="1" stop-color="#1B4332"/></linearGradient>
         </defs>
         <rect width="400" height="300" rx="24" fill="url(#sky)"/>
         <circle cx="300" cy="90" r="34" fill="#e8a43a" opacity=".85"/>
@@ -54,7 +56,7 @@ const why = [
         <g fill="none" stroke="#1b3a2c" stroke-width="5" stroke-linecap="round">
           <path d="M60 210 Q62 160 52 120"/><path d="M350 212 Q345 170 358 135"/>
         </g>
-        <g fill="#1f5e4a">
+        <g fill="#1B4332">
           <path d="M52 120 q-30 -6 -44 12 q24 -6 44 -12z"/><path d="M52 120 q26 -14 46 0 q-24 -4 -46 0z"/><path d="M52 120 q-10 -26 8 -40 q-6 20 -8 40z"/><path d="M52 120 q-24 4 -30 26 q14 -18 30 -26z"/><path d="M52 120 q22 6 28 28 q-14 -18 -28 -28z"/>
           <path d="M358 135 q-28 -8 -44 8 q24 -4 44 -8z"/><path d="M358 135 q26 -12 42 4 q-22 -6 -42 -4z"/><path d="M358 135 q-6 -26 12 -38 q-8 18 -12 38z"/><path d="M358 135 q-22 6 -26 28 q12 -18 26 -28z"/>
         </g>

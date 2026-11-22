@@ -1,6 +1,6 @@
 # Adding places, festivals, food, itineraries and more
 
-Plan My Keralam is a fun, independent project. Anyone can add content with a small `.json` file. There are two ways:
+Soul of Keralam is a fun, independent project. Anyone can add content with a small `.json` file. There are two ways:
 
 | | **Share with everyone** | **Just for you** |
 |---|---|---|
