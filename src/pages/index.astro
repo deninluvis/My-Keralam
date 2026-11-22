@@ -1,0 +1,155 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import DestCard from '../components/DestCard.astro';
+import CurrencyConverter from '../components/CurrencyConverter.astro';
+import ISTClock from '../components/ISTClock.astro';
+import destinations from '../data/destinations.json';
+import festivals from '../data/festivals.json';
+import months from '../data/months.json';
+import seasons from '../data/seasons.json';
+import { url } from '../lib/url.js';
+
+const topSlugs = ['fort-kochi', 'munnar', 'alappuzha', 'thekkady', 'varkala', 'kumarakom', 'athirappilly', 'wayanad', 'kannur', 'bekal'];
+const top = topSlugs.map((s) => destinations.find((d) => d.slug === s));
+const why = [
+  { icon: 'backwaters', title: 'Backwaters', text: 'Sleep on a houseboat drifting through palm-lined canals.' },
+  { icon: 'hills', title: 'Tea hills', text: 'Cool, misty plantations at 1,600 m (5,200 ft) in Munnar.' },
+  { icon: 'beaches', title: 'Beaches', text: 'Cliff-top Varkala, Kovalam and quiet northern shores.' },
+  { icon: 'ayurveda', title: 'Ayurveda', text: 'Traditional wellness treatments, best in the monsoon.' },
+];
+---
+<Base title="Plan My Keralam" nav="home">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="season-badge" id="season-badge"><span class="dot"></span><span id="season-text">Kerala seasons at a glance</span></p>
+        <h1>Plan your Keralam trip, all in one place</h1>
+        <p class="lead">Visas, seasons, places, a day-by-day itinerary and a budget for Kerala, South India, built for first-time international visitors.</p>
+        <div class="btn-row">
+          <a class="btn" href={url('/plan')}>Start planning <Icon name="arrow" /></a>
+          <a class="btn ghost" href={url('/itineraries')}>See itineraries</a>
+        </div>
+      </div>
+      <svg class="hero-art" viewBox="0 0 400 300" role="img" aria-label="Illustration of a houseboat on the Kerala backwaters with palm trees and hills">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6d89a"/><stop offset="1" stop-color="#f7efe0"/></linearGradient>
+          <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a7f86"/><stop offset="1" stop-color="#1f5e4a"/></linearGradient>
+        </defs>
+        <rect width="400" height="300" rx="24" fill="url(#sky)"/>
+        <circle cx="300" cy="90" r="34" fill="#e8a43a" opacity=".85"/>
+        <path d="M0 190 L70 120 L130 170 L200 105 L280 175 L340 130 L400 170 V210 H0Z" fill="#7aa65a" opacity=".55"/>
+        <path d="M0 205 L90 150 L170 200 L250 150 L330 195 L400 175 V215 H0Z" fill="#2e6b3f" opacity=".8"/>
+        <rect y="205" width="400" height="95" fill="url(#water)"/>
+        <g stroke="#9fd8c4" stroke-width="2" stroke-linecap="round" opacity=".6" fill="none">
+          <path d="M30 240h40M110 262h50M240 250h60M320 272h40M60 285h30"/>
+        </g>
+        <g transform="translate(150 200)">
+          <path d="M-10 30 Q55 48 120 30 L110 22 H0Z" fill="#5a3b22"/>
+          <path d="M8 22 Q55 -8 102 22Z" fill="#c9a227"/>
+          <path d="M14 22 Q55 0 96 22" fill="none" stroke="#8a6a1a" stroke-width="2"/>
+          <rect x="30" y="14" width="10" height="8" fill="#5a3b22"/><rect x="66" y="14" width="10" height="8" fill="#5a3b22"/>
+        </g>
+        <g fill="none" stroke="#1b3a2c" stroke-width="5" stroke-linecap="round">
+          <path d="M60 210 Q62 160 52 120"/><path d="M350 212 Q345 170 358 135"/>
+        </g>
+        <g fill="#1f5e4a">
+          <path d="M52 120 q-30 -6 -44 12 q24 -6 44 -12z"/><path d="M52 120 q26 -14 46 0 q-24 -4 -46 0z"/><path d="M52 120 q-10 -26 8 -40 q-6 20 -8 40z"/><path d="M52 120 q-24 4 -30 26 q14 -18 30 -26z"/><path d="M52 120 q22 6 28 28 q-14 -18 -28 -28z"/>
+          <path d="M358 135 q-28 -8 -44 8 q24 -4 44 -8z"/><path d="M358 135 q26 -12 42 4 q-22 -6 -42 -4z"/><path d="M358 135 q-6 -26 12 -38 q-8 18 -12 38z"/><path d="M358 135 q-22 6 -26 28 q12 -18 26 -28z"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <h2>Why Kerala?</h2>
+    <div class="grid four">
+      {why.map((w) => (
+        <div class="card why"><span class="why-icon"><Icon name={w.icon} /></span><h3>{w.title}</h3><p class="small">{w.text}</p></div>
+      ))}
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <h2>Three steps to your trip</h2>
+    <ol class="grid three steps-cards">
+      <li class="card"><span class="num">1</span><h3>Check your visa</h3><p class="small">Most visitors use India's e-Tourist Visa. Apply at least 4 days before you fly, on the official portal only.</p><a href={url('/before-you-go')}>Visa guide →</a></li>
+      <li class="card"><span class="num">2</span><h3>Build your route</h3><p class="small">Pick dates and interests. Get a day-by-day plan with travel times and a budget.</p><a href={url('/plan')}>Plan My Trip →</a></li>
+      <li class="card"><span class="num">3</span><h3>Pack and go</h3><p class="small">Season-based packing list, etiquette tips and offline emergency numbers.</p><a href={url('/safety')}>Safety & SOS →</a></li>
+    </ol>
+  </section>
+
+  <section class="wrap section">
+    <h2>Top 10 for first-timers</h2>
+    <div class="grid three">{top.map((d) => <DestCard d={d} />)}</div>
+    <p style="margin-top:16px"><a class="btn ghost" href={url('/destinations')}>All destinations and map</a></p>
+  </section>
+
+  <section class="wrap section">
+    <h2>Coming up: festivals</h2>
+    <p class="muted small">Festivals happening this month and next. Dates move every year, so always check.</p>
+    <div class="grid three" id="fest-list">
+      {festivals.slice(0, 3).map((f) => <div class="card"><h3>{f.name}</h3><p class="small muted">{f.where}</p><p class="small">{f.note}</p></div>)}
+    </div>
+    <p style="margin-top:16px"><a href={url('/festivals')}>Full festival calendar →</a></p>
+  </section>
+
+  <section class="wrap section">
+    <h2>Ready-made itineraries</h2>
+    <div class="grid four">
+      <a class="card" href={url('/itineraries#classic-7')}><h3>7 days</h3><p class="small">Kochi, Munnar, Thekkady and a houseboat night.</p></a>
+      <a class="card" href={url('/itineraries#south-10')}><h3>10 days</h3><p class="small">The classic route plus the Varkala cliffs and Kovalam.</p></a>
+      <a class="card" href={url('/itineraries#grand-14')}><h3>14 days</h3><p class="small">Add Wayanad, Theyyam in Kannur and Bekal Fort.</p></a>
+      <a class="card" href={url('/itineraries#wellness')}><h3>Wellness</h3><p class="small">14–21 days of Ayurveda at an approved centre.</p></a>
+    </div>
+  </section>
+
+  <section class="wrap section">
+    <h2>Handy tools</h2>
+    <div class="grid three">
+      <ISTClock />
+      <CurrencyConverter />
+      <a class="card sos-card" href={url('/safety')}>
+        <h3>Emergency in India</h3>
+        <p class="big-num">112</p>
+        <p class="small">One number for police, fire and ambulance. See all numbers and offline safety tips.</p>
+      </a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding: 28px 0 8px; }
+  .hero-grid { display: grid; gap: 24px; align-items: center; }
+  @media (min-width: 860px) { .hero-grid { grid-template-columns: 1.1fr 1fr; padding-top: 24px; } }
+  .hero-art { width: 100%; height: auto; border-radius: 24px; box-shadow: var(--shadow); }
+  .season-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--gold-soft); color: var(--ink); font-weight: 600; font-size: .875rem; padding: 6px 14px; border-radius: 999px; }
+  .season-badge .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); }
+  .why-icon { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: var(--ok-soft); color: var(--green); margin-bottom: 10px; }
+  .why-icon :global(svg) { width: 24px; height: 24px; }
+  .steps-cards { list-style: none; padding: 0; margin: 0; }
+  .num { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--green); color: var(--green-ink); font-weight: 700; margin-bottom: 8px; }
+  .sos-card { border-color: var(--danger); }
+  .big-num { font-size: 2.6rem; font-weight: 700; color: var(--danger); margin: 0; line-height: 1.1; }
+</style>
+
+<script define:vars={{ months, seasons, festivals }}>
+  const m = new Date().getMonth() + 1;
+  const info = months.find((x) => x.m === m);
+  const s = seasons[info.season];
+  const el = document.getElementById('season-text');
+  if (el) el.textContent = `Now in Kerala: ${s.label} (${s.months}). ${info.note}`;
+
+  const next = m === 12 ? 1 : m + 1;
+  const list = festivals.filter((f) => f.months.includes(m) || f.months.includes(next)).slice(0, 6);
+  const box = document.getElementById('fest-list');
+  if (box && list.length) {
+    box.replaceChildren(...list.map((f) => {
+      const c = document.createElement('div'); c.className = 'card';
+      const h = document.createElement('h3'); h.textContent = f.name;
+      const w = document.createElement('p'); w.className = 'small muted'; w.textContent = f.where;
+      const n = document.createElement('p'); n.className = 'small'; n.textContent = f.note;
+      c.append(h, w, n); return c;
+    }));
+  }
+</script>

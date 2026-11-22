@@ -1,0 +1,33 @@
+{
+  "portal": "https://indianvisaonline.gov.in/evisa/",
+  "feeTable": "https://indianvisaonline.gov.in/evisa/images/Etourist_fee_final.pdf",
+  "types": [
+    {"id":"30d","name":"e-Tourist Visa, 30 days","validity":"30 days from your first arrival","entries":"Double entry","fee":"About US$25 (often US$10 from April to June)"},
+    {"id":"1y","name":"e-Tourist Visa, 1 year","validity":"365 days from the date it is granted","entries":"Multiple entry","fee":"About US$40"},
+    {"id":"5y","name":"e-Tourist Visa, 5 years","validity":"5 years from the date it is granted","entries":"Multiple entry","fee":"About US$80"}
+  ],
+  "nationalities": [
+    {"id":"US","name":"United States","longStay":180},
+    {"id":"GB","name":"United Kingdom","longStay":180},
+    {"id":"CA","name":"Canada","longStay":180},
+    {"id":"JP","name":"Japan","longStay":180,"voa":true},
+    {"id":"KR","name":"South Korea","longStay":90,"voa":true},
+    {"id":"AE","name":"United Arab Emirates","longStay":90,"voa":true,"voaNote":"Visa on arrival is for eligible UAE nationals; check the conditions."},
+    {"id":"AU","name":"Australia","longStay":90},
+    {"id":"NZ","name":"New Zealand","longStay":90},
+    {"id":"DE","name":"Germany","longStay":90},
+    {"id":"FR","name":"France","longStay":90},
+    {"id":"ES","name":"Spain","longStay":90},
+    {"id":"IT","name":"Italy","longStay":90},
+    {"id":"NL","name":"Netherlands","longStay":90},
+    {"id":"IE","name":"Ireland","longStay":90},
+    {"id":"CH","name":"Switzerland","longStay":90},
+    {"id":"SE","name":"Sweden","longStay":90},
+    {"id":"IL","name":"Israel","longStay":90},
+    {"id":"SG","name":"Singapore","longStay":90},
+    {"id":"RU","name":"Russia","longStay":90},
+    {"id":"SA","name":"Saudi Arabia","longStay":90},
+    {"id":"PK","name":"Pakistan","notEligible":true},
+    {"id":"OTHER","name":"Other country","longStay":90,"unknown":true}
+  ]
+}

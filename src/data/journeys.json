@@ -1,0 +1,39 @@
+{
+  "note": "Typical road times without long stops. Hill roads are slow; allow extra time in the monsoon.",
+  "legs": {
+    "bekal|kannur": {"h": 2, "km": 85, "mode": "Road or train (about 1.5 h)"},
+    "kannur|wayanad": {"h": 3, "km": 100, "mode": "Road"},
+    "kannur|kozhikode": {"h": 2, "km": 90, "mode": "Road or train (about 1.5 h)"},
+    "kozhikode|wayanad": {"h": 2.5, "km": 75, "mode": "Road (hairpin ghat road)"},
+    "kozhikode|thrissur": {"h": 3, "km": 120, "mode": "Road or train (about 2.5 h)"},
+    "thrissur|wayanad": {"h": 5, "km": 190, "mode": "Road"},
+    "kochi|thrissur": {"h": 2, "km": 80, "mode": "Road or train (about 1.5 h)"},
+    "kochi|kozhikode": {"h": 5, "km": 190, "mode": "Train is easier (about 4 h)"},
+    "kochi|munnar": {"h": 4, "km": 130, "mode": "Road"},
+    "munnar|thrissur": {"h": 4.5, "km": 160, "mode": "Road"},
+    "munnar|thekkady": {"h": 3.5, "km": 90, "mode": "Road"},
+    "kochi|thekkady": {"h": 4.5, "km": 160, "mode": "Road"},
+    "thekkady|vagamon": {"h": 2, "km": 60, "mode": "Road"},
+    "munnar|vagamon": {"h": 4, "km": 110, "mode": "Road"},
+    "kumarakom|vagamon": {"h": 2, "km": 65, "mode": "Road"},
+    "kumarakom|thekkady": {"h": 3.5, "km": 115, "mode": "Road"},
+    "alappuzha|thekkady": {"h": 4, "km": 140, "mode": "Road"},
+    "kumarakom|munnar": {"h": 4.5, "km": 150, "mode": "Road"},
+    "alappuzha|munnar": {"h": 5, "km": 170, "mode": "Road"},
+    "kochi|kumarakom": {"h": 1.5, "km": 60, "mode": "Road"},
+    "alappuzha|kochi": {"h": 1.5, "km": 55, "mode": "Road or train (about 1 h)"},
+    "alappuzha|kumarakom": {"h": 1, "km": 35, "mode": "Road, or by boat on Vembanad Lake"},
+    "alappuzha|varkala": {"h": 2.5, "km": 110, "mode": "Road or train (about 2 h)"},
+    "kumarakom|varkala": {"h": 3, "km": 130, "mode": "Road"},
+    "kochi|varkala": {"h": 4, "km": 160, "mode": "Train is easier (about 3 h)"},
+    "kovalam|varkala": {"h": 1.5, "km": 55, "mode": "Road"},
+    "alappuzha|kovalam": {"h": 4, "km": 160, "mode": "Road or train to Trivandrum"},
+    "kochi|kovalam": {"h": 5, "km": 220, "mode": "Train to Trivandrum is easier (about 4 h)"}
+  },
+  "airports": {
+    "COK": {"name": "Kochi International Airport (COK)", "toBase": "kochi", "transfer": "about 1 h to Fort Kochi"},
+    "TRV": {"name": "Thiruvananthapuram International Airport (TRV)", "toBase": "kovalam", "transfer": "about 30 min to Kovalam"},
+    "CCJ": {"name": "Kozhikode International Airport (CCJ)", "toBase": "kozhikode", "transfer": "about 45 min to Kozhikode"},
+    "CNN": {"name": "Kannur International Airport (CNN)", "toBase": "kannur", "transfer": "about 45 min to Kannur"}
+  }
+}

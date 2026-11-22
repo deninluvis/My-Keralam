@@ -1,0 +1,11 @@
+[
+  {"label":"All emergencies","number":"112","primary":true},
+  {"label":"Ambulance","number":"108","primary":true},
+  {"label":"Police","number":"100","primary":false},
+  {"label":"Fire","number":"101","primary":false},
+  {"label":"Ambulance (alternative)","number":"102","primary":false},
+  {"label":"Tourist helpline (multilingual)","number":"1363","primary":true},
+  {"label":"Highway Alert (Kerala)","number":"9846100100","display":"9846 100 100","primary":false},
+  {"label":"Railway Alert (Kerala)","number":"9846200100","display":"9846 200 100","primary":false},
+  {"label":"Kerala Tourism office","number":"+914712321132","display":"+91 471 2321132","primary":false}
+]

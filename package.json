@@ -1,0 +1,16 @@
+{
+  "name": "plan-my-keralam",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "astro": "7.4.7",
+    "leaflet": "1.9.4"
+  }
+}

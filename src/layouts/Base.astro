@@ -1,0 +1,120 @@
+---
+import '../styles/global.css';
+import Icon from '../components/Icon.astro';
+import meta from '../data/meta.json';
+import { url } from '../lib/url.js';
+
+interface Props { title: string; description?: string; nav?: string }
+const { title, description = 'Plan a trip to Kerala (Keralam), India, all in one place: visas, seasons, destinations, itineraries, budget and safety.', nav = '' } = Astro.props;
+const fullTitle = title === meta.siteName ? title : `${title} · ${meta.siteName}`;
+const here = Astro.url.pathname.replace(/\/$/, '');
+const cur = (p: string) => (here === url(p).replace(/\/$/, '') ? 'page' : undefined);
+
+const groups = [
+  { label: 'Plan', links: [['/plan', 'Plan My Trip'], ['/my-trip', 'My Trip'], ['/itineraries', 'Ready-made itineraries']] },
+  { label: 'Explore', links: [['/destinations', 'Destinations'], ['/experiences', 'Experiences'], ['/festivals', 'Festivals & events'], ['/food', 'Food guide']] },
+  { label: 'Prepare', links: [['/before-you-go', 'Visa & before you go'], ['/when-to-go', 'When to go'], ['/getting-around', 'Getting there & around'], ['/money', 'Money & practical'], ['/etiquette', 'Culture & etiquette'], ['/responsible-travel', 'Responsible travel'], ['/faq', 'FAQ & official links']] },
+];
+const verified = new Date(meta.lastVerified).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#1f5e4a" />
+  <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+  <link rel="manifest" href={url('/manifest.webmanifest')} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script is:inline>
+    try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="logo" href={url('/')} aria-label={`${meta.siteName} home`}>
+        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#1f5e4a"/><path d="M16 22V11M16 11c-3-3-7-2-8 0 3-1 5 0 8 0zm0 0c3-3 7-2 8 0-3-1-5 0-8 0zm0 0c-1-3 1-6 3-6-1 2-2 4-3 6z" fill="#e2c15a" stroke="#e2c15a" stroke-width=".8" stroke-linejoin="round"/><path d="M6 24c2.5 0 2.5-1.5 5-1.5s2.5 1.5 5 1.5 2.5-1.5 5-1.5 2.5 1.5 5 1.5" stroke="#9fd8c4" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+        <span>{meta.siteName}</span>
+      </a>
+      <nav class="top-nav" aria-label="Main">
+        {groups.map((g) => (
+          <details>
+            <summary>{g.label}</summary>
+            <div class="menu">{g.links.map(([href, text]) => <a href={url(href)} aria-current={cur(href)}>{text}</a>)}</div>
+          </details>
+        ))}
+        <a class="sos" href={url('/safety')} aria-current={cur('/safety')}>SOS</a>
+      </nav>
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch light or dark mode">
+        <span class="t-sun"><Icon name="sun" /></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap cols">
+      <div>
+        <h3>{meta.siteName}</h3>
+        <p>An independent planning guide for visitors to Kerala (Keralam), India. Not affiliated with the Government of Kerala. Rules, fees and dates change; always confirm with the official sources linked on each page.</p>
+        <p class="verified">Content last checked: {verified}</p>
+      </div>
+      <div>
+        <h3>Plan</h3>
+        <ul>
+          <li><a href={url('/plan')}>Plan My Trip</a></li>
+          <li><a href={url('/before-you-go')}>Visa guide</a></li>
+          <li><a href={url('/when-to-go')}>When to go</a></li>
+          <li><a href={url('/itineraries')}>Itineraries</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Official sources</h3>
+        <ul>
+          <li><a href="https://www.keralatourism.org/" rel="noopener">Kerala Tourism</a></li>
+          <li><a href="https://indianvisaonline.gov.in/evisa/" rel="noopener">India e-Visa portal</a></li>
+          <li><a href={url('/faq')}>All official links</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <nav class="bottom-bar" aria-label="Quick">
+    <a href={url('/')} aria-current={cur('/')}><Icon name="home" />Home</a>
+    <a href={url('/plan')} aria-current={cur('/plan')}><Icon name="plan" />Plan</a>
+    <a href={url('/destinations')} aria-current={cur('/destinations')}><Icon name="explore" />Explore</a>
+    <a href={url('/festivals')} aria-current={cur('/festivals')}><Icon name="calendar" />Calendar</a>
+    <a href={url('/safety')} class="sos" aria-current={cur('/safety')}><Icon name="sos" />SOS</a>
+  </nav>
+
+  <script>
+    const root = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    btn?.addEventListener('click', () => {
+      const next = isDark() ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+    // Close other open menus when one opens.
+    document.querySelectorAll('.top-nav details').forEach((d) => d.addEventListener('toggle', () => {
+      if (d.open) document.querySelectorAll('.top-nav details').forEach((o) => o !== d && (o.open = false));
+    }));
+    document.addEventListener('click', (e) => {
+      if (!(e.target as Element).closest('.top-nav')) document.querySelectorAll('.top-nav details').forEach((d) => (d.open = false));
+    });
+    if ('serviceWorker' in navigator && location.protocol === 'https:') {
+      navigator.serviceWorker.register(`${import.meta.env.BASE_URL.replace(/\/$/, '')}/sw.js`).catch(() => {});
+    }
+  </script>
+</body>
+</html>

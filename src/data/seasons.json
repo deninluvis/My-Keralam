@@ -1,0 +1,6 @@
+{
+  "peak": {"label":"Peak season","short":"Peak","months":"Nov–Feb","text":"Most comfortable weather, highest prices. Book early."},
+  "summer": {"label":"Hot season","short":"Summer","months":"Mar–May","text":"Hot and humid on the coast. Great for the hills and big festivals."},
+  "monsoon": {"label":"Monsoon","short":"Monsoon","months":"Jun–Aug","text":"Heavy rain and lush green scenery. The traditional season for Ayurveda, with the lowest prices."},
+  "shoulder": {"label":"Shoulder season","short":"Shoulder","months":"Sep–Oct","text":"Showers, fewer crowds and good value."}
+}

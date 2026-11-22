@@ -1,0 +1,199 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Icon from '../components/Icon.astro';
+import visa from '../data/visa.json';
+import { url } from '../lib/url.js';
+
+const interests = [
+  ['backwaters', 'Backwaters & houseboats'], ['beaches', 'Beaches'], ['hills', 'Hills & tea'], ['wildlife', 'Wildlife'],
+  ['culture', 'Culture & art'], ['ayurveda', 'Ayurveda & yoga'], ['food', 'Food'], ['adventure', 'Adventure & treks'],
+];
+const lengths = [5, 7, 10, 14, 21];
+---
+<Base title="Plan My Trip" description="Build a day-by-day Kerala itinerary with travel times, budget, visa advice and packing list.">
+  <PageHead eyebrow="Trip planner" title="Plan My Trip" lead="Answer five quick questions. You get a day-by-day route with travel times, a budget estimate, visa advice and a packing list. Nothing leaves your device." />
+
+  <div class="wrap planner">
+    <form id="planner" class="card" action={url('/my-trip')} method="get" novalidate>
+      <div class="progress" aria-hidden="true"><span id="bar"></span></div>
+      <p class="small muted" id="step-label" aria-live="polite">Step 1 of 5</p>
+
+      <fieldset class="step" data-step="1">
+        <legend><h2>When are you travelling?</h2></legend>
+        <div class="field">
+          <label for="start">Arrival date</label>
+          <input type="date" id="start" name="start" required />
+        </div>
+        <div class="field">
+          <label for="people">Number of travellers</label>
+          <input type="number" id="people" name="people" min="1" max="12" value="2" inputmode="numeric" />
+        </div>
+      </fieldset>
+
+      <fieldset class="step" data-step="2" hidden>
+        <legend><h2>How long is your trip?</h2></legend>
+        <div class="chips" role="radiogroup" aria-label="Trip length in days">
+          {lengths.map((n) => (
+            <label class="opt"><input class="sr-only" type="radio" name="days" value={n} checked={n === 7} /><span class="chip">{n} days</span></label>
+          ))}
+        </div>
+        <p class="small muted" style="margin-top:12px">Tip: 7 days covers the classics. 14 days lets you add North Kerala (Malabar).</p>
+      </fieldset>
+
+      <fieldset class="step" data-step="3" hidden>
+        <legend><h2>What do you enjoy?</h2></legend>
+        <p class="small muted">Pick as many as you like.</p>
+        <div class="chips">
+          {interests.map(([v, t]) => (
+            <label class="opt"><input class="sr-only" type="checkbox" name="interests" value={v} checked={v === 'backwaters' || v === 'hills'} /><span class="chip"><Icon name={v} />{t}</span></label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset class="step" data-step="4" hidden>
+        <legend><h2>Budget and pace</h2></legend>
+        <p class="label">Budget style</p>
+        <div class="chips" role="radiogroup" aria-label="Budget">
+          <label class="opt"><input class="sr-only" type="radio" name="budget" value="budget" /><span class="chip">Budget: guesthouses, buses</span></label>
+          <label class="opt"><input class="sr-only" type="radio" name="budget" value="mid" checked /><span class="chip">Mid-range: good hotels, car & driver</span></label>
+          <label class="opt"><input class="sr-only" type="radio" name="budget" value="luxury" /><span class="chip">Luxury: resorts, private transfers</span></label>
+        </div>
+        <p class="label" style="margin-top:18px">Pace</p>
+        <div class="chips" role="radiogroup" aria-label="Pace">
+          <label class="opt"><input class="sr-only" type="radio" name="pace" value="relaxed" /><span class="chip">Relaxed: fewer stops</span></label>
+          <label class="opt"><input class="sr-only" type="radio" name="pace" value="balanced" checked /><span class="chip">Balanced</span></label>
+          <label class="opt"><input class="sr-only" type="radio" name="pace" value="fast" /><span class="chip">See a lot</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="step" data-step="5" hidden>
+        <legend><h2>Your passport</h2></legend>
+        <div class="field">
+          <label for="nat">Nationality (for visa advice)</label>
+          <select id="nat" name="nat">
+            {visa.nationalities.map((n) => <option value={n.id} selected={n.id === 'GB'}>{n.name}</option>)}
+          </select>
+        </div>
+        <p class="small muted">Used only to show the right visa notes. Not stored anywhere except your browser.</p>
+      </fieldset>
+
+      <div class="nav-row">
+        <button type="button" class="btn ghost" id="back" disabled>Back</button>
+        <button type="button" class="btn" id="next">Next <Icon name="arrow" /></button>
+        <button type="submit" class="btn" id="finish" hidden>Show my trip <Icon name="arrow" /></button>
+      </div>
+    </form>
+
+    <aside class="card preview" aria-live="polite" aria-label="Live preview">
+      <h3>Live preview</h3>
+      <dl>
+        <dt>Season</dt><dd id="pv-season">—</dd>
+        <dt>Weather</dt><dd id="pv-weather">—</dd>
+        <dt>Route</dt><dd id="pv-route">—</dd>
+        <dt>Festivals</dt><dd id="pv-fest">—</dd>
+        <dt>Visa</dt><dd id="pv-visa">—</dd>
+        <dt>Estimate</dt><dd id="pv-budget">—</dd>
+      </dl>
+    </aside>
+  </div>
+</Base>
+
+<style>
+  .planner { display: grid; gap: 16px; align-items: start; }
+  @media (min-width: 900px) { .planner { grid-template-columns: 1.6fr 1fr; } .preview { position: sticky; top: 80px; } }
+  fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+  legend { padding: 0; } legend h2 { margin-top: .2em; }
+  .progress { height: 6px; background: var(--surface-2); border-radius: 999px; overflow: hidden; }
+  .progress span { display: block; height: 100%; width: 20%; background: var(--green); transition: width .2s; }
+  .opt { margin: 0; font-weight: 400; }
+  .opt .chip :global(svg) { width: 18px; height: 18px; }
+  .opt input:focus-visible + .chip { outline: 3px solid var(--gold); outline-offset: 2px; }
+  .label { font-weight: 600; margin-bottom: 8px; }
+  .nav-row { display: flex; justify-content: space-between; gap: 10px; margin-top: 24px; }
+  dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 8px 12px; font-size: .925rem; }
+  dt { font-weight: 600; color: var(--muted); }
+  dd { margin: 0; }
+</style>
+
+<script>
+  import { buildTrip, encodeInput, decodeInput } from '../lib/planner.js';
+  import bases from '../data/bases.json';
+  import journeys from '../data/journeys.json';
+  import months from '../data/months.json';
+  import festivals from '../data/festivals.json';
+  import visa from '../data/visa.json';
+  import seasons from '../data/seasons.json';
+  const data = { bases, journeys, months, festivals, visa, seasons };
+
+  const form = document.getElementById('planner') as HTMLFormElement;
+  const steps = [...form.querySelectorAll<HTMLFieldSetElement>('.step')];
+  const back = document.getElementById('back') as HTMLButtonElement;
+  const next = document.getElementById('next') as HTMLButtonElement;
+  const finish = document.getElementById('finish') as HTMLButtonElement;
+  const label = document.getElementById('step-label')!;
+  const bar = document.getElementById('bar')!;
+  const start = document.getElementById('start') as HTMLInputElement;
+  let step = 0;
+
+  // Default arrival: 60 days from today. Resume a saved plan if there is one.
+  const today = new Date();
+  start.min = today.toISOString().slice(0, 10);
+  const def = new Date(today.getTime() + 60 * 864e5).toISOString().slice(0, 10);
+  start.value = def;
+  try {
+    const saved = localStorage.getItem('trip');
+    if (saved) {
+      const inp = decodeInput(saved);
+      if (inp.start >= start.min) start.value = inp.start;
+      (form.elements.namedItem('people') as HTMLInputElement).value = String(inp.people);
+      form.querySelectorAll<HTMLInputElement>('input[name=days]').forEach((r) => (r.checked = Number(r.value) === inp.days));
+      form.querySelectorAll<HTMLInputElement>('input[name=interests]').forEach((c) => (c.checked = inp.interests.includes(c.value)));
+      form.querySelectorAll<HTMLInputElement>('input[name=budget]').forEach((r) => (r.checked = r.value === inp.budget));
+      form.querySelectorAll<HTMLInputElement>('input[name=pace]').forEach((r) => (r.checked = r.value === inp.pace));
+      (form.elements.namedItem('nat') as HTMLSelectElement).value = inp.nat;
+    }
+  } catch (e) {}
+
+  function readInput() {
+    const fd = new FormData(form);
+    return {
+      start: String(fd.get('start') || ''), days: fd.get('days'), people: fd.get('people'),
+      interests: fd.getAll('interests').map(String), budget: fd.get('budget'), pace: fd.get('pace'), nat: fd.get('nat'),
+    };
+  }
+
+  const inr = (n: number) => `₹${n.toLocaleString('en-IN')}`;
+  function preview() {
+    const t = buildTrip(readInput(), data);
+    const set = (id: string, v: string) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+    set('pv-season', `${t.season.label} (${t.season.months})`);
+    set('pv-weather', `Coast ${t.month.coastHigh}°C / ${Math.round(t.month.coastHigh * 9 / 5 + 32)}°F · hills ${t.month.hillHigh}°C / ${Math.round(t.month.hillHigh * 9 / 5 + 32)}°F`);
+    set('pv-route', t.stops.map((s) => `${s.name} (${s.days})`).join(' → '));
+    set('pv-fest', t.festivals.length ? t.festivals.map((f) => f.name).slice(0, 3).join(', ') : 'None of the big ones');
+    set('pv-visa', t.visa.eligible ? t.visa.recommended.name : 'Regular visa needed');
+    set('pv-budget', `${inr(t.budget.low)}–${inr(t.budget.high)} for ${t.input.people} (on the ground)`);
+  }
+
+  function show(i: number) {
+    step = i;
+    steps.forEach((s, j) => (s.hidden = j !== i));
+    back.disabled = i === 0;
+    next.hidden = i === steps.length - 1;
+    finish.hidden = i !== steps.length - 1;
+    label.textContent = `Step ${i + 1} of ${steps.length}`;
+    bar.style.width = `${((i + 1) / steps.length) * 100}%`;
+    steps[i].querySelector<HTMLElement>('h2')?.focus?.();
+  }
+  next.addEventListener('click', () => show(Math.min(step + 1, steps.length - 1)));
+  back.addEventListener('click', () => show(Math.max(step - 1, 0)));
+  form.addEventListener('input', preview);
+  form.addEventListener('change', preview);
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const q = encodeInput(readInput());
+    try { localStorage.setItem('trip', q); } catch (err) {}
+    location.href = `${form.action}?${q}`;
+  });
+  preview();
+</script>

@@ -1,0 +1,105 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHead from '../../components/PageHead.astro';
+import DestCard from '../../components/DestCard.astro';
+import destinations from '../../data/destinations.json';
+import { url } from '../../lib/url.js';
+const cats = ['backwaters', 'beaches', 'hills', 'wildlife', 'waterfalls', 'heritage'];
+const points = destinations.map((d) => ({ n: d.name, lat: d.lat, lng: d.lng, c: d.categories[0], href: url(`/destinations/${d.slug}`) }));
+---
+<Base title="Destinations" description="Kerala destinations by category and region, with a map: backwaters, beaches, hill stations, wildlife, waterfalls and heritage.">
+  <PageHead eyebrow="Explore" title="Destinations" lead={`${destinations.length} places across Kerala's 14 districts. Filter by type or region, or switch to the map.`} />
+  <div class="wrap">
+    <div class="filters card">
+      <div class="field"><label for="q">Search</label><input id="q" type="search" placeholder="e.g. Munnar, fort, beach" /></div>
+      <p class="flabel">Type</p>
+      <div class="chips" id="cat-chips">
+        <button class="chip" aria-pressed="true" data-cat="">All</button>
+        {cats.map((c) => <button class="chip" aria-pressed="false" data-cat={c} style="text-transform:capitalize">{c}</button>)}
+      </div>
+      <p class="flabel">Region</p>
+      <div class="chips" id="reg-chips">
+        <button class="chip" aria-pressed="true" data-reg="">All Kerala</button>
+        <button class="chip" aria-pressed="false" data-reg="south">South</button>
+        <button class="chip" aria-pressed="false" data-reg="central">Central</button>
+        <button class="chip" aria-pressed="false" data-reg="north">North (Malabar)</button>
+      </div>
+      <div class="view-toggle chips" role="group" aria-label="View">
+        <button class="chip" aria-pressed="true" id="v-list">List</button>
+        <button class="chip" aria-pressed="false" id="v-map">Map</button>
+      </div>
+    </div>
+    <p class="small muted" id="count" aria-live="polite"></p>
+    <div id="map" class="map" hidden></div>
+    <div class="grid three" id="list">{destinations.map((d) => <DestCard d={d} />)}</div>
+    <p class="small muted" style="margin-top:20px">Photos coming soon. For official descriptions see <a href="https://www.keralatourism.org/destination/" rel="noopener">Kerala Tourism destinations</a>.</p>
+  </div>
+</Base>
+<style>
+  .filters { margin-bottom: 12px; }
+  .flabel { font-weight: 600; margin: 12px 0 6px; }
+  .view-toggle { margin-top: 16px; }
+  .map { height: 60vh; min-height: 360px; border-radius: var(--radius); border: 1px solid var(--line); margin-bottom: 16px; z-index: 0; }
+</style>
+<script define:vars={{ points }}>
+  window.__points = points;
+</script>
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+  const points = (window as any).__points as { n: string; lat: number; lng: number; c: string; href: string }[];
+  const cards = [...document.querySelectorAll<HTMLElement>('#list .dest')];
+  const q = document.getElementById('q') as HTMLInputElement;
+  const count = document.getElementById('count')!;
+  const mapEl = document.getElementById('map')!;
+  const listEl = document.getElementById('list')!;
+  let cat = '', reg = '';
+  let map: L.Map | null = null; let layer: L.LayerGroup | null = null;
+  const colors: Record<string, string> = { backwaters: '#1f6f5c', beaches: '#c9a227', hills: '#2e6b3f', wildlife: '#8a6a1a', waterfalls: '#1b4f72', heritage: '#a0522d' };
+
+  function matches(el: HTMLElement) {
+    const text = q.value.trim().toLowerCase();
+    return (!cat || el.dataset.cats!.split(' ').includes(cat)) && (!reg || el.dataset.region === reg) && (!text || el.textContent!.toLowerCase().includes(text));
+  }
+  function apply() {
+    let n = 0;
+    const visible = new Set<string>();
+    cards.forEach((c) => { const ok = matches(c); c.hidden = !ok; if (ok) { n++; visible.add(c.getAttribute('href')!); } });
+    count.textContent = `${n} destination${n === 1 ? '' : 's'}`;
+    if (map && layer) {
+      layer.clearLayers();
+      const shown = points.filter((p) => visible.has(p.href));
+      shown.forEach((p) => {
+        const m = L.circleMarker([p.lat, p.lng], { radius: 8, color: '#fff', weight: 2, fillColor: colors[p.c], fillOpacity: 1 });
+        const a = document.createElement('a'); a.href = p.href; a.textContent = p.n;
+        m.bindPopup(a).addTo(layer!);
+      });
+      if (shown.length) map.fitBounds(L.latLngBounds(shown.map((p) => [p.lat, p.lng] as [number, number])).pad(0.2));
+    }
+  }
+  function chipGroup(id: string, key: 'cat' | 'reg') {
+    document.querySelectorAll<HTMLButtonElement>(`#${id} .chip`).forEach((b) => b.addEventListener('click', () => {
+      document.querySelectorAll(`#${id} .chip`).forEach((x) => x.setAttribute('aria-pressed', 'false'));
+      b.setAttribute('aria-pressed', 'true');
+      if (key === 'cat') cat = b.dataset.cat || ''; else reg = b.dataset.reg || '';
+      apply();
+    }));
+  }
+  chipGroup('cat-chips', 'cat'); chipGroup('reg-chips', 'reg');
+  q.addEventListener('input', apply);
+
+  const vList = document.getElementById('v-list')!, vMap = document.getElementById('v-map')!;
+  vList.addEventListener('click', () => { vList.setAttribute('aria-pressed', 'true'); vMap.setAttribute('aria-pressed', 'false'); mapEl.hidden = true; listEl.hidden = false; });
+  vMap.addEventListener('click', () => {
+    vMap.setAttribute('aria-pressed', 'true'); vList.setAttribute('aria-pressed', 'false'); mapEl.hidden = false; listEl.hidden = true;
+    if (!map) {
+      map = L.map(mapEl, { scrollWheelZoom: false }).setView([10.3, 76.4], 7);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
+      layer = L.layerGroup().addTo(map);
+    }
+    map.invalidateSize(); apply();
+  });
+  const pre = new URLSearchParams(location.search).get('type');
+  if (pre) document.querySelector<HTMLButtonElement>(`#cat-chips [data-cat="${CSS.escape(pre)}"]`)?.click();
+  apply();
+</script>

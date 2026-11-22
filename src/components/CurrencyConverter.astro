@@ -1,0 +1,37 @@
+---
+import meta from '../data/meta.json';
+const codes = Object.keys(meta.rates);
+---
+<div class="card converter">
+  <h3>Rupee converter</h3>
+  <div class="conv-row">
+    <div class="field">
+      <label for="cc-inr">Indian rupees (₹)</label>
+      <input id="cc-inr" type="number" inputmode="decimal" min="0" value="1000" />
+    </div>
+    <div class="field">
+      <label for="cc-cur">Your currency</label>
+      <select id="cc-cur">{codes.map((c) => <option value={c}>{c}</option>)}</select>
+    </div>
+  </div>
+  <p class="cc-out" aria-live="polite"><strong id="cc-res">—</strong></p>
+  <p class="small muted">{meta.ratesNote}</p>
+</div>
+<style>
+  .conv-row { display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px; }
+  .conv-row .field { margin-bottom: 8px; }
+  .cc-out { font-size: 1.3rem; margin: 4px 0; }
+</style>
+<script define:vars={{ rates: meta.rates }}>
+  const inr = document.getElementById('cc-inr');
+  const cur = document.getElementById('cc-cur');
+  const out = document.getElementById('cc-res');
+  try { const s = localStorage.getItem('currency'); if (s && rates[s]) cur.value = s; } catch (e) {}
+  const run = () => {
+    const v = Number(inr.value) || 0;
+    const conv = v / rates[cur.value];
+    out.textContent = `₹${v.toLocaleString('en-IN')} ≈ ${conv.toLocaleString(undefined, { style: 'currency', currency: cur.value, maximumFractionDigits: 2 })}`;
+    try { localStorage.setItem('currency', cur.value); } catch (e) {}
+  };
+  inr.addEventListener('input', run); cur.addEventListener('change', run); run();
+</script>

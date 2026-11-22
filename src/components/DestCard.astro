@@ -1,0 +1,16 @@
+---
+import Icon from './Icon.astro';
+import { url } from '../lib/url.js';
+interface Props { d: any }
+const { d } = Astro.props;
+const cat = d.categories[0];
+const monthsShort = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const best = d.bestMonths.length >= 10 ? 'Most of the year' : `${monthsShort[d.bestMonths[0]-1]}–${monthsShort[d.bestMonths[d.bestMonths.length-1]-1]}`;
+---
+<a class="card dest" href={url(`/destinations/${d.slug}`)} data-cats={d.categories.join(' ')} data-region={d.region} data-name={d.name.toLowerCase()}>
+  <div class={`thumb c-${cat}`}><Icon name={cat} /></div>
+  <div class="meta"><span class="tag">{cat}</span><span>{d.district}</span></div>
+  <h3>{d.name}</h3>
+  <p class="small">{d.summary}</p>
+  <div class="meta"><span>Best: {best}</span><span>{d.days}</span><span>From Kochi: {d.fromKochi}</span></div>
+</a>

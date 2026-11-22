@@ -1,0 +1,74 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import DestCard from '../../components/DestCard.astro';
+import destinations from '../../data/destinations.json';
+import months from '../../data/months.json';
+import { url } from '../../lib/url.js';
+
+export function getStaticPaths() {
+  return destinations.map((d) => ({ params: { slug: d.slug }, props: { d } }));
+}
+const { d } = Astro.props;
+const dist = (a: any, b: any) => Math.hypot(a.lat - b.lat, (a.lng - b.lng) * Math.cos((a.lat * Math.PI) / 180));
+const nearby = destinations.filter((x) => x.slug !== d.slug).sort((a, b) => dist(a, d) - dist(b, d)).slice(0, 3);
+const cat = d.categories[0];
+const regionName = { south: 'South Kerala', central: 'Central Kerala', north: 'North Kerala (Malabar)' }[d.region as 'south'];
+---
+<Base title={d.name} description={d.summary}>
+  <div class={`dest-hero c-${cat}`}><div class="wrap"><Icon name={cat} /></div></div>
+  <article class="wrap">
+    <header class="page-head">
+      <p class="eyebrow"><a href={url('/destinations')}>Destinations</a> · {regionName}</p>
+      <h1>{d.name}</h1>
+      <p class="lead">{d.summary}</p>
+    </header>
+    <div class="facts">
+      <div class="card"><span class="muted small">Time needed</span><strong>{d.days}</strong></div>
+      <div class="card"><span class="muted small">Nearest airport</span><strong>{d.airport}</strong></div>
+      <div class="card"><span class="muted small">From Kochi</span><strong>{d.fromKochi}</strong></div>
+      <div class="card"><span class="muted small">District</span><strong>{d.district}</strong></div>
+    </div>
+
+    <h2>Best months</h2>
+    <div class="months" role="list">
+      {months.map((m) => <span role="listitem" class={d.bestMonths.includes(m.m) ? 'm on' : 'm'} title={m.name}>{m.name.slice(0, 3)}<span class="sr-only">{d.bestMonths.includes(m.m) ? ': good' : ': less ideal'}</span></span>)}
+    </div>
+
+    <h2>Things to do</h2>
+    <ul class="todo">{d.todo.map((t: string) => <li>{t}</li>)}</ul>
+
+    <h2>Where it is</h2>
+    <div id="dmap" class="map" data-lat={d.lat} data-lng={d.lng} data-name={d.name} role="img" aria-label={`Map showing ${d.name}`}></div>
+
+    <div class="btn-row" style="margin-top:20px">
+      <a class="btn" href={url('/plan')}>Plan a trip including this <Icon name="arrow" /></a>
+      <a class="btn ghost" href={`https://www.openstreetmap.org/?mlat=${d.lat}&mlon=${d.lng}#map=12/${d.lat}/${d.lng}`} rel="noopener">Open in OpenStreetMap</a>
+    </div>
+
+    <h2>Nearby</h2>
+    <div class="grid three">{nearby.map((n) => <DestCard d={n} />)}</div>
+  </article>
+</Base>
+<style>
+  .dest-hero { height: 140px; color: #fff; display: flex; align-items: center; }
+  .dest-hero :global(svg) { width: 64px; height: 64px; opacity: .9; }
+  .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  @media (min-width: 760px) { .facts { grid-template-columns: repeat(4, 1fr); } }
+  .facts .card { padding: 12px 14px; display: grid; gap: 2px; }
+  .months { display: grid; grid-template-columns: repeat(6, 1fr); gap: 6px; max-width: 560px; }
+  @media (min-width: 560px) { .months { grid-template-columns: repeat(12, 1fr); } }
+  .m { text-align: center; padding: 8px 0; border-radius: 8px; background: var(--surface-2); color: var(--muted); font-size: .8rem; font-weight: 600; }
+  .m.on { background: var(--green); color: var(--green-ink); }
+  .todo li { margin-bottom: 6px; }
+  .map { height: 300px; border-radius: var(--radius); border: 1px solid var(--line); z-index: 0; }
+</style>
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+  const el = document.getElementById('dmap')!;
+  const lat = Number(el.dataset.lat), lng = Number(el.dataset.lng);
+  const map = L.map(el, { scrollWheelZoom: false }).setView([lat, lng], 10);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
+  L.circleMarker([lat, lng], { radius: 10, color: '#fff', weight: 2, fillColor: '#1f5e4a', fillOpacity: 1 }).addTo(map).bindTooltip(el.dataset.name!);
+</script>

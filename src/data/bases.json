@@ -1,0 +1,264 @@
+[
+ {
+  "id": "bekal",
+  "name": "Bekal",
+  "order": 1,
+  "region": "north",
+  "lat": 12.3925,
+  "lng": 75.033,
+  "airport": "CNN",
+  "tags": [
+   "beaches",
+   "culture"
+  ],
+  "minDays": 1,
+  "maxDays": 2,
+  "plans": [
+   "Bekal Fort ramparts in the morning, beach in the afternoon",
+   "Day cruise on the Valiyaparamba backwaters"
+  ]
+ },
+ {
+  "id": "kannur",
+  "name": "Kannur",
+  "order": 2,
+  "region": "north",
+  "lat": 11.8745,
+  "lng": 75.3704,
+  "airport": "CNN",
+  "tags": [
+   "culture",
+   "beaches",
+   "food"
+  ],
+  "theyyam": true,
+  "minDays": 1,
+  "maxDays": 3,
+  "plans": [
+   "St Angelo Fort, handloom cooperative, Payyambalam Beach at sunset",
+   "Theyyam performance (check the official Theyyam calendar for dates and villages)",
+   "Muzhappilangad Drive-in Beach and Dharmadam Island"
+  ]
+ },
+ {
+  "id": "wayanad",
+  "name": "Wayanad",
+  "order": 3,
+  "region": "north",
+  "lat": 11.6085,
+  "lng": 76.083,
+  "airport": "CCJ",
+  "tags": [
+   "hills",
+   "wildlife",
+   "adventure"
+  ],
+  "minDays": 2,
+  "maxDays": 3,
+  "plans": [
+   "Edakkal Caves and a coffee plantation walk",
+   "Morning wildlife drive at Muthanga or Tholpetty",
+   "Chembra Peak or Soochipara Falls (check opening status)"
+  ]
+ },
+ {
+  "id": "kozhikode",
+  "name": "Kozhikode",
+  "order": 4,
+  "region": "north",
+  "lat": 11.2588,
+  "lng": 75.7804,
+  "airport": "CCJ",
+  "tags": [
+   "food",
+   "culture",
+   "beaches"
+  ],
+  "minDays": 1,
+  "maxDays": 2,
+  "plans": [
+   "Beypore boatyards, SM Street halwa, biryani dinner, Calicut Beach sunset",
+   "Kappad Beach and Thusharagiri Falls"
+  ]
+ },
+ {
+  "id": "thrissur",
+  "name": "Thrissur",
+  "order": 5,
+  "region": "central",
+  "lat": 10.5276,
+  "lng": 76.2144,
+  "airport": "COK",
+  "tags": [
+   "culture",
+   "waterfalls"
+  ],
+  "minDays": 1,
+  "maxDays": 2,
+  "plans": [
+   "Athirappilly and Vazhachal waterfalls",
+   "Kerala Kalamandalam arts school and Thrissur town"
+  ]
+ },
+ {
+  "id": "kochi",
+  "name": "Kochi",
+  "order": 6,
+  "region": "central",
+  "lat": 9.9658,
+  "lng": 76.2421,
+  "airport": "COK",
+  "tags": [
+   "culture",
+   "food"
+  ],
+  "minDays": 1,
+  "maxDays": 3,
+  "plans": [
+   "Sunset at the Chinese fishing nets and a seafood dinner in Fort Kochi",
+   "Fort Kochi heritage walk, Mattancherry Dutch Palace and Jew Town, evening Kathakali show",
+   "Kumbalangi village canoe trip or Cherai Beach"
+  ]
+ },
+ {
+  "id": "munnar",
+  "name": "Munnar",
+  "order": 7,
+  "region": "central",
+  "lat": 10.0889,
+  "lng": 77.0595,
+  "airport": "COK",
+  "tags": [
+   "hills",
+   "adventure"
+  ],
+  "minDays": 2,
+  "maxDays": 3,
+  "plans": [
+   "Drive up via Cheeyappara and Valara waterfalls, evening in the tea hills",
+   "Tea museum, estate walk, Mattupetty Dam and Echo Point",
+   "Eravikulam National Park for Nilgiri tahr (book online) or Top Station"
+  ]
+ },
+ {
+  "id": "thekkady",
+  "name": "Thekkady",
+  "order": 8,
+  "region": "central",
+  "lat": 9.6031,
+  "lng": 77.1615,
+  "airport": "COK",
+  "tags": [
+   "wildlife",
+   "hills",
+   "food"
+  ],
+  "minDays": 1,
+  "maxDays": 2,
+  "plans": [
+   "Spice plantation tour, Kalaripayattu show in the evening",
+   "Periyar Lake boat ride or guided nature walk (book officially)"
+  ]
+ },
+ {
+  "id": "vagamon",
+  "name": "Vagamon",
+  "order": 9,
+  "region": "central",
+  "lat": 9.686,
+  "lng": 76.905,
+  "airport": "COK",
+  "tags": [
+   "hills",
+   "adventure"
+  ],
+  "minDays": 1,
+  "maxDays": 2,
+  "plans": [
+   "Pine forest, meadows and paragliding (seasonal)",
+   "Slow day in the hills"
+  ]
+ },
+ {
+  "id": "kumarakom",
+  "name": "Kumarakom",
+  "order": 10,
+  "region": "south",
+  "lat": 9.6175,
+  "lng": 76.4301,
+  "airport": "COK",
+  "tags": [
+   "backwaters",
+   "ayurveda",
+   "wildlife"
+  ],
+  "minDays": 1,
+  "maxDays": 3,
+  "plans": [
+   "Bird sanctuary at dawn, sunset cruise on Vembanad Lake",
+   "Village life tour (Responsible Tourism)",
+   "Ayurveda treatment day"
+  ]
+ },
+ {
+  "id": "alappuzha",
+  "name": "Alappuzha",
+  "order": 11,
+  "region": "south",
+  "lat": 9.4981,
+  "lng": 76.3388,
+  "airport": "COK",
+  "tags": [
+   "backwaters",
+   "beaches"
+  ],
+  "houseboat": true,
+  "minDays": 1,
+  "maxDays": 2,
+  "plans": [
+   "Board an overnight houseboat around noon; cruise Kuttanad's canals",
+   "Morning canoe ride, then relax at Marari Beach"
+  ]
+ },
+ {
+  "id": "varkala",
+  "name": "Varkala",
+  "order": 12,
+  "region": "south",
+  "lat": 8.7379,
+  "lng": 76.7163,
+  "airport": "TRV",
+  "tags": [
+   "beaches",
+   "ayurveda"
+  ],
+  "minDays": 2,
+  "maxDays": 3,
+  "plans": [
+   "Cliff walk and sunset on North Cliff",
+   "Yoga class, beach time (swim near lifeguards)",
+   "Sunrise canoe trip at Munroe Island or Jatayu Earth's Center"
+  ]
+ },
+ {
+  "id": "kovalam",
+  "name": "Kovalam",
+  "order": 13,
+  "region": "south",
+  "lat": 8.4004,
+  "lng": 76.9787,
+  "airport": "TRV",
+  "tags": [
+   "beaches",
+   "ayurveda",
+   "culture"
+  ],
+  "minDays": 1,
+  "maxDays": 3,
+  "plans": [
+   "Lighthouse Beach and an Ayurveda massage",
+   "Trivandrum: Napier Museum and Kuthiramalika Palace",
+   "Poovar estuary boat trip"
+  ]
+ }
+]
