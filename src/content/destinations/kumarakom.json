@@ -1,0 +1,30 @@
+{
+  "slug": "kumarakom",
+  "name": "Kumarakom",
+  "categories": [
+    "backwaters",
+    "wildlife"
+  ],
+  "region": "south",
+  "district": "Kottayam",
+  "lat": 9.6175,
+  "lng": 76.4301,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2
+  ],
+  "days": "1–2 days",
+  "airport": "Kochi (COK)",
+  "fromKochi": "1.5–2 h",
+  "summary": "Lakeside backwaters on Vembanad Lake, a bird sanctuary and Kerala's model Responsible Tourism village.",
+  "todo": [
+    "Houseboat or sunset cruise on Vembanad Lake",
+    "Kumarakom Bird Sanctuary at dawn",
+    "Village life experience tour"
+  ],
+  "base": "kumarakom",
+  "order": 6
+}

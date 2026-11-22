@@ -1,0 +1,29 @@
+{
+  "slug": "cherai-beach",
+  "name": "Cherai Beach",
+  "categories": [
+    "beaches"
+  ],
+  "region": "central",
+  "district": "Ernakulam",
+  "lat": 10.1416,
+  "lng": 76.1783,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "Half day",
+  "airport": "Kochi (COK)",
+  "fromKochi": "1 h",
+  "summary": "A long, quiet beach with backwaters on one side and the sea on the other.",
+  "todo": [
+    "Swim in the lifeguarded area",
+    "Cycle along the backwater side"
+  ],
+  "base": "kochi",
+  "order": 2
+}

@@ -45,7 +45,7 @@ export const schemas = {
     airport: z.string(),
     fromKochi: z.string(),
     todo: z.array(z.string()),
-    base: z.string().optional(),
+    base: z.string().nullable().optional(),
   }),
   festival: z.object({ ...common, ...placeOptional, months: z.array(month).min(1), where: z.string(), note: z.string(), link: https.optional() }),
   experience: z.object({

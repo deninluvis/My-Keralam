@@ -1,0 +1,31 @@
+{
+  "slug": "kozhikode",
+  "name": "Kozhikode (Calicut)",
+  "categories": [
+    "heritage",
+    "beaches"
+  ],
+  "region": "north",
+  "district": "Kozhikode",
+  "lat": 11.2588,
+  "lng": 75.7804,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "1 day",
+  "airport": "Kozhikode (CCJ)",
+  "fromKochi": "5 h",
+  "summary": "Malabar food capital, spice markets, sunset beach and the old port town of Beypore.",
+  "todo": [
+    "Eat Kozhikodan biryani and halwa on SM Street",
+    "Beypore boatyards building wooden dhows",
+    "Kappad Beach, linked with Vasco da Gama's 1498 arrival"
+  ],
+  "base": "kozhikode",
+  "order": 28
+}

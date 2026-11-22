@@ -1,0 +1,29 @@
+{
+  "slug": "alappuzha",
+  "name": "Alappuzha (Alleppey)",
+  "categories": [
+    "backwaters"
+  ],
+  "region": "south",
+  "district": "Alappuzha",
+  "lat": 9.4981,
+  "lng": 76.3388,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2
+  ],
+  "days": "1–2 days",
+  "airport": "Kochi (COK)",
+  "fromKochi": "1.5 h",
+  "summary": "The houseboat capital: palm-lined canals, paddy fields below sea level and village life on the water.",
+  "todo": [
+    "Overnight on a houseboat (kettuvallam)",
+    "Shikara or canoe ride through narrow canals",
+    "Nehru Trophy Boat Race in August–September"
+  ],
+  "base": "alappuzha",
+  "order": 4
+}

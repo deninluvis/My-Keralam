@@ -1,0 +1,30 @@
+{
+  "slug": "kovalam",
+  "name": "Kovalam",
+  "categories": [
+    "beaches"
+  ],
+  "region": "south",
+  "district": "Thiruvananthapuram",
+  "lat": 8.4004,
+  "lng": 76.9787,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "2 days",
+  "airport": "Thiruvananthapuram (TRV)",
+  "fromKochi": "5 h",
+  "summary": "Three crescent beaches (Lighthouse, Hawa, Samudra) and many Ayurveda resorts.",
+  "todo": [
+    "Lighthouse view",
+    "Ayurveda treatments",
+    "Day trip to Poovar estuary"
+  ],
+  "base": "kovalam",
+  "order": 13
+}

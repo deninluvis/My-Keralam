@@ -1,0 +1,32 @@
+{
+  "slug": "munnar",
+  "name": "Munnar",
+  "categories": [
+    "hills"
+  ],
+  "region": "central",
+  "district": "Idukki",
+  "lat": 10.0889,
+  "lng": 77.0595,
+  "bestMonths": [
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "2–3 days",
+  "airport": "Kochi (COK)",
+  "fromKochi": "4 h",
+  "summary": "Rolling tea estates, misty peaks and cool nights at about 1,600 m (5,200 ft).",
+  "todo": [
+    "Tea museum and estate walk",
+    "Mattupetty Dam and Echo Point",
+    "Top Station viewpoint",
+    "Waterfalls on the drive up (Cheeyappara, Valara)"
+  ],
+  "base": "munnar",
+  "order": 7
+}

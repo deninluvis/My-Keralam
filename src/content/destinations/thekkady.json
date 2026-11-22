@@ -1,0 +1,33 @@
+{
+  "slug": "thekkady",
+  "name": "Thekkady & Periyar Tiger Reserve",
+  "categories": [
+    "wildlife",
+    "hills"
+  ],
+  "region": "central",
+  "district": "Idukki",
+  "lat": 9.6031,
+  "lng": 77.1615,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3,
+    4
+  ],
+  "days": "1–2 days",
+  "airport": "Kochi (COK)",
+  "fromKochi": "4.5 h",
+  "summary": "Spice gardens and one of India's best-known tiger reserves, with boat trips and guided treks.",
+  "todo": [
+    "Boat ride on Periyar Lake (book officially)",
+    "Guided nature walk or bamboo rafting",
+    "Spice plantation tour",
+    "Kalaripayattu or Kathakali show in town"
+  ],
+  "base": "thekkady",
+  "order": 9
+}

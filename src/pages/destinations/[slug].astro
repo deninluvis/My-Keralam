@@ -2,11 +2,13 @@
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import DestCard from '../../components/DestCard.astro';
-import destinations from '../../data/destinations.json';
+import { all } from '../../lib/content.js';
+const destinations = await all('destinations');
 import months from '../../data/months.json';
 import { url } from '../../lib/url.js';
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
+  const destinations = await all('destinations');
   return destinations.map((d) => ({ params: { slug: d.slug }, props: { d } }));
 }
 const { d } = Astro.props;

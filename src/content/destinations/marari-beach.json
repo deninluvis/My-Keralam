@@ -1,0 +1,29 @@
+{
+  "slug": "marari-beach",
+  "name": "Marari Beach",
+  "categories": [
+    "beaches"
+  ],
+  "region": "south",
+  "district": "Alappuzha",
+  "lat": 9.601,
+  "lng": 76.298,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "1–2 days",
+  "airport": "Kochi (COK)",
+  "fromKochi": "1.5 h",
+  "summary": "A calm fishing-village beach, good for slowing down after a houseboat trip.",
+  "todo": [
+    "Morning walk with the fishing boats",
+    "Ayurveda massage at a resort"
+  ],
+  "base": "alappuzha",
+  "order": 5
+}

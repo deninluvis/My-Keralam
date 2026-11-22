@@ -1,0 +1,31 @@
+{
+  "slug": "kannur",
+  "name": "Kannur & Theyyam",
+  "categories": [
+    "heritage",
+    "beaches"
+  ],
+  "region": "north",
+  "district": "Kannur",
+  "lat": 11.8745,
+  "lng": 75.3704,
+  "bestMonths": [
+    11,
+    12,
+    1,
+    2,
+    3,
+    4
+  ],
+  "days": "2 days",
+  "airport": "Kannur (CNN)",
+  "fromKochi": "7 h",
+  "summary": "The heartland of Theyyam ritual performances, quiet beaches and Portuguese-era St Angelo Fort.",
+  "todo": [
+    "Attend a Theyyam (check the official Theyyam calendar)",
+    "St Angelo Fort",
+    "Handloom weaving cooperatives"
+  ],
+  "base": "kannur",
+  "order": 30
+}

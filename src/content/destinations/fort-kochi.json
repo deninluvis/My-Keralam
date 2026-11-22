@@ -1,0 +1,32 @@
+{
+  "slug": "fort-kochi",
+  "name": "Fort Kochi & Mattancherry",
+  "categories": [
+    "heritage"
+  ],
+  "region": "central",
+  "district": "Ernakulam",
+  "lat": 9.9658,
+  "lng": 76.2421,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "2 days",
+  "airport": "Kochi (COK)",
+  "fromKochi": "In Kochi",
+  "summary": "Colonial streets, Chinese fishing nets, cafés, art galleries and centuries of spice-trade history.",
+  "todo": [
+    "Watch the Chinese fishing nets at sunset",
+    "Visit St Francis Church and the Dutch Palace",
+    "Walk through Jew Town to the Paradesi Synagogue",
+    "See an evening Kathakali performance",
+    "Kochi-Muziris Biennale venues in Biennale years"
+  ],
+  "base": "kochi",
+  "order": 0
+}

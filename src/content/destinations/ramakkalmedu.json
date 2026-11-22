@@ -1,0 +1,30 @@
+{
+  "slug": "ramakkalmedu",
+  "name": "Ramakkalmedu",
+  "categories": [
+    "hills"
+  ],
+  "region": "central",
+  "district": "Idukki",
+  "lat": 9.81,
+  "lng": 77.24,
+  "bestMonths": [
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "Half day",
+  "airport": "Kochi (COK)",
+  "fromKochi": "4.5 h",
+  "summary": "A windy hilltop viewpoint over the Tamil Nadu plains, between Munnar and Thekkady.",
+  "todo": [
+    "Viewpoint and Kuravan-Kurathi statue",
+    "Stop on the Munnar–Thekkady drive"
+  ],
+  "base": "thekkady",
+  "order": 11
+}

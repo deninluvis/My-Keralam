@@ -1,9 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { loadFolder } from './load-content.js';
 import { parseEntry, youtubeId, TYPES } from '../src/lib/schemas.js';
 
-const fortKochi = JSON.parse(readFileSync(new URL('../src/data/destinations.json', import.meta.url)))[0];
+const fortKochi = loadFolder('destinations')[0];
 const dest = (extra = {}) => ({ type: 'destination', ...fortKochi, ...extra });
 
 test('TYPES lists every community type', () => {
@@ -61,4 +61,16 @@ test('festival, stay and traveller-plan minimal entries parse', () => {
   };
   assert.equal(parseEntry(plan).ok, true);
   assert.equal(parseEntry({ ...plan, person: { ...plan.person, links: ['javascript:x'] } }).ok, false);
+});
+
+test('every content file passes its schema', () => {
+  const folders = { destinations: 'destination', festivals: 'festival', experiences: 'experience', itineraries: 'itinerary', stays: 'stay', 'traveller-plans': 'traveller-plan' };
+  for (const [dir, type] of Object.entries(folders)) {
+    let entries = [];
+    try { entries = loadFolder(dir); } catch { continue; } // folder not created yet
+    for (const e of entries) {
+      const r = parseEntry({ type, ...e });
+      assert.equal(r.ok, true, `${dir}/${e.slug}: ${r.error}`);
+    }
+  }
 });

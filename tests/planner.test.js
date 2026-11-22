@@ -1,12 +1,13 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { loadFolder } from './load-content.js';
 import { buildTrip, encodeInput, decodeInput } from '../src/lib/planner.js';
 
 const load = (f) => JSON.parse(readFileSync(new URL(`../src/data/${f}.json`, import.meta.url)));
 const data = {
   bases: load('bases'), journeys: load('journeys'), months: load('months'),
-  festivals: load('festivals'), visa: load('visa'), seasons: load('seasons'),
+  festivals: loadFolder('festivals'), visa: load('visa'), seasons: load('seasons'),
 };
 
 const base = { start: '2026-12-10', days: 7, interests: ['backwaters', 'hills'], budget: 'mid', pace: 'balanced', people: 2, nat: 'US' };

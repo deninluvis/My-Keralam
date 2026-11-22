@@ -1,0 +1,31 @@
+{
+  "slug": "kumbalangi",
+  "name": "Kumbalangi Village",
+  "categories": [
+    "backwaters"
+  ],
+  "region": "central",
+  "district": "Ernakulam",
+  "lat": 9.87,
+  "lng": 76.29,
+  "bestMonths": [
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "Half day",
+  "airport": "Kochi (COK)",
+  "fromKochi": "30 min",
+  "summary": "A model tourism village near Kochi with canoe rides, crab farming and village life.",
+  "todo": [
+    "Canoe through the mangroves",
+    "Watch traditional fishing",
+    "Village lunch with a local family"
+  ],
+  "base": "kochi",
+  "order": 1
+}

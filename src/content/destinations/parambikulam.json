@@ -1,0 +1,31 @@
+{
+  "slug": "parambikulam",
+  "name": "Parambikulam Tiger Reserve",
+  "categories": [
+    "wildlife"
+  ],
+  "region": "central",
+  "district": "Palakkad",
+  "lat": 10.44,
+  "lng": 76.78,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "days": "1–2 days",
+  "airport": "Kochi (COK)",
+  "fromKochi": "4 h",
+  "summary": "A well-run tiger reserve with forest stays, treks and bamboo rafting, reached via Tamil Nadu.",
+  "todo": [
+    "Book the official eco-tourism package",
+    "Kannimara teak tree"
+  ],
+  "base": null,
+  "order": 27
+}

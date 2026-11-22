@@ -1,0 +1,30 @@
+{
+  "slug": "munroe-island",
+  "name": "Munroe Island & Ashtamudi Lake",
+  "categories": [
+    "backwaters"
+  ],
+  "region": "south",
+  "district": "Kollam",
+  "lat": 9.005,
+  "lng": 76.62,
+  "bestMonths": [
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "Half day",
+  "airport": "Thiruvananthapuram (TRV)",
+  "fromKochi": "3.5 h",
+  "summary": "Narrow village canals best explored by canoe at sunrise.",
+  "todo": [
+    "Sunrise canoe trip",
+    "Coir-making and village visits"
+  ],
+  "base": "varkala",
+  "order": 17
+}

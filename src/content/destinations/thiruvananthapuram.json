@@ -1,0 +1,30 @@
+{
+  "slug": "thiruvananthapuram",
+  "name": "Thiruvananthapuram (Trivandrum)",
+  "categories": [
+    "heritage"
+  ],
+  "region": "south",
+  "district": "Thiruvananthapuram",
+  "lat": 8.4828,
+  "lng": 76.9436,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "1 day",
+  "airport": "Thiruvananthapuram (TRV)",
+  "fromKochi": "5 h",
+  "summary": "The capital: Padmanabhaswamy Temple, museums, Napier Museum and the Kuthiramalika Palace.",
+  "todo": [
+    "Napier Museum and zoo",
+    "Kuthiramalika Palace",
+    "Padmanabhaswamy Temple (Hindus only, strict dress code)"
+  ],
+  "base": "kovalam",
+  "order": 15
+}

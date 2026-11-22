@@ -1,0 +1,30 @@
+{
+  "slug": "silent-valley",
+  "name": "Silent Valley National Park",
+  "categories": [
+    "wildlife"
+  ],
+  "region": "central",
+  "district": "Palakkad",
+  "lat": 11.08,
+  "lng": 76.43,
+  "bestMonths": [
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "1 day",
+  "airport": "Kozhikode (CCJ)",
+  "fromKochi": "4.5 h",
+  "summary": "Ancient rainforest with lion-tailed macaques. Visits only by official forest department jeep from Mukkali.",
+  "todo": [
+    "Book the official jeep safari",
+    "Watchtower walk at Sairandhri"
+  ],
+  "base": null,
+  "order": 25
+}

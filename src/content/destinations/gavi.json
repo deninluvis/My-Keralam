@@ -1,0 +1,31 @@
+{
+  "slug": "gavi",
+  "name": "Gavi",
+  "categories": [
+    "wildlife",
+    "hills"
+  ],
+  "region": "south",
+  "district": "Pathanamthitta",
+  "lat": 9.437,
+  "lng": 77.165,
+  "bestMonths": [
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "1 day",
+  "airport": "Kochi (COK)",
+  "fromKochi": "5 h",
+  "summary": "Remote forest eco-tourism inside the Periyar landscape; visits are limited and must be booked.",
+  "todo": [
+    "Book through the official eco-tourism programme",
+    "Jungle drive from Vandiperiyar"
+  ],
+  "base": "thekkady",
+  "order": 20
+}

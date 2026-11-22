@@ -1,0 +1,33 @@
+{
+  "slug": "vagamon",
+  "name": "Vagamon",
+  "categories": [
+    "hills"
+  ],
+  "region": "central",
+  "district": "Idukki",
+  "lat": 9.686,
+  "lng": 76.905,
+  "bestMonths": [
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "days": "1 day",
+  "airport": "Kochi (COK)",
+  "fromKochi": "3.5 h",
+  "summary": "Rolling meadows, pine forest and paragliding, quieter than Munnar.",
+  "todo": [
+    "Pine forest and meadows walk",
+    "Paragliding (seasonal, check operator)",
+    "Sunset at the meadows"
+  ],
+  "base": "vagamon",
+  "order": 10
+}

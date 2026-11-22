@@ -10,6 +10,8 @@ const interests = [
   ['culture', 'Culture & art'], ['ayurveda', 'Ayurveda & yoga'], ['food', 'Food'], ['adventure', 'Adventure & treks'],
 ];
 const lengths = [5, 7, 10, 14, 21];
+import { all } from '../lib/content.js';
+const festivals = await all('festivals');
 ---
 <Base title="Plan My Trip" description="Build a day-by-day Kerala itinerary with travel times, budget, visa advice and packing list.">
   <PageHead eyebrow="Trip planner" title="Plan My Trip" lead="Answer five quick questions. You get a day-by-day route with travel times, a budget estimate, visa advice and a packing list. Nothing leaves your device." />
@@ -97,6 +99,7 @@ const lengths = [5, 7, 10, 14, 21];
       </dl>
     </aside>
   </div>
+  <script type="application/json" id="fest-data" set:html={JSON.stringify(festivals)}></script>
 </Base>
 
 <style>
@@ -121,7 +124,7 @@ const lengths = [5, 7, 10, 14, 21];
   import bases from '../data/bases.json';
   import journeys from '../data/journeys.json';
   import months from '../data/months.json';
-  import festivals from '../data/festivals.json';
+  const festivals = JSON.parse(document.getElementById('fest-data')!.textContent!);
   import visa from '../data/visa.json';
   import seasons from '../data/seasons.json';
   const data = { bases, journeys, months, festivals, visa, seasons };

@@ -1,0 +1,13 @@
+{
+  "slug": "champions-boat-league",
+  "name": "Champions Boat League",
+  "months": [
+    9,
+    10,
+    11,
+    12
+  ],
+  "where": "Backwater venues across Kerala",
+  "note": "A league of snake-boat races held on weekends. Check the official schedule for venues.",
+  "order": 2
+}

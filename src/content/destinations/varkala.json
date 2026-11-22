@@ -1,0 +1,31 @@
+{
+  "slug": "varkala",
+  "name": "Varkala",
+  "categories": [
+    "beaches"
+  ],
+  "region": "south",
+  "district": "Thiruvananthapuram",
+  "lat": 8.7379,
+  "lng": 76.7163,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "2–3 days",
+  "airport": "Thiruvananthapuram (TRV)",
+  "fromKochi": "4 h",
+  "summary": "Red cliffs above the sea, a relaxed café strip, yoga classes and the sacred Papanasam beach.",
+  "todo": [
+    "Walk the North Cliff at sunset",
+    "Yoga class",
+    "Swim only where lifeguards are on duty",
+    "Janardhana Swamy Temple (outside only for non-Hindus)"
+  ],
+  "base": "varkala",
+  "order": 12
+}

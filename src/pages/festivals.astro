@@ -1,7 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
-import festivals from '../data/festivals.json';
+import { all } from '../lib/content.js';
+const festivals = await all('festivals');
 import months from '../data/months.json';
 const CAL = 'https://www.keralatourism.org/event-calendar/';
 const short = months.map((m) => m.name.slice(0, 3));

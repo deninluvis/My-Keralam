@@ -1,0 +1,30 @@
+{
+  "slug": "muzhappilangad",
+  "name": "Muzhappilangad Drive-in Beach",
+  "categories": [
+    "beaches"
+  ],
+  "region": "north",
+  "district": "Kannur",
+  "lat": 11.798,
+  "lng": 75.452,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3,
+    4
+  ],
+  "days": "Half day",
+  "airport": "Kannur (CNN)",
+  "fromKochi": "7 h",
+  "summary": "A long, firm-sand beach where you can drive along the shoreline.",
+  "todo": [
+    "Drive along the beach (follow local rules)",
+    "Dharmadam Island at low tide"
+  ],
+  "base": "kannur",
+  "order": 31
+}

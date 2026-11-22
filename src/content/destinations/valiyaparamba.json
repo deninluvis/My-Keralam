@@ -1,0 +1,28 @@
+{
+  "slug": "valiyaparamba",
+  "name": "Valiyaparamba Backwaters",
+  "categories": [
+    "backwaters"
+  ],
+  "region": "north",
+  "district": "Kasaragod",
+  "lat": 12.17,
+  "lng": 75.15,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "1 day",
+  "airport": "Kannur (CNN)",
+  "fromKochi": "7.5 h",
+  "summary": "Quiet northern backwaters with small islands and far fewer boats than Alappuzha.",
+  "todo": [
+    "Day houseboat cruise"
+  ],
+  "base": "bekal",
+  "order": 33
+}

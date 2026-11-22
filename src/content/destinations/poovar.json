@@ -1,0 +1,29 @@
+{
+  "slug": "poovar",
+  "name": "Poovar",
+  "categories": [
+    "beaches",
+    "backwaters"
+  ],
+  "region": "south",
+  "district": "Thiruvananthapuram",
+  "lat": 8.317,
+  "lng": 77.07,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "Half day",
+  "airport": "Thiruvananthapuram (TRV)",
+  "fromKochi": "5.5 h",
+  "summary": "A golden sandbar where the river meets the sea, reached by boat.",
+  "todo": [
+    "Boat ride through the estuary and mangroves"
+  ],
+  "base": "kovalam",
+  "order": 14
+}

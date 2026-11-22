@@ -1,0 +1,32 @@
+{
+  "slug": "kalamandalam",
+  "name": "Kerala Kalamandalam",
+  "categories": [
+    "heritage"
+  ],
+  "region": "central",
+  "district": "Thrissur",
+  "lat": 10.738,
+  "lng": 76.281,
+  "bestMonths": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "Half day",
+  "airport": "Kochi (COK)",
+  "fromKochi": "2.5 h",
+  "summary": "The famous school for Kathakali, Mohiniyattam and Koodiyattam. Morning classes can sometimes be watched.",
+  "todo": [
+    "Join the 'A Day with the Masters' programme (book ahead)"
+  ],
+  "base": "thrissur",
+  "order": 22
+}

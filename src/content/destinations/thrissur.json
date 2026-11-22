@@ -1,0 +1,31 @@
+{
+  "slug": "thrissur",
+  "name": "Thrissur",
+  "categories": [
+    "heritage"
+  ],
+  "region": "central",
+  "district": "Thrissur",
+  "lat": 10.5276,
+  "lng": 76.2144,
+  "bestMonths": [
+    11,
+    12,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "days": "1 day",
+  "airport": "Kochi (COK)",
+  "fromKochi": "2 h",
+  "summary": "Kerala's cultural capital, home of the Thrissur Pooram festival (Apr–May).",
+  "todo": [
+    "Vadakkunnathan Temple grounds (outside)",
+    "Thrissur Pooram in Apr–May",
+    "Kerala Kalamandalam arts school nearby"
+  ],
+  "base": "thrissur",
+  "order": 21
+}

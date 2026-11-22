@@ -1,0 +1,30 @@
+{
+  "slug": "ponmudi",
+  "name": "Ponmudi",
+  "categories": [
+    "hills"
+  ],
+  "region": "south",
+  "district": "Thiruvananthapuram",
+  "lat": 8.76,
+  "lng": 77.115,
+  "bestMonths": [
+    9,
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "1 day",
+  "airport": "Thiruvananthapuram (TRV)",
+  "fromKochi": "5.5 h",
+  "summary": "A hill station with 22 hairpin bends, an easy day trip from Trivandrum.",
+  "todo": [
+    "Drive the hairpin bends",
+    "Short walks and viewpoints"
+  ],
+  "base": "kovalam",
+  "order": 16
+}

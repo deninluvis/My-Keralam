@@ -1,0 +1,30 @@
+{
+  "slug": "bekal",
+  "name": "Bekal Fort & Beach",
+  "categories": [
+    "heritage",
+    "beaches"
+  ],
+  "region": "north",
+  "district": "Kasaragod",
+  "lat": 12.3925,
+  "lng": 75.033,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "1–2 days",
+  "airport": "Kannur (CNN)",
+  "fromKochi": "8 h",
+  "summary": "A huge 17th-century fort on a headland above the sea, with quiet beach resorts nearby.",
+  "todo": [
+    "Walk the fort ramparts",
+    "Valiyaparamba backwaters by boat"
+  ],
+  "base": "bekal",
+  "order": 32
+}

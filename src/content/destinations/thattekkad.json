@@ -1,0 +1,28 @@
+{
+  "slug": "thattekkad",
+  "name": "Thattekkad Bird Sanctuary",
+  "categories": [
+    "wildlife"
+  ],
+  "region": "central",
+  "district": "Ernakulam",
+  "lat": 10.13,
+  "lng": 76.69,
+  "bestMonths": [
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "1 day",
+  "airport": "Kochi (COK)",
+  "fromKochi": "2 h",
+  "summary": "Kerala's first bird sanctuary, in lowland forest on the way to Munnar.",
+  "todo": [
+    "Early-morning birding walk with a guide",
+    "Look for Malabar grey hornbills and frogmouths"
+  ],
+  "base": "kochi",
+  "order": 3
+}

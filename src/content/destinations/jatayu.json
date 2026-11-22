@@ -1,0 +1,29 @@
+{
+  "slug": "jatayu",
+  "name": "Jatayu Earth's Center",
+  "categories": [
+    "heritage"
+  ],
+  "region": "south",
+  "district": "Kollam",
+  "lat": 8.865,
+  "lng": 76.866,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "Half day",
+  "airport": "Thiruvananthapuram (TRV)",
+  "fromKochi": "4 h",
+  "summary": "A giant bird sculpture on a rock hilltop, reached by cable car.",
+  "todo": [
+    "Cable car to the summit",
+    "Adventure activities at the base"
+  ],
+  "base": "varkala",
+  "order": 18
+}

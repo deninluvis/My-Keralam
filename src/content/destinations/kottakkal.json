@@ -1,0 +1,31 @@
+{
+  "slug": "kottakkal",
+  "name": "Kottakkal",
+  "categories": [
+    "heritage"
+  ],
+  "region": "north",
+  "district": "Malappuram",
+  "lat": 10.999,
+  "lng": 76,
+  "bestMonths": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    1,
+    2
+  ],
+  "days": "Treatment stays",
+  "airport": "Kozhikode (CCJ)",
+  "fromKochi": "4 h",
+  "summary": "Home of the Arya Vaidya Sala, one of India's best-known Ayurveda institutions.",
+  "todo": [
+    "Consultation and treatment (book ahead)"
+  ],
+  "base": null,
+  "order": 34
+}

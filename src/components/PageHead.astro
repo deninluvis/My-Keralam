@@ -2,7 +2,7 @@
 import meta from '../data/meta.json';
 interface Props { eyebrow?: string; title: string; lead?: string; verified?: boolean }
 const { eyebrow, title, lead, verified = false } = Astro.props;
-const d = new Date(meta.lastVerified).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+const d = new Date(meta.lastVerified).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
 ---
 <header class="page-head wrap">
   {eyebrow && <p class="eyebrow">{eyebrow}</p>}

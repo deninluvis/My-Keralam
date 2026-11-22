@@ -2,6 +2,8 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { url } from '../lib/url.js';
+import { all } from '../lib/content.js';
+const festivals = await all('festivals');
 ---
 <Base title="My Trip" description="Your personal Kerala itinerary, budget, visa notes and packing checklist.">
   <div class="wrap">
@@ -71,6 +73,7 @@ import { url } from '../lib/url.js';
       </section>
     </article>
   </div>
+  <script type="application/json" id="fest-data" set:html={JSON.stringify(festivals)}></script>
 </Base>
 
 <style>
@@ -94,7 +97,7 @@ import { url } from '../lib/url.js';
   import bases from '../data/bases.json';
   import journeys from '../data/journeys.json';
   import months from '../data/months.json';
-  import festivals from '../data/festivals.json';
+  const festivals = JSON.parse(document.getElementById('fest-data')!.textContent!);
   import visa from '../data/visa.json';
   import seasons from '../data/seasons.json';
   import meta from '../data/meta.json';

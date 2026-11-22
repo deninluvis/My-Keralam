@@ -1,0 +1,28 @@
+{
+  "slug": "guruvayur",
+  "name": "Guruvayur",
+  "categories": [
+    "heritage"
+  ],
+  "region": "central",
+  "district": "Thrissur",
+  "lat": 10.5946,
+  "lng": 76.041,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3
+  ],
+  "days": "Half day",
+  "airport": "Kochi (COK)",
+  "fromKochi": "2.5 h",
+  "summary": "One of Kerala's most important temples (Hindus only) and the Punnathur Kotta elephant yard.",
+  "todo": [
+    "Respect dress rules in the temple town"
+  ],
+  "base": "thrissur",
+  "order": 24
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "sabarimala",
+  "name": "Sabarimala",
+  "categories": [
+    "heritage"
+  ],
+  "region": "south",
+  "district": "Pathanamthitta",
+  "lat": 9.4346,
+  "lng": 77.0815,
+  "bestMonths": [
+    11,
+    12,
+    1
+  ],
+  "days": "Pilgrimage",
+  "airport": "Kochi (COK)",
+  "fromKochi": "5 h",
+  "summary": "A major hilltop pilgrimage. The Mandala–Makaravilakku season (mid-Nov to mid-Jan) draws huge crowds; entry and dress rules apply.",
+  "todo": [
+    "Read the official rules before planning a visit",
+    "Expect very heavy traffic in the season"
+  ],
+  "base": null,
+  "order": 19
+}

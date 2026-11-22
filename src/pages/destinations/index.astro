@@ -2,7 +2,8 @@
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import DestCard from '../../components/DestCard.astro';
-import destinations from '../../data/destinations.json';
+import { all } from '../../lib/content.js';
+const destinations = await all('destinations');
 import { url } from '../../lib/url.js';
 const cats = ['backwaters', 'beaches', 'hills', 'wildlife', 'waterfalls', 'heritage'];
 const points = destinations.map((d) => ({ n: d.name, lat: d.lat, lng: d.lng, c: d.categories[0], href: url(`/destinations/${d.slug}`) }));

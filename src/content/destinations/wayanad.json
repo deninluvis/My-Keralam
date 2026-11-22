@@ -1,0 +1,34 @@
+{
+  "slug": "wayanad",
+  "name": "Wayanad",
+  "categories": [
+    "hills",
+    "wildlife"
+  ],
+  "region": "north",
+  "district": "Wayanad",
+  "lat": 11.6085,
+  "lng": 76.083,
+  "bestMonths": [
+    10,
+    11,
+    12,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "days": "2–3 days",
+  "airport": "Kozhikode (CCJ)",
+  "fromKochi": "6 h",
+  "summary": "Coffee and spice plantations, forest wildlife, caves and treks on a high plateau.",
+  "todo": [
+    "Edakkal Caves (ancient rock carvings)",
+    "Chembra Peak trek (check if open)",
+    "Muthanga or Tholpetty wildlife drive",
+    "Plantation stay"
+  ],
+  "base": "wayanad",
+  "order": 29
+}
