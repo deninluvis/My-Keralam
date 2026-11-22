@@ -1,4 +1,5 @@
 ---
+import Consider from '../components/Consider.astro';
 import CommunityNote from '../components/CommunityNote.astro';
 import ImportedSection from '../components/ImportedSection.astro';
 import Base from '../layouts/Base.astro';
@@ -16,6 +17,7 @@ const its = await all('itineraries');
       <section class="card it" id={it.slug}>
         <h2>{it.name}</h2>
         <p class="muted">{it.who}</p>
+        <Consider items={it.considerations} />
         <ol class="tl">{it.days.map(({ d, place, what }) => <li><span class="d">Day {d}</span><div><strong>{place}</strong><p class="small">{what}</p></div></li>)}</ol>
         <a class="btn small open-plan" href={`${url('/plan')}?${it.q}`} data-q={it.q}>Open in planner <Icon name="arrow" /></a>
       </section>

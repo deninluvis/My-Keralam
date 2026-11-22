@@ -1,4 +1,5 @@
 ---
+import Consider from '../components/Consider.astro';
 import Photo from '../components/Photo.astro';
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
@@ -26,6 +27,7 @@ const spiceLabel = ['Not spicy', 'Mild', 'Medium', 'Hot'];
           <p class="small">{d.desc}</p>
           <p class="small"><span class="spice" aria-hidden="true">{'●'.repeat(d.spice)}{'○'.repeat(3 - d.spice)}</span> {spiceLabel[d.spice]}</p>
           {d.why && <p class="small"><strong>Why try it:</strong> {d.why}</p>}
+          <Consider items={d.considerations} />
           {d.places && d.places.length > 0 && (
             <div class="small"><strong>Where to try it:</strong>
               <ul>{d.places.map((p) => <li><a href={p.mapLink} rel="noopener nofollow">{p.name}</a>{p.area && <>, {p.area}</>}{p.website && <> · <a href={p.website} rel="noopener nofollow">website</a></>}</li>)}</ul>

@@ -104,3 +104,9 @@ test('food entry with places and photos parses', () => {
   assert.equal(parseEntry({ ...dish, places: [{ name: 'X', mapLink: 'javascript:alert(1)' }] }).ok, false);
   assert.equal(parseEntry({ ...dish, spice: 4 }).ok, false);
 });
+
+test('considerations: optional list of short notes on any type', () => {
+  assert.equal(parseEntry(dest({ considerations: ['Non-Hindus are not allowed inside the temple.'] })).ok, true);
+  assert.equal(parseEntry(dest({ considerations: 'not a list' })).ok, false);
+  assert.equal(parseEntry(dest({ considerations: [''] })).ok, false);
+});

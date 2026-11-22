@@ -40,6 +40,7 @@ function body(type, e) {
 export function cardHtml(type, e) {
   const extra = [
     e.why ? `<p class="small"><strong>Why go:</strong> ${esc(e.why)}</p>` : '',
+    e.considerations?.length ? `<div class="consider small"><strong>Things to consider</strong>${list(e.considerations)}</div>` : '',
     media(e),
     link(e.streetView, 'Street View'),
     link(e.officialLink, 'Official page'),

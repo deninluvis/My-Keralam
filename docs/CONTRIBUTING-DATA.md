@@ -38,7 +38,7 @@ Imported entries show under **Imported by you** on the matching page, and import
 
 Fields marked * are required.
 
-**Every type:** `slug`*, `name`*, `author` (your name or GitHub handle), `why` (why visit: recommended), `officialLink`, `streetView`, `images`, `videos`.
+**Every type:** `slug`*, `name`*, `author` (your name or GitHub handle), `why` (why visit: recommended), `considerations` (things to consider: a list of short notes such as entry rules, dress codes, seasonal closures or accessibility, e.g. `["Non-Hindus are not allowed inside the temple."]`), `officialLink`, `streetView`, `images`, `videos`.
 
 **Places** (destination, stay; optional on the others): `summary`*, `lat`* and `lng`* (decimal degrees inside Kerala, e.g. `10.0889`, `77.0595`), `bestMonths`* (numbers 1–12; use all twelve for year-round).
 

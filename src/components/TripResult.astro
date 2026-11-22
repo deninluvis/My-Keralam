@@ -207,7 +207,10 @@ const { festivals } = Astro.props;
       L.polyline(pts, { color: '#2a7f86', weight: 4, dashArray: '6 8' }).addTo(map);
       t.stops.forEach((s, i) => L.circleMarker([s.lat, s.lng], { radius: 9, color: '#fff', weight: 2, fillColor: '#1f5e4a', fillOpacity: 1 })
         .addTo(map).bindTooltip(`${i + 1}. ${s.name} (${s.days} day${s.days > 1 ? 's' : ''})`, { permanent: false }));
-      map.fitBounds(L.latLngBounds(pts).pad(0.3));
+      const bounds = L.latLngBounds(pts).pad(0.3);
+      map.fitBounds(bounds);
+      // The map may be drawn while its panel is hidden (size 0); redraw once it has a real size.
+      new ResizeObserver(() => { map.invalidateSize(); map.fitBounds(bounds); }).observe($('route-map'));
     } catch (e) { $('route-map').textContent = 'Map unavailable offline.'; }
   }
 

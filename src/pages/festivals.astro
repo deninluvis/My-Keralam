@@ -1,4 +1,5 @@
 ---
+import Consider from '../components/Consider.astro';
 import Photo from '../components/Photo.astro';
 import CommunityNote from '../components/CommunityNote.astro';
 import ImportedSection from '../components/ImportedSection.astro';
@@ -43,6 +44,7 @@ const short = months.map((m) => m.name.slice(0, 3));
           <h3><a href={f.link ?? CAL} rel="noopener">{f.name}</a></h3>
           <p class="meta"><span>{f.months.map((m) => short[m - 1]).join(', ')}</span><span>{f.where}</span></p>
           <p class="small">{f.note}</p>
+          <Consider items={f.considerations} />
         </div>
       ))}
     </div>

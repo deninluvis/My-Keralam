@@ -1,4 +1,5 @@
 ---
+import Consider from '../components/Consider.astro';
 import Photo from '../components/Photo.astro';
 import CommunityNote from '../components/CommunityNote.astro';
 import ImportedSection from '../components/ImportedSection.astro';
@@ -24,6 +25,7 @@ const href = (h: string) => (h.startsWith('http') ? h : url(h));
           <h2>{i.name}</h2>
           <p>{i.text}</p>
           <ul class="small">{i.tips.map((t) => <li>{t}</li>)}</ul>
+          <Consider items={i.considerations} />
           <a href={href(i.link.href)} rel={i.link.href.startsWith('http') ? 'noopener' : undefined}>{i.link.label} →</a>
         </div>
       </section>

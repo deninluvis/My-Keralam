@@ -39,3 +39,10 @@ test('food card shows places with map links and drops unsafe ones', () => {
   assert.equal(html.includes('javascript:'), false);
   assert.match(html, /Vegetarian/);
 });
+
+test('cards list things to consider, escaped', () => {
+  const html = cardHtml('destination', { slug: 'x', name: 'X', summary: 's', considerations: ['Dress code applies', evil] });
+  assert.match(html, /Things to consider/);
+  assert.match(html, /Dress code applies/);
+  assert.equal(html.includes('<img'), false);
+});

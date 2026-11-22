@@ -1,4 +1,5 @@
 ---
+import Consider from '../components/Consider.astro';
 import CommunityNote from '../components/CommunityNote.astro';
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
@@ -33,6 +34,7 @@ const pins = stays.map((s) => ({ slug: s.slug, name: s.name, lat: s.lat, lng: s.
           <h3>{s.name}</h3>
           <p class="small">{s.summary}</p>
           {s.why && <p class="small"><strong>Why stay:</strong> {s.why}</p>}
+          <Consider items={s.considerations} />
           <p class="small">
             {s.website && <a href={s.website} rel="noopener nofollow">Website</a>}
             {s.streetView && <> · <a href={s.streetView} rel="noopener">Street View</a></>}

@@ -1,4 +1,5 @@
 ---
+import Consider from '../components/Consider.astro';
 import CommunityNote from '../components/CommunityNote.astro';
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
@@ -33,6 +34,7 @@ const plannerQuery = (p: (typeof plans)[number]) => `stops=${p.stops}&interests=
             {p.person.works.length > 0 && <p class="small"><strong>Work:</strong> {p.person.works.join(' · ')}</p>}
             {p.person.links.length > 0 && <p class="small">{p.person.links.map((l) => <a href={l} rel="noopener nofollow">{new URL(l).hostname}</a>)}</p>}
           </div>
+          <Consider items={p.considerations} />
           <ol class="tp-days">{p.days.map((d) => <li><span class="d">Day {d.d}</span><div><strong>{d.place}</strong><p class="small">{d.what}</p></div></li>)}</ol>
           <a class="btn small open-plan" href={`${url('/plan')}?${plannerQuery(p)}`} data-q={plannerQuery(p)}>Open in planner <Icon name="arrow" /></a>
           {p.author && <p class="small muted">Added by {p.author}</p>}
