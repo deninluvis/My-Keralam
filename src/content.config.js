@@ -8,4 +8,6 @@ const folder = (dir, type) => defineCollection({ loader: glob({ pattern: '*.json
 export const collections = {
   destinations: folder('destinations', 'destination'),
   festivals: folder('festivals', 'festival'),
+  experiences: folder('experiences', 'experience'),
+  itineraries: folder('itineraries', 'itinerary'),
 };

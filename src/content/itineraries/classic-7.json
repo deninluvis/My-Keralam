@@ -1,0 +1,34 @@
+{
+  "slug": "classic-7",
+  "name": "7 days: the classic loop",
+  "who": "First-timers who want the highlights",
+  "q": "days=7&interests=backwaters,hills,culture&pace=balanced",
+  "days": [
+    {
+      "d": "1–2",
+      "place": "Kochi",
+      "what": "Fort Kochi heritage walk, Chinese fishing nets, Mattancherry, Kathakali show"
+    },
+    {
+      "d": "3–4",
+      "place": "Munnar",
+      "what": "Tea estates, tea museum, Eravikulam National Park"
+    },
+    {
+      "d": "5",
+      "place": "Thekkady",
+      "what": "Spice plantation, Periyar Lake boat ride"
+    },
+    {
+      "d": "6",
+      "place": "Alappuzha",
+      "what": "Overnight houseboat through Kuttanad"
+    },
+    {
+      "d": "7",
+      "place": "Kochi",
+      "what": "Last shopping, fly home from Kochi (COK)"
+    }
+  ],
+  "order": 0
+}

@@ -3,31 +3,23 @@ import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 import Icon from '../components/Icon.astro';
 import { url } from '../lib/url.js';
-const items = [
-  { id: 'houseboats', icon: 'backwaters', title: 'Houseboats & backwaters', text: 'An overnight stay on a kettuvallam (traditional rice barge) in Alappuzha or Kumarakom is the classic Kerala experience. Boats usually board around noon and moor at sunset. Shorter options: shikara boats, canoes through narrow village canals, or cheap state ferries (SWTD) used by locals.', tips: ['Best October to February', 'Choose boats with Kerala Tourism approval', 'Agree what is included (meals, AC hours) before paying', 'Canoe trips reach canals houseboats cannot'], link: ['/destinations/alappuzha', 'Alappuzha guide'] },
-  { id: 'ayurveda', icon: 'ayurveda', title: 'Ayurveda & wellness', text: 'Kerala is famous for Ayurveda, India\'s traditional system of medicine. Options range from a one-hour massage to 14–21 day treatment programmes with a doctor. Yoga and Kalaripayattu (Kerala\'s martial art) are often offered alongside.', tips: ['Choose a centre classified by the Department of Tourism (Green Leaf or Olive Leaf)', 'Check the doctors\' qualifications', 'Start with a consultation', 'The monsoon (Jun–Aug) is the traditional season'], link: ['https://www.keralatourism.org/wellness-kerala/', 'Official wellness information'] },
-  { id: 'arts', icon: 'culture', title: 'Art forms', text: 'Kathakali is a classical dance-drama with elaborate make-up; short shows for visitors run nightly in Fort Kochi and Thekkady, often with a chance to watch the make-up being applied. Theyyam is a powerful ritual art in North Malabar, performed in village shrines. Koodiyattam, a Sanskrit theatre form, is recognised by UNESCO.', tips: ['Arrive early at Kathakali to see the make-up', 'At Theyyam, dress modestly, keep distance and ask before photographing', 'Kerala Kalamandalam near Thrissur offers visitor programmes'], link: ['/festivals', 'Festival & Theyyam calendar'] },
-  { id: 'plantations', icon: 'hills', title: 'Tea, spice & coffee plantations', text: 'Walk through Munnar\'s tea estates and visit a tea museum, tour a spice garden in Thekkady (cardamom, pepper, vanilla, cinnamon) or stay on a Wayanad coffee plantation.', tips: ['Buy spices from cooperatives or estates', 'Morning walks have the best light and coolest air'], link: ['/destinations/munnar', 'Munnar guide'] },
-  { id: 'village', icon: 'food', title: 'Village life & Responsible Tourism', text: 'Kerala\'s Responsible Tourism programme, which began in Kumarakom, connects visitors with farmers, fishers, weavers and cooks. Try village walks, cooking classes, coir making, toddy tapping demonstrations and farm stays.', tips: ['Book through Responsible Tourism units so money stays local', 'Kumbalangi near Kochi is an easy half-day'], link: ['/responsible-travel', 'Responsible travel'] },
-  { id: 'wildlife', icon: 'wildlife', title: 'Wildlife', text: 'See wild elephants and birds on Periyar Lake, Nilgiri tahr in Eravikulam, hornbills at Thattekkad and lion-tailed macaques in Silent Valley. Tigers are rarely seen; enjoy the forest itself.', tips: ['Book safaris, boats and treks only through official forest department portals', 'Parks close seasonally; check before you go', 'Early mornings are best'], link: ['/destinations?type=wildlife', 'Wildlife destinations'] },
-  { id: 'adventure', icon: 'adventure', title: 'Adventure', text: 'Trek Chembra Peak in Wayanad or Agasthyarkoodam (permit needed, limited season), paraglide in Vagamon, kayak the backwaters, raft bamboo at Periyar, or drive along Muzhappilangad beach.', tips: ['Use licensed operators', 'Many treks close in the monsoon', 'Carry leech socks for forest treks'], link: ['/destinations?type=hills', 'Hill destinations'] },
-  { id: 'weddings', icon: 'beaches', title: 'Destination weddings', text: 'Beaches, backwaters and hill resorts host many foreign couples. Legal marriage in India has paperwork and residency rules; many couples marry at home and hold a ceremony in Kerala.', tips: ['Ask your embassy about legal requirements', 'Avoid the monsoon for outdoor events'], link: ['https://www.keralatourism.org/destination-wedding', 'Official wedding information'] },
-];
+import { all } from '../lib/content.js';
+const items = await all('experiences');
 const href = (h: string) => (h.startsWith('http') ? h : url(h));
 ---
 <Base title="Experiences" description="Top Kerala experiences: houseboats, Ayurveda, Kathakali and Theyyam, plantations, village life, wildlife and adventure.">
   <PageHead eyebrow="Explore" title="Experiences" lead="The things that make a Kerala trip memorable, with practical tips for each.">
-    <div class="toc">{items.map((i) => <a class="chip" href={`#${i.id}`}>{i.title.split(' &')[0]}</a>)}</div>
+    <div class="toc">{items.map((i) => <a class="chip" href={`#${i.slug}`}>{i.name.split(' &')[0]}</a>)}</div>
   </PageHead>
   <div class="wrap exp-list">
     {items.map((i) => (
-      <section class="card exp" id={i.id}>
+      <section class="card exp" id={i.slug}>
         <span class="exp-icon"><Icon name={i.icon} /></span>
         <div>
-          <h2>{i.title}</h2>
+          <h2>{i.name}</h2>
           <p>{i.text}</p>
           <ul class="small">{i.tips.map((t) => <li>{t}</li>)}</ul>
-          <a href={href(i.link[0])} rel={i.link[0].startsWith('http') ? 'noopener' : undefined}>{i.link[1]} →</a>
+          <a href={href(i.link.href)} rel={i.link.href.startsWith('http') ? 'noopener' : undefined}>{i.link.label} →</a>
         </div>
       </section>
     ))}

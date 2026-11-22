@@ -1,0 +1,17 @@
+{
+  "slug": "houseboats",
+  "name": "Houseboats & backwaters",
+  "icon": "backwaters",
+  "text": "An overnight stay on a kettuvallam (traditional rice barge) in Alappuzha or Kumarakom is the classic Kerala experience. Boats usually board around noon and moor at sunset. Shorter options: shikara boats, canoes through narrow village canals, or cheap state ferries (SWTD) used by locals.",
+  "tips": [
+    "Best October to February",
+    "Choose boats with Kerala Tourism approval",
+    "Agree what is included (meals, AC hours) before paying",
+    "Canoe trips reach canals houseboats cannot"
+  ],
+  "link": {
+    "href": "/destinations/alappuzha",
+    "label": "Alappuzha guide"
+  },
+  "order": 0
+}

@@ -1,0 +1,39 @@
+{
+  "slug": "south-10",
+  "name": "10 days: classics plus the south coast",
+  "who": "Add beach time at the end",
+  "q": "days=10&interests=backwaters,hills,beaches,culture&pace=balanced",
+  "days": [
+    {
+      "d": "1–2",
+      "place": "Kochi",
+      "what": "Heritage, food and a Kathakali show"
+    },
+    {
+      "d": "3–4",
+      "place": "Munnar",
+      "what": "Tea hills and viewpoints"
+    },
+    {
+      "d": "5",
+      "place": "Thekkady",
+      "what": "Wildlife and spices"
+    },
+    {
+      "d": "6",
+      "place": "Alappuzha",
+      "what": "Houseboat night"
+    },
+    {
+      "d": "7–8",
+      "place": "Varkala",
+      "what": "Cliff-top beach, yoga, sunset walks"
+    },
+    {
+      "d": "9–10",
+      "place": "Kovalam & Trivandrum",
+      "what": "Ayurveda massage, museums, fly home from Trivandrum (TRV)"
+    }
+  ],
+  "order": 1
+}

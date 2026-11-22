@@ -1,0 +1,54 @@
+{
+  "slug": "grand-14",
+  "name": "14 days: south to north",
+  "who": "Culture lovers; best November–March for Theyyam",
+  "q": "days=14&interests=culture,hills,backwaters,food&pace=balanced",
+  "days": [
+    {
+      "d": "1–2",
+      "place": "Kochi",
+      "what": "Heritage and food"
+    },
+    {
+      "d": "3–4",
+      "place": "Munnar",
+      "what": "Tea hills"
+    },
+    {
+      "d": "5",
+      "place": "Thekkady",
+      "what": "Wildlife and spices"
+    },
+    {
+      "d": "6",
+      "place": "Alappuzha",
+      "what": "Houseboat night"
+    },
+    {
+      "d": "7",
+      "place": "Thrissur",
+      "what": "Athirappilly Falls, Kalamandalam arts school"
+    },
+    {
+      "d": "8",
+      "place": "Kozhikode",
+      "what": "Malabar food, Beypore boatyards"
+    },
+    {
+      "d": "9–10",
+      "place": "Wayanad",
+      "what": "Plantations, Edakkal Caves, wildlife"
+    },
+    {
+      "d": "11–12",
+      "place": "Kannur",
+      "what": "Theyyam rituals, handloom, beaches"
+    },
+    {
+      "d": "13–14",
+      "place": "Bekal",
+      "what": "Fort and beach, fly home from Kannur (CNN) or Mangaluru"
+    }
+  ],
+  "order": 2
+}

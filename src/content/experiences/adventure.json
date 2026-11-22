@@ -1,0 +1,16 @@
+{
+  "slug": "adventure",
+  "name": "Adventure",
+  "icon": "adventure",
+  "text": "Trek Chembra Peak in Wayanad or Agasthyarkoodam (permit needed, limited season), paraglide in Vagamon, kayak the backwaters, raft bamboo at Periyar, or drive along Muzhappilangad beach.",
+  "tips": [
+    "Use licensed operators",
+    "Many treks close in the monsoon",
+    "Carry leech socks for forest treks"
+  ],
+  "link": {
+    "href": "/destinations?type=hills",
+    "label": "Hill destinations"
+  },
+  "order": 6
+}

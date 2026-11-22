@@ -1,0 +1,16 @@
+{
+  "slug": "wildlife",
+  "name": "Wildlife",
+  "icon": "wildlife",
+  "text": "See wild elephants and birds on Periyar Lake, Nilgiri tahr in Eravikulam, hornbills at Thattekkad and lion-tailed macaques in Silent Valley. Tigers are rarely seen; enjoy the forest itself.",
+  "tips": [
+    "Book safaris, boats and treks only through official forest department portals",
+    "Parks close seasonally; check before you go",
+    "Early mornings are best"
+  ],
+  "link": {
+    "href": "/destinations?type=wildlife",
+    "label": "Wildlife destinations"
+  },
+  "order": 5
+}

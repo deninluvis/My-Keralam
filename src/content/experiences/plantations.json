@@ -1,0 +1,15 @@
+{
+  "slug": "plantations",
+  "name": "Tea, spice & coffee plantations",
+  "icon": "hills",
+  "text": "Walk through Munnar's tea estates and visit a tea museum, tour a spice garden in Thekkady (cardamom, pepper, vanilla, cinnamon) or stay on a Wayanad coffee plantation.",
+  "tips": [
+    "Buy spices from cooperatives or estates",
+    "Morning walks have the best light and coolest air"
+  ],
+  "link": {
+    "href": "/destinations/munnar",
+    "label": "Munnar guide"
+  },
+  "order": 3
+}

@@ -3,25 +3,17 @@ import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 import Icon from '../components/Icon.astro';
 import { url } from '../lib/url.js';
-const its = [
-  { id: 'classic-7', title: '7 days: the classic loop', who: 'First-timers who want the highlights', q: 'days=7&interests=backwaters,hills,culture&pace=balanced',
-    days: [['1–2', 'Kochi', 'Fort Kochi heritage walk, Chinese fishing nets, Mattancherry, Kathakali show'], ['3–4', 'Munnar', 'Tea estates, tea museum, Eravikulam National Park'], ['5', 'Thekkady', 'Spice plantation, Periyar Lake boat ride'], ['6', 'Alappuzha', 'Overnight houseboat through Kuttanad'], ['7', 'Kochi', 'Last shopping, fly home from Kochi (COK)']] },
-  { id: 'south-10', title: '10 days: classics plus the south coast', who: 'Add beach time at the end', q: 'days=10&interests=backwaters,hills,beaches,culture&pace=balanced',
-    days: [['1–2', 'Kochi', 'Heritage, food and a Kathakali show'], ['3–4', 'Munnar', 'Tea hills and viewpoints'], ['5', 'Thekkady', 'Wildlife and spices'], ['6', 'Alappuzha', 'Houseboat night'], ['7–8', 'Varkala', 'Cliff-top beach, yoga, sunset walks'], ['9–10', 'Kovalam & Trivandrum', 'Ayurveda massage, museums, fly home from Trivandrum (TRV)']] },
-  { id: 'grand-14', title: '14 days: south to north', who: 'Culture lovers; best November–March for Theyyam', q: 'days=14&interests=culture,hills,backwaters,food&pace=balanced',
-    days: [['1–2', 'Kochi', 'Heritage and food'], ['3–4', 'Munnar', 'Tea hills'], ['5', 'Thekkady', 'Wildlife and spices'], ['6', 'Alappuzha', 'Houseboat night'], ['7', 'Thrissur', 'Athirappilly Falls, Kalamandalam arts school'], ['8', 'Kozhikode', 'Malabar food, Beypore boatyards'], ['9–10', 'Wayanad', 'Plantations, Edakkal Caves, wildlife'], ['11–12', 'Kannur', 'Theyyam rituals, handloom, beaches'], ['13–14', 'Bekal', 'Fort and beach, fly home from Kannur (CNN) or Mangaluru']] },
-  { id: 'wellness', title: 'Wellness: 14–21 days of Ayurveda', who: 'Rest and treatment; the monsoon is the traditional season', q: 'days=14&interests=ayurveda,backwaters&pace=relaxed',
-    days: [['1', 'Kochi', 'Arrive and rest'], ['2–12', 'Approved Ayurveda centre', 'Doctor consultation, then a daily programme of treatments, yoga and diet. Popular areas: Kovalam, Varkala, Kumarakom, Kottakkal.'], ['13', 'Kumarakom', 'A gentle day on the backwaters'], ['14', 'Kochi', 'Fly home']] },
-];
+import { all } from '../lib/content.js';
+const its = await all('itineraries');
 ---
 <Base title="Itineraries" description="Ready-made Kerala itineraries: 7, 10 and 14 days, plus a wellness trip.">
   <PageHead eyebrow="Plan" title="Ready-made itineraries" lead="Tried-and-tested routes. Open any of them in the planner to set your own dates and get a budget, visa notes and packing list." />
   <div class="wrap its">
     {its.map((it) => (
-      <section class="card it" id={it.id}>
-        <h2>{it.title}</h2>
+      <section class="card it" id={it.slug}>
+        <h2>{it.name}</h2>
         <p class="muted">{it.who}</p>
-        <ol class="tl">{it.days.map(([d, place, what]) => <li><span class="d">Day {d}</span><div><strong>{place}</strong><p class="small">{what}</p></div></li>)}</ol>
+        <ol class="tl">{it.days.map(({ d, place, what }) => <li><span class="d">Day {d}</span><div><strong>{place}</strong><p class="small">{what}</p></div></li>)}</ol>
         <a class="btn small open-plan" href={`${url('/my-trip')}?${it.q}`} data-q={it.q}>Open in planner <Icon name="arrow" /></a>
       </section>
     ))}

@@ -1,0 +1,29 @@
+{
+  "slug": "wellness",
+  "name": "Wellness: 14–21 days of Ayurveda",
+  "who": "Rest and treatment; the monsoon is the traditional season",
+  "q": "days=14&interests=ayurveda,backwaters&pace=relaxed",
+  "days": [
+    {
+      "d": "1",
+      "place": "Kochi",
+      "what": "Arrive and rest"
+    },
+    {
+      "d": "2–12",
+      "place": "Approved Ayurveda centre",
+      "what": "Doctor consultation, then a daily programme of treatments, yoga and diet. Popular areas: Kovalam, Varkala, Kumarakom, Kottakkal."
+    },
+    {
+      "d": "13",
+      "place": "Kumarakom",
+      "what": "A gentle day on the backwaters"
+    },
+    {
+      "d": "14",
+      "place": "Kochi",
+      "what": "Fly home"
+    }
+  ],
+  "order": 3
+}

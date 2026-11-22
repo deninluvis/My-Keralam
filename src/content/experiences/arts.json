@@ -1,0 +1,16 @@
+{
+  "slug": "arts",
+  "name": "Art forms",
+  "icon": "culture",
+  "text": "Kathakali is a classical dance-drama with elaborate make-up; short shows for visitors run nightly in Fort Kochi and Thekkady, often with a chance to watch the make-up being applied. Theyyam is a powerful ritual art in North Malabar, performed in village shrines. Koodiyattam, a Sanskrit theatre form, is recognised by UNESCO.",
+  "tips": [
+    "Arrive early at Kathakali to see the make-up",
+    "At Theyyam, dress modestly, keep distance and ask before photographing",
+    "Kerala Kalamandalam near Thrissur offers visitor programmes"
+  ],
+  "link": {
+    "href": "/festivals",
+    "label": "Festival & Theyyam calendar"
+  },
+  "order": 2
+}

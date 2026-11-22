@@ -1,0 +1,17 @@
+{
+  "slug": "ayurveda",
+  "name": "Ayurveda & wellness",
+  "icon": "ayurveda",
+  "text": "Kerala is famous for Ayurveda, India's traditional system of medicine. Options range from a one-hour massage to 14–21 day treatment programmes with a doctor. Yoga and Kalaripayattu (Kerala's martial art) are often offered alongside.",
+  "tips": [
+    "Choose a centre classified by the Department of Tourism (Green Leaf or Olive Leaf)",
+    "Check the doctors' qualifications",
+    "Start with a consultation",
+    "The monsoon (Jun–Aug) is the traditional season"
+  ],
+  "link": {
+    "href": "https://www.keralatourism.org/wellness-kerala/",
+    "label": "Official wellness information"
+  },
+  "order": 1
+}

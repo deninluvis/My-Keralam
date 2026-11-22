@@ -1,0 +1,15 @@
+{
+  "slug": "weddings",
+  "name": "Destination weddings",
+  "icon": "beaches",
+  "text": "Beaches, backwaters and hill resorts host many foreign couples. Legal marriage in India has paperwork and residency rules; many couples marry at home and hold a ceremony in Kerala.",
+  "tips": [
+    "Ask your embassy about legal requirements",
+    "Avoid the monsoon for outdoor events"
+  ],
+  "link": {
+    "href": "https://www.keralatourism.org/destination-wedding",
+    "label": "Official wedding information"
+  },
+  "order": 7
+}

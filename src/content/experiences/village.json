@@ -1,0 +1,15 @@
+{
+  "slug": "village",
+  "name": "Village life & Responsible Tourism",
+  "icon": "food",
+  "text": "Kerala's Responsible Tourism programme, which began in Kumarakom, connects visitors with farmers, fishers, weavers and cooks. Try village walks, cooking classes, coir making, toddy tapping demonstrations and farm stays.",
+  "tips": [
+    "Book through Responsible Tourism units so money stays local",
+    "Kumbalangi near Kochi is an easy half-day"
+  ],
+  "link": {
+    "href": "/responsible-travel",
+    "label": "Responsible travel"
+  },
+  "order": 4
+}
