@@ -191,7 +191,7 @@ input[type='date'], input[type='number'], input[type='search'], select {
 .imp-media figure { margin: 0; }
 
 /* Content photos with licence credit */
-.photo { margin: 0; position: relative; }
+.photo { margin: 0; position: relative; width: 100%; height: 100%; }
 .photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .photo figcaption { position: absolute; right: 0; bottom: 0; max-width: 100%; padding: 2px 8px; font-size: .68rem; line-height: 1.4; color: #fff; background: rgb(0 0 0 / .55); border-top-left-radius: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .photo figcaption a { color: #fff; }

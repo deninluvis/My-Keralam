@@ -10,7 +10,7 @@ const best = d.bestMonths.length >= 10 ? 'Most of the year' : `${monthsShort[d.b
 ---
 <a class="card dest" href={url(`/destinations/${d.slug}`)} data-cats={d.categories.join(' ')} data-region={d.region} data-name={d.name.toLowerCase()}>
   {d.images?.[0]
-    ? <div class={`thumb has-photo c-${cat}`}><Photo photo={d.images[0]} alt={d.name} /></div>
+    ? <div class={`thumb has-photo c-${cat}`}><Photo photo={d.images[0]} alt={d.name} link={false} /></div>
     : <div class={`thumb c-${cat}`}><Icon name={cat} /></div>}
   <div class="meta"><span class="tag">{cat}</span><span>{d.district}</span></div>
   <h3>{d.name}</h3>
