@@ -51,7 +51,7 @@ export const schemas = {
   experience: z.object({
     ...common, ...placeOptional,
     icon: z.string(), text: z.string(), tips: z.array(z.string()),
-    link: z.object({ href: z.string(), label: z.string() }),
+    link: z.object({ href: z.string().refine((s) => s.startsWith('https://') || /^\/(?!\/)/.test(s), 'must start with https:// or /'), label: z.string() }),
   }),
   itinerary: z.object({ ...common, ...placeOptional, who: z.string(), q: z.string(), days: z.array(day).min(1) }),
   stay: z.object({

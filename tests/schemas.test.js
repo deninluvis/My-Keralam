@@ -85,3 +85,11 @@ test('every docs example parses, one per type', async () => {
   });
   assert.deepEqual(types.sort(), [...TYPES].sort());
 });
+
+test('experience link must be https or a site path', () => {
+  const exp = (href) => ({ type: 'experience', slug: 'e', name: 'E', icon: 'food', text: 't', tips: [], link: { href, label: 'More' } });
+  assert.equal(parseEntry(exp('https://www.keralatourism.org/')).ok, true);
+  assert.equal(parseEntry(exp('/destinations/munnar')).ok, true);
+  assert.equal(parseEntry(exp('javascript:alert(1)')).ok, false);
+  assert.equal(parseEntry(exp('//evil.example')).ok, false);
+});
