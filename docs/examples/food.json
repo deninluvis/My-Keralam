@@ -11,7 +11,7 @@
     { "name": "Example Café (fictional)", "area": "Fort Kochi", "mapLink": "https://www.google.com/maps/search/?api=1&query=9.9658,76.2421", "website": "https://example.com/" },
     { "name": "Any busy tea stall", "area": "Statewide", "mapLink": "https://www.openstreetmap.org/#map=13/9.9658/76.2421" }
   ],
-  "images": [{ "url": "https://upload.wikimedia.org/example.jpg", "credit": "Your name", "license": "CC BY-SA 4.0" }],
+  "images": [{ "url": "https://upload.wikimedia.org/example.jpg", "credit": "Your name", "license": "CC BY-SA 4.0", "source": "https://commons.wikimedia.org/wiki/File:Example.jpg" }],
   "videos": ["https://www.youtube.com/watch?v=VIDEO_ID_HERE"],
   "author": "your-github-name"
 }

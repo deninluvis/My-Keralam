@@ -11,5 +11,13 @@
     "href": "/destinations/munnar",
     "label": "Munnar guide"
   },
-  "order": 3
+  "order": 3,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/Munnar_-_Tea_Plantations.jpg/960px-Munnar_-_Tea_Plantations.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Ingo Mehling",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Munnar_-_Tea_Plantations.jpg"
+    }
+  ]
 }

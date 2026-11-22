@@ -5,5 +5,13 @@
   "spice": 3,
   "veg": false,
   "desc": "Slow-roasted beef with coconut slivers, curry leaves and black pepper.",
-  "order": 9
+  "order": 9,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Beef_Fry%2C_%E0%B4%AC%E0%B5%80%E0%B4%AB%E0%B5%8D_%E0%B4%AB%E0%B5%8D%E0%B4%B0%E0%B5%88%2C_%E0%B4%AE%E0%B4%BE%E0%B4%9F%E0%B5%8D%E0%B4%9F%E0%B4%BF%E0%B4%B1%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%BF_%E0%B4%B5%E0%B4%B0%E0%B4%9F%E0%B5%8D%E0%B4%9F%E0%B4%BF%E0%B4%AF%E0%B4%A4%E0%B5%8D.jpg/960px-Beef_Fry%2C_%E0%B4%AC%E0%B5%80%E0%B4%AB%E0%B5%8D_%E0%B4%AB%E0%B5%8D%E0%B4%B0%E0%B5%88%2C_%E0%B4%AE%E0%B4%BE%E0%B4%9F%E0%B5%8D%E0%B4%9F%E0%B4%BF%E0%B4%B1%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%BF_%E0%B4%B5%E0%B4%B0%E0%B4%9F%E0%B5%8D%E0%B4%9F%E0%B4%BF%E0%B4%AF%E0%B4%A4%E0%B5%8D.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "കാക്കര",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Beef_Fry,_%E0%B4%AC%E0%B5%80%E0%B4%AB%E0%B5%8D_%E0%B4%AB%E0%B5%8D%E0%B4%B0%E0%B5%88,_%E0%B4%AE%E0%B4%BE%E0%B4%9F%E0%B5%8D%E0%B4%9F%E0%B4%BF%E0%B4%B1%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%BF_%E0%B4%B5%E0%B4%B0%E0%B4%9F%E0%B5%8D%E0%B4%9F%E0%B4%BF%E0%B4%AF%E0%B4%A4%E0%B5%8D.jpg"
+    }
+  ]
 }

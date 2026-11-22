@@ -27,5 +27,13 @@
     "Janardhana Swamy Temple (outside only for non-Hindus)"
   ],
   "base": "varkala",
-  "order": 12
+  "order": 12,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Varkala_Cliff_Beach_%28Kerala%2C_India%29.jpg/960px-Varkala_Cliff_Beach_%28Kerala%2C_India%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Pkukreti7",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Varkala_Cliff_Beach_(Kerala,_India).jpg"
+    }
+  ]
 }

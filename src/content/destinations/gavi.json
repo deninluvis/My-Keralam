@@ -27,5 +27,13 @@
     "Jungle drive from Vandiperiyar"
   ],
   "base": "thekkady",
-  "order": 20
+  "order": 20,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Gavi%2C_Kerala.jpg/960px-Gavi%2C_Kerala.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Samson Joseph",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Gavi,_Kerala.jpg"
+    }
+  ]
 }

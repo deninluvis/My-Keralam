@@ -11,5 +11,13 @@
     "href": "/responsible-travel",
     "label": "Responsible travel"
   },
-  "order": 4
+  "order": 4,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a3/Kumbalangi2.JPG/960px-Kumbalangi2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Aruna at Malayalam Wikipedia",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Kumbalangi2.JPG"
+    }
+  ]
 }

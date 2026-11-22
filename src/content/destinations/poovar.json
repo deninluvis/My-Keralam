@@ -25,5 +25,13 @@
     "Boat ride through the estuary and mangroves"
   ],
   "base": "kovalam",
-  "order": 14
+  "order": 14,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Poovar_Kerala.jpg/960px-Poovar_Kerala.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Midhun Subhash",
+      "license": "CC0",
+      "source": "https://commons.wikimedia.org/wiki/File:Poovar_Kerala.jpg"
+    }
+  ]
 }

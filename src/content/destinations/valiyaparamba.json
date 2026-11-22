@@ -24,5 +24,13 @@
     "Day houseboat cruise"
   ],
   "base": "bekal",
-  "order": 33
+  "order": 33,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Kavvayi_Backwaters%2C_Payyannur_55.jpg/960px-Kavvayi_Backwaters%2C_Payyannur_55.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Manojk",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Kavvayi_Backwaters,_Payyannur_55.jpg"
+    }
+  ]
 }

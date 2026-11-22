@@ -8,5 +8,13 @@
   "where": "Punnamada Lake, Alappuzha",
   "note": "The best-known snake-boat race. Traditionally in August, but recent races moved later, so check the year's date before booking.",
   "link": "https://www.nehrutrophy.nic.in/",
-  "order": 1
+  "order": 1,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Nehru_Trophy_Boat_Race_2012_7791.JPG/960px-Nehru_Trophy_Boat_Race_2012_7791.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Manoj Karingamadathil",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Nehru_Trophy_Boat_Race_2012_7791.JPG"
+    }
+  ]
 }

@@ -1,0 +1,9 @@
+---
+// A content photo with the credit its licence asks for. `photo` is one entry from an `images` list.
+interface Props { photo: { url: string; credit: string; license: string; source?: string }; alt: string; class?: string }
+const { photo, alt, class: cls = '' } = Astro.props;
+---
+<figure class={`photo ${cls}`}>
+  <img src={photo.url} alt={alt} loading="lazy" decoding="async" />
+  <figcaption>Photo: {photo.credit} · {photo.source ? <a href={photo.source} rel="noopener">{photo.license}</a> : photo.license}</figcaption>
+</figure>

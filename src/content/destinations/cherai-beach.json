@@ -25,5 +25,13 @@
     "Cycle along the backwater side"
   ],
   "base": "kochi",
-  "order": 2
+  "order": 2,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/Cherai_Beach_Kerala.jpg/960px-Cherai_Beach_Kerala.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "TarakaPraveen Ede",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Cherai_Beach_Kerala.jpg"
+    }
+  ]
 }

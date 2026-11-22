@@ -12,5 +12,13 @@
     "href": "/destinations?type=wildlife",
     "label": "Wildlife destinations"
   },
-  "order": 5
+  "order": 5,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d0/Wild_Elephants_at_Thekkady_%28periyar_wild_life_sanctuary%29.jpg/960px-Wild_Elephants_at_Thekkady_%28periyar_wild_life_sanctuary%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "NKMathews",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Wild_Elephants_at_Thekkady_(periyar_wild_life_sanctuary).jpg"
+    }
+  ]
 }

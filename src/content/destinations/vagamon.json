@@ -29,5 +29,13 @@
     "Sunset at the meadows"
   ],
   "base": "vagamon",
-  "order": 10
+  "order": 10,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Vagamon_Medows.jpg/960px-Vagamon_Medows.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Vishnubonam",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Vagamon_Medows.jpg"
+    }
+  ]
 }

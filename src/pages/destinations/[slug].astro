@@ -1,4 +1,5 @@
 ---
+import Photo from '../../components/Photo.astro';
 import CommunityNote from '../../components/CommunityNote.astro';
 import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
@@ -19,7 +20,9 @@ const cat = d.categories[0];
 const regionName = { south: 'South Kerala', central: 'Central Kerala', north: 'North Kerala (Malabar)' }[d.region as 'south'];
 ---
 <Base title={d.name} description={d.summary}>
-  <div class={`dest-hero c-${cat}`}><div class="wrap"><Icon name={cat} /></div></div>
+  {d.images?.[0]
+    ? <div class={`dest-hero has-photo c-${cat}`}><Photo photo={d.images[0]} alt={d.name} /></div>
+    : <div class={`dest-hero c-${cat}`}><div class="wrap"><Icon name={cat} /></div></div>}
   <article class="wrap">
     <header class="page-head">
       <p class="eyebrow"><a href={url('/destinations')}>Destinations</a> · {regionName}</p>
@@ -57,6 +60,7 @@ const regionName = { south: 'South Kerala', central: 'Central Kerala', north: 'N
 </Base>
 <style>
   .dest-hero { height: 140px; color: #fff; display: flex; align-items: center; }
+  .dest-hero.has-photo { height: clamp(200px, 38vw, 380px); display: block; }
   .dest-hero :global(svg) { width: 64px; height: 64px; opacity: .9; }
   .facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
   @media (min-width: 760px) { .facts { grid-template-columns: repeat(4, 1fr); } }

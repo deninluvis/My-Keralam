@@ -5,5 +5,13 @@
   "spice": 2,
   "veg": false,
   "desc": "Pearl-spot fish marinated in spices and roasted in a banana leaf. A backwater classic.",
-  "order": 5
+  "order": 5,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/Karimeen_Pollichathu.jpg/960px-Karimeen_Pollichathu.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Anupama1002",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Karimeen_Pollichathu.jpg"
+    }
+  ]
 }

@@ -13,5 +13,13 @@
   "where": "Kannur and Kasaragod",
   "note": "Ritual performances in village shrines, often through the night. Use the official Theyyam calendar to find dates.",
   "link": "https://www.keralatourism.org/theyyamcalendar/",
-  "order": 4
+  "order": 4,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Theyyam_of_Kerala_3.jpg/960px-Theyyam_of_Kerala_3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Shagil Kannur",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Theyyam_of_Kerala_3.jpg"
+    }
+  ]
 }

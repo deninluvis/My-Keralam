@@ -25,5 +25,13 @@
     "Ayurveda massage at a resort"
   ],
   "base": "alappuzha",
-  "order": 5
+  "order": 5,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Traveller_Rudolph_Furtado_at_scenic_Marari_Beach.jpg/960px-Traveller_Rudolph_Furtado_at_scenic_Marari_Beach.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Rudolph.A.furtado",
+      "license": "CC BY 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Traveller_Rudolph_Furtado_at_scenic_Marari_Beach.jpg"
+    }
+  ]
 }

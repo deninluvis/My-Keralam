@@ -12,7 +12,7 @@ const days = (ds) => (ds?.length ? `<ol class="small">${ds.map((d) => `<li><stro
 
 function media(e) {
   const imgs = (e.images || []).filter((i) => safe(i.url))
-    .map((i) => `<figure><img src="${safe(i.url)}" alt="" loading="lazy" /><figcaption class="small muted">${esc(i.credit)} · ${esc(i.license)}</figcaption></figure>`);
+    .map((i) => `<figure><img src="${safe(i.url)}" alt="" loading="lazy" /><figcaption class="small muted">Photo: ${esc(i.credit)} · ${safe(i.source) ? `<a href="${safe(i.source)}" rel="noopener">${esc(i.license)}</a>` : esc(i.license)}</figcaption></figure>`);
   const vids = (e.videos || []).map(youtubeId).filter(Boolean)
     .map((id) => `<iframe src="https://www.youtube-nocookie.com/embed/${esc(id)}" title="Video: ${esc(e.name)}" loading="lazy" allowfullscreen></iframe>`);
   return imgs.length || vids.length ? `<div class="imp-media">${imgs.join('')}${vids.join('')}</div>` : '';

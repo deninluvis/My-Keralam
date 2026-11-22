@@ -5,5 +5,13 @@
   "spice": 1,
   "veg": true,
   "desc": "Steamed rice-noodle nests, usually with egg curry or stew.",
-  "order": 3
+  "order": 3,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8a/Idiyappam_with_Egg_Masala_Curry.jpg/960px-Idiyappam_with_Egg_Masala_Curry.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Viewfinder18",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Idiyappam_with_Egg_Masala_Curry.jpg"
+    }
+  ]
 }

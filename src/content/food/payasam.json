@@ -5,5 +5,13 @@
   "spice": 0,
   "veg": true,
   "desc": "Sweet milk or jaggery pudding that ends a Sadya.",
-  "order": 16
+  "order": 16,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Palada_Payasam-Aluva-Kerala-IMG_20210321_144103.jpg/960px-Palada_Payasam-Aluva-Kerala-IMG_20210321_144103.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Ranjithsiji",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Palada_Payasam-Aluva-Kerala-IMG_20210321_144103.jpg"
+    }
+  ]
 }

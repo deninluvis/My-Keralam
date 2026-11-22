@@ -27,7 +27,7 @@ const common = {
   bestMonths: z.array(month).min(1),
   why: z.string().optional(),
   streetView: https.refine((s) => new URL(s).hostname.includes('google.'), 'must be a Google Maps link').optional(),
-  images: z.array(z.object({ url: https, credit: z.string().min(1), license: z.string().min(1) })).optional(),
+  images: z.array(z.object({ url: https, credit: z.string().min(1), license: z.string().min(1), source: https.optional() })).optional(),
   videos: z.array(https.refine((s) => youtubeId(s) !== null, 'must be a YouTube link')).optional(),
   officialLink: https.optional(),
   author: z.string().optional(),

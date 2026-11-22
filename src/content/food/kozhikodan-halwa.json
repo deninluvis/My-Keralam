@@ -5,5 +5,13 @@
   "spice": 0,
   "veg": true,
   "desc": "Chewy, colourful halwa from Kozhikode's SM Street.",
-  "order": 17
+  "order": 17,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Halwa_at_Mitayi_street_clt.jpg/960px-Halwa_at_Mitayi_street_clt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Fotokannan",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Halwa_at_Mitayi_street_clt.jpg"
+    }
+  ]
 }

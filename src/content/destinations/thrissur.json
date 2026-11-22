@@ -27,5 +27,13 @@
     "Kerala Kalamandalam arts school nearby"
   ],
   "base": "thrissur",
-  "order": 21
+  "order": 21,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e3/Athirappalli_Waterfalls%2C_Thrissur%2C_Kerala.jpg/960px-Athirappalli_Waterfalls%2C_Thrissur%2C_Kerala.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Pranchiyettan",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Athirappalli_Waterfalls,_Thrissur,_Kerala.jpg"
+    }
+  ]
 }

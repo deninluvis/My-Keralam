@@ -25,5 +25,13 @@
     "Adventure activities at the base"
   ],
   "base": "varkala",
-  "order": 18
+  "order": 18,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d2/Jatayu_Earth%27s_Center_Nature_Park.jpg/960px-Jatayu_Earth%27s_Center_Nature_Park.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "PRITAMDUTTA20",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Jatayu_Earth%27s_Center_Nature_Park.jpg"
+    }
+  ]
 }

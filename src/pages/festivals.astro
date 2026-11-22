@@ -1,4 +1,5 @@
 ---
+import Photo from '../components/Photo.astro';
 import CommunityNote from '../components/CommunityNote.astro';
 import ImportedSection from '../components/ImportedSection.astro';
 import Base from '../layouts/Base.astro';
@@ -38,6 +39,7 @@ const short = months.map((m) => m.name.slice(0, 3));
     <div class="grid three" id="fest-cards" style="margin-top:16px">
       {festivals.map((f) => (
         <div class={`card${f.name.startsWith('Theyyam') ? ' hl' : ''}`} data-months={f.months.join(',')}>
+          {f.images?.[0] && <div class="thumb has-photo"><Photo photo={f.images[0]} alt={f.name} /></div>}
           <h3><a href={f.link ?? CAL} rel="noopener">{f.name}</a></h3>
           <p class="meta"><span>{f.months.map((m) => short[m - 1]).join(', ')}</span><span>{f.where}</span></p>
           <p class="small">{f.note}</p>

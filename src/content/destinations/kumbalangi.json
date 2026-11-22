@@ -27,5 +27,13 @@
     "Village lunch with a local family"
   ],
   "base": "kochi",
-  "order": 1
+  "order": 1,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Kumbalangi_ChineseNets.JPG/960px-Kumbalangi_ChineseNets.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Aruna at Malayalam Wikipedia",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Kumbalangi_ChineseNets.JPG"
+    }
+  ]
 }

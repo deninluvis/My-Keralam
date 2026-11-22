@@ -25,5 +25,13 @@
     "Nehru Trophy Boat Race in August–September"
   ],
   "base": "alappuzha",
-  "order": 4
+  "order": 4,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Alleppey_Boat_houses.jpg/960px-Alleppey_Boat_houses.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Mohanrangaphotography",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Alleppey_Boat_houses.jpg"
+    }
+  ]
 }

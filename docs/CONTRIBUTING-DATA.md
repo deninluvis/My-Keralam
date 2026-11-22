@@ -55,7 +55,7 @@ Fields marked * are required.
 ## Rules
 
 - **Links:** every URL must start with `https://`.
-- **Images:** link to images you took or that have an open licence (e.g. Wikimedia Commons). Fill in `credit` and `license`. Don't copy photos from official or commercial sites.
+- **Images:** link to images you took or that have an open licence (e.g. Wikimedia Commons). Fill in `credit` and `license`, and `source` (the photo's page, e.g. its Commons file page) so the licence credit links to it. The first image is shown on the card. Don't copy photos from official or commercial sites.
 - **Videos:** YouTube links only. They play through YouTube's privacy-enhanced mode.
 - **Street View:** paste a Google Maps link.
 - **Facts:** write in your own words. Don't copy text from official websites; link to them instead.

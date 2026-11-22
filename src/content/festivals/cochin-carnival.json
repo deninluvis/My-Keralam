@@ -7,5 +7,13 @@
   ],
   "where": "Fort Kochi",
   "note": "Street celebrations in the last days of December, ending on New Year's Eve.",
-  "order": 7
+  "order": 7,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Thoppumpady_harbour_bridge.jpg/960px-Thoppumpady_harbour_bridge.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "The good old karma vibes",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Thoppumpady_harbour_bridge.jpg"
+    }
+  ]
 }

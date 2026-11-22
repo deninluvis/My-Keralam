@@ -26,5 +26,13 @@
     "Day trip to Poovar estuary"
   ],
   "base": "kovalam",
-  "order": 13
+  "order": 13,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Kovalam_beach_trivandrum_kerala.jpg/960px-Kovalam_beach_trivandrum_kerala.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Georgeumartin",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Kovalam_beach_trivandrum_kerala.jpg"
+    }
+  ]
 }

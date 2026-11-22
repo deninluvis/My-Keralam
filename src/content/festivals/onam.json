@@ -8,5 +8,13 @@
   "where": "Statewide",
   "note": "Harvest festival: Sadya feasts, flower carpets (pookalam), boat races and dances. Dates follow the Malayalam calendar (month of Chingam).",
   "link": "https://www.keralatourism.org/onam/",
-  "order": 0
+  "order": 0,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Onam_Thriuvathira_Dance.jpg/960px-Onam_Thriuvathira_Dance.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "S y a m S u b r a m a n i a n",
+      "license": "CC BY-SA 2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Onam_Thriuvathira_Dance.jpg"
+    }
+  ]
 }

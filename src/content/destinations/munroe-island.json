@@ -26,5 +26,13 @@
     "Coir-making and village visits"
   ],
   "base": "varkala",
-  "order": 17
+  "order": 17,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/House_Canal_Munroe_Island_Kerala_Mar22_A7C_01448.jpg/960px-House_Canal_Munroe_Island_Kerala_Mar22_A7C_01448.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "This Photo was taken by Timothy A. Gonsalves. Feel free to use my photos, but pl",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:House_Canal_Munroe_Island_Kerala_Mar22_A7C_01448.jpg"
+    }
+  ]
 }

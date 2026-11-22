@@ -11,5 +11,13 @@
     "href": "https://www.keralatourism.org/destination-wedding",
     "label": "Official wedding information"
   },
-  "order": 7
+  "order": 7,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Kerala_Wedding_-_Ring_Exchange.jpg/960px-Kerala_Wedding_-_Ring_Exchange.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Jibukrajan",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Kerala_Wedding_-_Ring_Exchange.jpg"
+    }
+  ]
 }

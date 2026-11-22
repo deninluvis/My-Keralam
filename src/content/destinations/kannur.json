@@ -27,5 +27,13 @@
     "Handloom weaving cooperatives"
   ],
   "base": "kannur",
-  "order": 30
+  "order": 30,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Theyyam_of_Kerala_by_Shagil_Kannur_2024_%2830%29.jpg/960px-Theyyam_of_Kerala_by_Shagil_Kannur_2024_%2830%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Shagil Kannur",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Theyyam_of_Kerala_by_Shagil_Kannur_2024_(30).jpg"
+    }
+  ]
 }

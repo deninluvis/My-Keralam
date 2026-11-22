@@ -5,5 +5,13 @@
   "spice": 2,
   "veg": true,
   "desc": "Crisp fermented rice-lentil crepes with lentil-vegetable stew and chutneys.",
-  "order": 4
+  "order": 4,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Masala_Dosa_with_Sambar_and_Chutney.jpg/960px-Masala_Dosa_with_Sambar_and_Chutney.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Vanshiikaa",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Masala_Dosa_with_Sambar_and_Chutney.jpg"
+    }
+  ]
 }

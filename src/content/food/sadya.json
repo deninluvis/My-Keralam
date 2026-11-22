@@ -5,5 +5,13 @@
   "spice": 1,
   "veg": true,
   "desc": "A vegetarian feast of up to 28 dishes on a banana leaf, eaten with the right hand. Served at Onam, weddings and some restaurants at lunchtime.",
-  "order": 0
+  "order": 0,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Onam_Special_Kerala_Sadya....JPG/960px-Onam_Special_Kerala_Sadya....JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Anila Sudish",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Onam_Special_Kerala_Sadya....JPG"
+    }
+  ]
 }

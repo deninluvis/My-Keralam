@@ -1,4 +1,5 @@
 ---
+import Photo from '../components/Photo.astro';
 import CommunityNote from '../components/CommunityNote.astro';
 import ImportedSection from '../components/ImportedSection.astro';
 import Base from '../layouts/Base.astro';
@@ -19,6 +20,7 @@ const href = (h: string) => (h.startsWith('http') ? h : url(h));
       <section class="card exp" id={i.slug}>
         <span class="exp-icon"><Icon name={i.icon} /></span>
         <div>
+          {i.images?.[0] && <Photo photo={i.images[0]} alt={i.name} class="exp-photo" />}
           <h2>{i.name}</h2>
           <p>{i.text}</p>
           <ul class="small">{i.tips.map((t) => <li>{t}</li>)}</ul>
@@ -34,6 +36,7 @@ const href = (h: string) => (h.startsWith('http') ? h : url(h));
   .exp { display: grid; gap: 16px; scroll-margin-top: 80px; }
   @media (min-width: 700px) { .exp { grid-template-columns: 64px 1fr; } }
   .exp h2 { margin-top: 0; }
+  .exp :global(.exp-photo) { height: 220px; border-radius: 10px; overflow: hidden; margin-bottom: 14px; }
   .exp-icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 14px; background: var(--ok-soft); color: var(--green); }
   .exp-icon :global(svg) { width: 30px; height: 30px; }
 </style>

@@ -5,5 +5,13 @@
   "spice": 2,
   "veg": false,
   "desc": "Fish simmered in coconut milk with raw mango.",
-  "order": 6
+  "order": 6,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Alappy_Fish_Curry.JPG/960px-Alappy_Fish_Curry.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Amalsatheesha",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Alappy_Fish_Curry.JPG"
+    }
+  ]
 }

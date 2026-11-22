@@ -26,5 +26,13 @@
     "Dharmadam Island at low tide"
   ],
   "base": "kannur",
-  "order": 31
+  "order": 31,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Muzhappilangad_Drive-in_Beach_2.jpg/960px-Muzhappilangad_Drive-in_Beach_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Shagil Kannur",
+      "license": "CC BY 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Muzhappilangad_Drive-in_Beach_2.jpg"
+    }
+  ]
 }

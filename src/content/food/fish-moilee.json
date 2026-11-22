@@ -5,5 +5,13 @@
   "spice": 1,
   "veg": false,
   "desc": "A mild, creamy coconut-milk fish curry with Portuguese influence.",
-  "order": 7
+  "order": 7,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/42/Fish_Moilee_Kerala_Style.JPG/960px-Fish_Moilee_Kerala_Style.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Drsoumyadeepb",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Fish_Moilee_Kerala_Style.JPG"
+    }
+  ]
 }

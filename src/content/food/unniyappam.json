@@ -5,5 +5,13 @@
   "spice": 0,
   "veg": true,
   "desc": "Small fried rice-jaggery-banana dumplings.",
-  "order": 15
+  "order": 15,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4e/Unniyappam_-_Karayappam_-_Kuzhiyappam.jpg/960px-Unniyappam_-_Karayappam_-_Kuzhiyappam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Mullookkaaran",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Unniyappam_-_Karayappam_-_Kuzhiyappam.jpg"
+    }
+  ]
 }

@@ -9,5 +9,13 @@
   "where": "Sabarimala, Pathanamthitta",
   "note": "Mandala–Makaravilakku season from mid-November to mid-January. Expect heavy traffic on routes to the hills.",
   "link": "https://sabarimala.kerala.gov.in/",
-  "order": 5
+  "order": 5,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3a/Sabarimala_pilgrimage_center.jpg/960px-Sabarimala_pilgrimage_center.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Sunilc087",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Sabarimala_pilgrimage_center.jpg"
+    }
+  ]
 }

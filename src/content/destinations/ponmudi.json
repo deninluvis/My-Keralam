@@ -26,5 +26,13 @@
     "Short walks and viewpoints"
   ],
   "base": "kovalam",
-  "order": 16
+  "order": 16,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Ponmudi_Reservoir_-_Dam_-_1.jpg/960px-Ponmudi_Reservoir_-_Dam_-_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Ingo Mehling",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Ponmudi_Reservoir_-_Dam_-_1.jpg"
+    }
+  ]
 }

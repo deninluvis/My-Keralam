@@ -1,4 +1,5 @@
 ---
+import Photo from '../components/Photo.astro';
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 import CommunityNote from '../components/CommunityNote.astro';
@@ -19,12 +20,12 @@ const spiceLabel = ['Not spicy', 'Mild', 'Medium', 'Hot'];
     <div class="grid three" id="dishes" style="margin-top:16px">
       {food.map((d) => (
         <div class="card dish" data-veg={String(d.veg)} data-spice={d.spice}>
+          {d.images?.[0] && <div class="thumb has-photo"><Photo photo={d.images[0]} alt={d.name} /></div>}
           <div class="meta"><span class="tag">{d.kind}</span>{d.veg ? <span class="tag veg">Vegetarian</span> : <span class="tag">Non-veg</span>}</div>
           <h3>{d.name}</h3>
           <p class="small">{d.desc}</p>
           <p class="small"><span class="spice" aria-hidden="true">{'●'.repeat(d.spice)}{'○'.repeat(3 - d.spice)}</span> {spiceLabel[d.spice]}</p>
           {d.why && <p class="small"><strong>Why try it:</strong> {d.why}</p>}
-          {d.images?.map((i) => <figure class="dish-img"><img src={i.url} alt={d.name} loading="lazy" /><figcaption class="small muted">{i.credit} · {i.license}</figcaption></figure>)}
           {d.places && d.places.length > 0 && (
             <div class="small"><strong>Where to try it:</strong>
               <ul>{d.places.map((p) => <li><a href={p.mapLink} rel="noopener nofollow">{p.name}</a>{p.area && <>, {p.area}</>}{p.website && <> · <a href={p.website} rel="noopener nofollow">website</a></>}</li>)}</ul>
@@ -56,7 +57,7 @@ const spiceLabel = ['Not spicy', 'Mild', 'Medium', 'Hot'];
     </div>
   </div>
 </Base>
-<style>.dish-img { margin: 8px 0; } .dish-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 8px; } .tag.veg { background: var(--ok-soft); color: var(--green); } .spice { color: #c0392b; }</style>
+<style>.tag.veg { background: var(--ok-soft); color: var(--green); } .spice { color: #c0392b; }</style>
 <script>
   const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-f]')];
   const cards = [...document.querySelectorAll<HTMLElement>('.dish')];

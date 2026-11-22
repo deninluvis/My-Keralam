@@ -5,5 +5,13 @@
   "spice": 3,
   "veg": false,
   "desc": "Tangy and fiery, made with kudampuli (Malabar tamarind).",
-  "order": 8
+  "order": 8,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Meen_curry_%28fish_curry%29_from_Kerala%2C_traditionally_prepared_in_earthern_pot.jpg/960px-Meen_curry_%28fish_curry%29_from_Kerala%2C_traditionally_prepared_in_earthern_pot.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Sandra Sivanandan",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Meen_curry_(fish_curry)_from_Kerala,_traditionally_prepared_in_earthern_pot.jpg"
+    }
+  ]
 }

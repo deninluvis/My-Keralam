@@ -22,5 +22,13 @@
     "Expect very heavy traffic in the season"
   ],
   "base": null,
-  "order": 19
+  "order": 19,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b9/Shabarimala.JPG/960px-Shabarimala.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "AnjanaMenon at Malayalam Wikipedia",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Shabarimala.JPG"
+    }
+  ]
 }

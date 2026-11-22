@@ -7,5 +7,13 @@
   ],
   "where": "Thrissur",
   "note": "Caparisoned elephants, huge percussion ensembles and fireworks. Extremely crowded; book rooms months ahead.",
-  "order": 3
+  "order": 3,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/09/%E2%80%9CDazzling_Thrissur_Pooram_night_with_caparisoned_elephants_and_illuminated_temple%2C_Kerala%E2%80%9D.jpg/960px-%E2%80%9CDazzling_Thrissur_Pooram_night_with_caparisoned_elephants_and_illuminated_temple%2C_Kerala%E2%80%9D.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Stories By Anija Jalan",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:%E2%80%9CDazzling_Thrissur_Pooram_night_with_caparisoned_elephants_and_illuminated_temple,_Kerala%E2%80%9D.jpg"
+    }
+  ]
 }

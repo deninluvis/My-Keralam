@@ -5,5 +5,13 @@
   "spice": 0,
   "veg": true,
   "desc": "Thin plantain chips fried in coconut oil. Good to take home.",
-  "order": 14
+  "order": 14,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9e/Kerala_banana_chips_Upperi_varuthath.jpg/960px-Kerala_banana_chips_Upperi_varuthath.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Ramesh NG",
+      "license": "CC BY-SA 2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Kerala_banana_chips_Upperi_varuthath.jpg"
+    }
+  ]
 }

@@ -9,5 +9,13 @@
   ],
   "where": "Backwater venues across Kerala",
   "note": "A league of snake-boat races held on weekends. Check the official schedule for venues.",
-  "order": 2
+  "order": 2,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/de/Snake_boat_st.piusxth_pic3.jpg/960px-Snake_boat_st.piusxth_pic3.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Josephjose07",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Snake_boat_st.piusxth_pic3.jpg"
+    }
+  ]
 }

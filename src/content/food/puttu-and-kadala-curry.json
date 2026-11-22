@@ -5,5 +5,13 @@
   "spice": 2,
   "veg": true,
   "desc": "Steamed rice and coconut cylinders with black-chickpea curry.",
-  "order": 2
+  "order": 2,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/31/Coconut_puttu%2C_kadala_curry_and_steamed_banana.jpg/960px-Coconut_puttu%2C_kadala_curry_and_steamed_banana.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Deepak Kumaran",
+      "license": "CC BY 2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Coconut_puttu,_kadala_curry_and_steamed_banana.jpg"
+    }
+  ]
 }

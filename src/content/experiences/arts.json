@@ -12,5 +12,13 @@
     "href": "/festivals",
     "label": "Festival & Theyyam calendar"
   },
-  "order": 2
+  "order": 2,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e6/The_face_of_the_kathakali_performer.jpg/960px-The_face_of_the_kathakali_performer.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Evan Silver",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:The_face_of_the_kathakali_performer.jpg"
+    }
+  ]
 }

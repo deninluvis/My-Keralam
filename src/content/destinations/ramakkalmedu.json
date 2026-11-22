@@ -26,5 +26,13 @@
     "Stop on the Munnar–Thekkady drive"
   ],
   "base": "thekkady",
-  "order": 11
+  "order": 11,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4c/Statue_of_Kuruvan_%26_Kuruthi.jpg/960px-Statue_of_Kuruvan_%26_Kuruthi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Augustus Binu : flickr",
+      "license": "CC BY-SA 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Statue_of_Kuruvan_%26_Kuruthi.jpg"
+    }
+  ]
 }

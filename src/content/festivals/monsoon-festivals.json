@@ -9,5 +9,13 @@
   "where": "Statewide",
   "note": "Kerala Tourism runs monsoon-season events; also the traditional season for Ayurveda.",
   "link": "https://www.keralatourism.org/monsoon/",
-  "order": 12
+  "order": 12,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Arrival_of_Kerala_Monsoon_India.jpg/960px-Arrival_of_Kerala_Monsoon_India.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Vinoth Chandar from Chennai, India",
+      "license": "CC BY 2.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Arrival_of_Kerala_Monsoon_India.jpg"
+    }
+  ]
 }

@@ -28,5 +28,13 @@
     "Join the 'A Day with the Masters' programme (book ahead)"
   ],
   "base": "thrissur",
-  "order": 22
+  "order": 22,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/48/Koothambalam_at_Kerala_Kalamandalam.jpg/960px-Koothambalam_at_Kerala_Kalamandalam.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Arayilpdas at Malayalam Wikipedia",
+      "license": "CC BY 3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Koothambalam_at_Kerala_Kalamandalam.jpg"
+    }
+  ]
 }

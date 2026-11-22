@@ -5,5 +5,13 @@
   "spice": 1,
   "veg": true,
   "desc": "Dry stir-fry of finely chopped vegetables with grated coconut.",
-  "order": 12
+  "order": 12,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/Banana_stem_thoran_from_Kerala_DSC_4677.jpg/960px-Banana_stem_thoran_from_Kerala_DSC_4677.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Ranjithsiji",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Banana_stem_thoran_from_Kerala_DSC_4677.jpg"
+    }
+  ]
 }

@@ -26,5 +26,13 @@
     "Watchtower walk at Sairandhri"
   ],
   "base": null,
-  "order": 25
+  "order": 25,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Vanessa_indica-Silent_Valley-2016-08-14-001.jpg/960px-Vanessa_indica-Silent_Valley-2016-08-14-001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Jeevan Jose, Kerala, India",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Vanessa_indica-Silent_Valley-2016-08-14-001.jpg"
+    }
+  ]
 }

@@ -5,5 +5,13 @@
   "spice": 1,
   "veg": false,
   "desc": "Lacy rice pancakes with a mild coconut-milk stew (vegetable, chicken or mutton).",
-  "order": 1
+  "order": 1,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e4/Aapam-Stew.jpg/960px-Aapam-Stew.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Triv.rao",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Aapam-Stew.jpg"
+    }
+  ]
 }

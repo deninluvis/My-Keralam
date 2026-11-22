@@ -26,5 +26,13 @@
     "Valiyaparamba backwaters by boat"
   ],
   "base": "bekal",
-  "order": 32
+  "order": 32,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/35/Bekal_Fort_Kerala_2026.jpg/960px-Bekal_Fort_Kerala_2026.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Prathvi Acharya",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Bekal_Fort_Kerala_2026.jpg"
+    }
+  ]
 }

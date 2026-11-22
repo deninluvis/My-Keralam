@@ -24,5 +24,13 @@
     "Look for Malabar grey hornbills and frogmouths"
   ],
   "base": "kochi",
-  "order": 3
+  "order": 3,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Blue-throated_Blue_Flycatcher%2C_Thattekad%2C_Vimal_Rajyaguru%2C_01.jpg/960px-Blue-throated_Blue_Flycatcher%2C_Thattekad%2C_Vimal_Rajyaguru%2C_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Vimal Rajyaguru",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Blue-throated_Blue_Flycatcher,_Thattekad,_Vimal_Rajyaguru,_01.jpg"
+    }
+  ]
 }

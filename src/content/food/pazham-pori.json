@@ -5,5 +5,13 @@
   "spice": 0,
   "veg": true,
   "desc": "Ripe plantain fritters, the classic tea-time snack.",
-  "order": 13
+  "order": 13,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Pazham_pori_with_beef_roast.jpg/960px-Pazham_pori_with_beef_roast.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Aiwin Soji",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Pazham_pori_with_beef_roast.jpg"
+    }
+  ]
 }

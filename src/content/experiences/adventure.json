@@ -12,5 +12,13 @@
     "href": "/destinations?type=hills",
     "label": "Hill destinations"
   },
-  "order": 6
+  "order": 6,
+  "images": [
+    {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/En_Ooru_-_Chembra_Peak_View.jpg/960px-En_Ooru_-_Chembra_Peak_View.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "credit": "Ingo Mehling",
+      "license": "CC BY-SA 4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:En_Ooru_-_Chembra_Peak_View.jpg"
+    }
+  ]
 }
