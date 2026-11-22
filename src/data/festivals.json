@@ -1,15 +1,15 @@
 [
-  {"name":"Onam","months":[8,9],"where":"Statewide","note":"Harvest festival: Sadya feasts, flower carpets (pookalam), boat races and dances. Dates follow the Malayalam calendar (month of Chingam)."},
-  {"name":"Nehru Trophy Boat Race","months":[8,9],"where":"Punnamada Lake, Alappuzha","note":"The best-known snake-boat race. Traditionally in August, but recent races moved later, so check the year's date before booking."},
+  {"name":"Onam","months":[8,9],"where":"Statewide","note":"Harvest festival: Sadya feasts, flower carpets (pookalam), boat races and dances. Dates follow the Malayalam calendar (month of Chingam).","link":"https://www.keralatourism.org/onam/"},
+  {"name":"Nehru Trophy Boat Race","months":[8,9],"where":"Punnamada Lake, Alappuzha","note":"The best-known snake-boat race. Traditionally in August, but recent races moved later, so check the year's date before booking.","link":"https://www.nehrutrophy.nic.in/"},
   {"name":"Champions Boat League","months":[9,10,11,12],"where":"Backwater venues across Kerala","note":"A league of snake-boat races held on weekends. Check the official schedule for venues."},
   {"name":"Thrissur Pooram","months":[4,5],"where":"Thrissur","note":"Caparisoned elephants, huge percussion ensembles and fireworks. Extremely crowded; book rooms months ahead."},
-  {"name":"Theyyam season","months":[11,12,1,2,3,4,5],"where":"Kannur and Kasaragod","note":"Ritual performances in village shrines, often through the night. Use the official Theyyam calendar to find dates."},
-  {"name":"Sabarimala pilgrimage season","months":[11,12,1],"where":"Sabarimala, Pathanamthitta","note":"Mandala–Makaravilakku season from mid-November to mid-January. Expect heavy traffic on routes to the hills."},
-  {"name":"Vishu","months":[4],"where":"Statewide","note":"Malayalam new year in mid-April, with the Vishukkani display and fireworks."},
+  {"name":"Theyyam season","months":[11,12,1,2,3,4,5],"where":"Kannur and Kasaragod","note":"Ritual performances in village shrines, often through the night. Use the official Theyyam calendar to find dates.","link":"https://www.keralatourism.org/theyyamcalendar/"},
+  {"name":"Sabarimala pilgrimage season","months":[11,12,1],"where":"Sabarimala, Pathanamthitta","note":"Mandala–Makaravilakku season from mid-November to mid-January. Expect heavy traffic on routes to the hills.","link":"https://sabarimala.kerala.gov.in/"},
+  {"name":"Vishu","months":[4],"where":"Statewide","note":"Malayalam new year in mid-April, with the Vishukkani display and fireworks.","link":"https://www.keralatourism.org/vishu/"},
   {"name":"Cochin Carnival","months":[12,1],"where":"Fort Kochi","note":"Street celebrations in the last days of December, ending on New Year's Eve."},
   {"name":"Christmas","months":[12],"where":"Statewide, especially Kochi","note":"Kerala has a large Christian community; churches and streets are lit up."},
-  {"name":"Kochi-Muziris Biennale","months":[12,1,2,3],"where":"Fort Kochi","note":"Contemporary art festival held every two years. Check whether your trip falls in a Biennale year."},
+  {"name":"Kochi-Muziris Biennale","months":[12,1,2,3],"where":"Fort Kochi","note":"Contemporary art festival held every two years. Check whether your trip falls in a Biennale year.","link":"https://www.kochimuzirisbiennale.org/"},
   {"name":"Attukal Pongala","months":[2,3],"where":"Thiruvananthapuram","note":"Huge gathering of women cooking offerings on the city streets."},
   {"name":"Aranmula Boat Race","months":[8,9],"where":"Aranmula, Pathanamthitta","note":"A ritual snake-boat procession during Onam season."},
-  {"name":"Monsoon festivals","months":[6,7,8],"where":"Statewide","note":"Kerala Tourism runs monsoon-season events; also the traditional season for Ayurveda."}
+  {"name":"Monsoon festivals","months":[6,7,8],"where":"Statewide","note":"Kerala Tourism runs monsoon-season events; also the traditional season for Ayurveda.","link":"https://www.keralatourism.org/monsoon/"}
 ]

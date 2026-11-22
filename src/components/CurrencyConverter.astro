@@ -1,6 +1,7 @@
 ---
 import meta from '../data/meta.json';
 const codes = Object.keys(meta.rates);
+const updated = new Date(meta.ratesUpdated).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 ---
 <div class="card converter">
   <h3>Rupee converter</h3>
@@ -15,7 +16,7 @@ const codes = Object.keys(meta.rates);
     </div>
   </div>
   <p class="cc-out" aria-live="polite"><strong id="cc-res">—</strong></p>
-  <p class="small muted">{meta.ratesNote}</p>
+  <p class="small muted"><strong>Fixed rates, last updated {updated}. Not live:</strong> check your bank or a live rate before paying.</p>
 </div>
 <style>
   .conv-row { display: grid; grid-template-columns: 1.3fr 1fr; gap: 10px; }

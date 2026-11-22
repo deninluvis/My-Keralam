@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 import festivals from '../data/festivals.json';
 import months from '../data/months.json';
+const CAL = 'https://www.keralatourism.org/event-calendar/';
 const short = months.map((m) => m.name.slice(0, 3));
 ---
 <Base title="Festivals & Events" description="Kerala festival calendar: Onam, boat races, Thrissur Pooram, Theyyam season, Christmas and more, month by month.">
@@ -18,7 +19,7 @@ const short = months.map((m) => m.name.slice(0, 3));
         <tbody>
           {festivals.map((f) => (
             <tr class={f.name.startsWith('Theyyam') ? 'theyyam' : ''}>
-              <th scope="row">{f.name}</th>
+              <th scope="row"><a href={f.link ?? CAL} rel="noopener">{f.name}</a></th>
               {months.map((m) => <td class={f.months.includes(m.m) ? 'on' : ''}><span class="sr-only">{f.months.includes(m.m) ? 'yes' : ''}</span></td>)}
             </tr>
           ))}
@@ -33,7 +34,7 @@ const short = months.map((m) => m.name.slice(0, 3));
     <div class="grid three" id="fest-cards" style="margin-top:16px">
       {festivals.map((f) => (
         <div class={`card${f.name.startsWith('Theyyam') ? ' hl' : ''}`} data-months={f.months.join(',')}>
-          <h3>{f.name}</h3>
+          <h3><a href={f.link ?? CAL} rel="noopener">{f.name}</a></h3>
           <p class="meta"><span>{f.months.map((m) => short[m - 1]).join(', ')}</span><span>{f.where}</span></p>
           <p class="small">{f.note}</p>
         </div>

@@ -15,7 +15,8 @@ const groups = [
   { label: 'Explore', links: [['/destinations', 'Destinations'], ['/experiences', 'Experiences'], ['/festivals', 'Festivals & events'], ['/food', 'Food guide']] },
   { label: 'Prepare', links: [['/before-you-go', 'Visa & before you go'], ['/when-to-go', 'When to go'], ['/getting-around', 'Getting there & around'], ['/money', 'Money & practical'], ['/etiquette', 'Culture & etiquette'], ['/responsible-travel', 'Responsible travel'], ['/faq', 'FAQ & official links']] },
 ];
-const verified = new Date(meta.lastVerified).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+const dz = meta.disclaimer.split('keralatourism.org');
+const verified = new Date(meta.lastVerified).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 ---
 <!doctype html>
 <html lang="en">
@@ -65,7 +66,7 @@ const verified = new Date(meta.lastVerified).toLocaleDateString('en-GB', { day: 
     <div class="wrap cols">
       <div>
         <h3>{meta.siteName}</h3>
-        <p>An independent planning guide for visitors to Kerala (Keralam), India. Not affiliated with the Government of Kerala. Rules, fees and dates change; always confirm with the official sources linked on each page.</p>
+        <p>{dz[0]}<a href="https://www.keralatourism.org/" rel="noopener">keralatourism.org</a>{dz[1]}</p>
         <p class="verified">Content last checked: {verified}</p>
       </div>
       <div>
@@ -88,6 +89,12 @@ const verified = new Date(meta.lastVerified).toLocaleDateString('en-GB', { day: 
     </div>
   </footer>
 
+  <dialog id="disclaimer" class="disclaimer" aria-labelledby="dz-title">
+    <h2 id="dz-title">Before you start</h2>
+    <p>{dz[0]}<a href="https://www.keralatourism.org/" rel="noopener">keralatourism.org</a>{dz[1]}</p>
+    <form method="dialog"><button class="btn" autofocus>I understand</button></form>
+  </dialog>
+
   <nav class="bottom-bar" aria-label="Quick">
     <a href={url('/')} aria-current={cur('/')}><Icon name="home" />Home</a>
     <a href={url('/plan')} aria-current={cur('/plan')}><Icon name="plan" />Plan</a>
@@ -105,10 +112,24 @@ const verified = new Date(meta.lastVerified).toLocaleDateString('en-GB', { day: 
       root.dataset.theme = next;
       try { localStorage.setItem('theme', next); } catch (e) {}
     });
+    // Disclaimer: once per browser session (every time if storage is blocked).
+    const dz = document.getElementById('disclaimer') as HTMLDialogElement;
+    let seen = false;
+    try { seen = sessionStorage.getItem('disclaimerSeen') === '1'; } catch (e) {}
+    if (!seen) dz.showModal();
+    dz.addEventListener('close', () => { try { sessionStorage.setItem('disclaimerSeen', '1'); } catch (e) {} });
     // Close other open menus when one opens.
     document.querySelectorAll('.top-nav details').forEach((d) => d.addEventListener('toggle', () => {
       if (d.open) document.querySelectorAll('.top-nav details').forEach((o) => o !== d && (o.open = false));
     }));
+    // Mouse users: open menus on hover. Touch and keyboard keep click-to-open.
+    if (matchMedia('(hover: hover)').matches) {
+      document.querySelectorAll<HTMLDetailsElement>('.top-nav details').forEach((d) => {
+        let t: number | undefined;
+        d.addEventListener('mouseenter', () => { clearTimeout(t); d.open = true; });
+        d.addEventListener('mouseleave', () => { t = window.setTimeout(() => (d.open = false), 150); });
+      });
+    }
     document.addEventListener('click', (e) => {
       if (!(e.target as Element).closest('.top-nav')) document.querySelectorAll('.top-nav details').forEach((d) => (d.open = false));
     });
