@@ -1,0 +1,15 @@
+{
+  "type": "stay",
+  "slug": "example-homestay",
+  "name": "Example Homestay (fictional)",
+  "kind": "homestay",
+  "area": "Munnar",
+  "summary": "Three rooms in a family home on a tea estate.",
+  "why": "What guests like about it.",
+  "lat": 10.09,
+  "lng": 77.06,
+  "bestMonths": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+  "priceRange": "₹2,500–4,000 per night",
+  "website": "https://example.com/",
+  "author": "your-github-name"
+}

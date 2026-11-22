@@ -1,0 +1,11 @@
+{
+  "type": "experience",
+  "slug": "example-cooking-class",
+  "name": "Example Cooking Class (fictional)",
+  "icon": "food",
+  "text": "What the experience is, where it happens and how long it takes.",
+  "tips": ["Book a day ahead", "Vegetarian options available"],
+  "link": { "href": "https://www.keralatourism.org/", "label": "More information" },
+  "bestMonths": [10, 11, 12, 1, 2, 3],
+  "author": "your-github-name"
+}

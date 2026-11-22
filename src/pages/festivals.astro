@@ -1,4 +1,5 @@
 ---
+import ImportedSection from '../components/ImportedSection.astro';
 import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 import { all } from '../lib/content.js';
@@ -44,6 +45,7 @@ const short = months.map((m) => m.name.slice(0, 3));
     <div class="callout" style="margin-top:20px">
       <strong>Visiting a festival?</strong> Crowds are huge at Thrissur Pooram, Onam and the boat races. Book rooms months ahead, keep valuables close and follow local guidance near elephants and fireworks.
     </div>
+    <ImportedSection type="festival" />
   </div>
 </Base>
 <style>

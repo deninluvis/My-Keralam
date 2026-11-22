@@ -12,7 +12,7 @@ const cur = (p: string) => (here === url(p).replace(/\/$/, '') ? 'page' : undefi
 
 const groups = [
   { label: 'Plan', links: [['/plan', 'Plan My Trip'], ['/my-trip', 'My Trip'], ['/itineraries', 'Ready-made itineraries']] },
-  { label: 'Explore', links: [['/destinations', 'Destinations'], ['/experiences', 'Experiences'], ['/festivals', 'Festivals & events'], ['/food', 'Food guide']] },
+  { label: 'Explore', links: [['/destinations', 'Destinations'], ['/experiences', 'Experiences'], ['/festivals', 'Festivals & events'], ['/food', 'Food guide'], ['/contribute', 'Contribute']] },
   { label: 'Prepare', links: [['/before-you-go', 'Visa & before you go'], ['/when-to-go', 'When to go'], ['/getting-around', 'Getting there & around'], ['/money', 'Money & practical'], ['/etiquette', 'Culture & etiquette'], ['/responsible-travel', 'Responsible travel'], ['/faq', 'FAQ & official links']] },
 ];
 const dz = meta.disclaimer.split('keralatourism.org');
@@ -84,6 +84,7 @@ const verified = new Date(meta.lastVerified).toLocaleDateString('en-GB', { day: 
           <li><a href="https://www.keralatourism.org/" rel="noopener">Kerala Tourism</a></li>
           <li><a href="https://indianvisaonline.gov.in/evisa/" rel="noopener">India e-Visa portal</a></li>
           <li><a href={url('/faq')}>All official links</a></li>
+          <li><a href={url('/contribute')}>Contribute data</a></li>
         </ul>
       </div>
     </div>

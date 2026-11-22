@@ -182,3 +182,10 @@ input[type='date'], input[type='number'], input[type='search'], select {
 .disclaimer { max-width: min(520px, calc(100vw - 32px)); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--ink); padding: 24px; }
 .disclaimer::backdrop { background: rgb(0 0 0 / .55); }
 .disclaimer h2 { margin-top: 0; }
+
+/* Community entries imported in the browser */
+.imported-section { margin-top: 32px; }
+.imp h3 { margin: 8px 0 4px; }
+.imp-media { display: grid; gap: 8px; margin: 10px 0; }
+.imp-media img, .imp-media iframe { width: 100%; border: 0; border-radius: 8px; aspect-ratio: 16 / 9; object-fit: cover; }
+.imp-media figure { margin: 0; }

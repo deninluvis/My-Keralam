@@ -1,0 +1,81 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+const raw = import.meta.glob('../../docs/examples/*.json', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+const examples = Object.entries(raw).map(([p, text]) => ({ type: p.split('/').pop()!.replace('.json', ''), text }));
+const repo = 'https://github.com/deninluvis/My-Keralam';
+const guide = `${repo}/blob/claude/docs/CONTRIBUTING-DATA.md`;
+---
+<Base title="Contribute" description="Add destinations, festivals, experiences, itineraries, stays and traveller plans to Plan My Keralam with simple JSON files.">
+  <PageHead eyebrow="Community" title="Contribute" lead="Add places, festivals, experiences, itineraries, stays and traveller plans with a small .json file. Share it with everyone through GitHub, or load it just for yourself." />
+  <div class="wrap">
+    <div class="grid two">
+      <section class="card">
+        <h2 style="margin-top:0">Share with everyone</h2>
+        <p class="small">Add your file to the project on GitHub with a pull request. It goes live for every visitor after the site rebuilds. A file with a mistake stops the build, never the live site.</p>
+        <div class="btn-row">
+          <a class="btn small" href={guide} rel="noopener">Read the full guide</a>
+          <a class="btn small ghost" href={`${repo}/tree/claude/src/content`} rel="noopener">Open the content folders</a>
+        </div>
+      </section>
+      <section class="card">
+        <h2 style="margin-top:0">Just for you</h2>
+        <p class="small">Load a file in this browser. Its entries appear under <strong>Imported by you</strong> on the matching pages, and imported destinations can be picked in the planner.</p>
+        <div class="field">
+          <label for="file">Load JSON file</label>
+          <input id="file" type="file" accept=".json,application/json" />
+        </div>
+        <p class="callout small" style="margin:8px 0 0">Stored only in this browser on this device. Clearing your browser data deletes it.</p>
+        <div id="result" aria-live="polite"></div>
+      </section>
+    </div>
+
+    <h2>Imported by you</h2>
+    <p id="none" class="small muted">Nothing imported yet.</p>
+    <ul id="imported" class="imp-list"></ul>
+
+    <h2>Examples</h2>
+    <p class="small muted">Each file needs a <code>"type"</code>. Copy an example, change the values, and keep the field names. Field rules are in the <a href={guide} rel="noopener">full guide</a>.</p>
+    {examples.map((e) => (
+      <details class="card ex">
+        <summary>{e.type}</summary>
+        <pre><code>{e.text}</code></pre>
+      </details>
+    ))}
+  </div>
+</Base>
+<style>
+  .imp-list { list-style: none; padding: 0; display: grid; gap: 8px; }
+  .imp-list li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 14px; }
+  .ex { margin-bottom: 8px; }
+  .ex summary { cursor: pointer; font-weight: 600; }
+  .ex pre { overflow-x: auto; font-size: .8rem; margin: 12px 0 0; }
+</style>
+<script>
+  import { importText, listImported, removeImported } from '../lib/community.js';
+  import { TYPES } from '../lib/schemas.js';
+  import { esc } from '../lib/render.js';
+
+  const list = document.getElementById('imported')!;
+  const result = document.getElementById('result')!;
+
+  function show() {
+    const rows = TYPES.flatMap((t) => listImported(t).map((e: { slug: string; name: string }) => ({ t, e })));
+    document.getElementById('none')!.hidden = rows.length > 0;
+    list.innerHTML = rows.map(({ t, e }) => `<li class="card"><span><span class="tag">${esc(t)}</span> ${esc(e.name)}</span><button class="btn small ghost" type="button" data-t="${esc(t)}" data-s="${esc(e.slug)}">Delete</button></li>`).join('');
+  }
+  list.addEventListener('click', (ev) => {
+    const b = (ev.target as Element).closest('button');
+    if (b && confirm('Delete this imported entry?')) { removeImported(b.dataset.t!, b.dataset.s!); show(); }
+  });
+  document.getElementById('file')!.addEventListener('change', async (ev) => {
+    const input = ev.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) return;
+    const r = importText(await file.text());
+    result.innerHTML = `<p class="callout ${r.errors.length ? 'danger' : 'ok'} small">${r.added} entr${r.added === 1 ? 'y' : 'ies'} added.${r.errors.length ? `</p><ul class="small">${r.errors.map((e) => `<li>${esc(e)}</li>`).join('')}</ul>` : '</p>'}`;
+    input.value = '';
+    show();
+  });
+  show();
+</script>

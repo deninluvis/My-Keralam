@@ -74,3 +74,14 @@ test('every content file passes its schema', () => {
     }
   }
 });
+
+test('every docs example parses, one per type', async () => {
+  const { readdirSync, readFileSync } = await import('node:fs');
+  const dir = new URL('../docs/examples/', import.meta.url);
+  const types = readdirSync(dir).map((f) => {
+    const r = parseEntry(JSON.parse(readFileSync(new URL(f, dir), 'utf8')));
+    assert.equal(r.ok, true, `${f}: ${r.error}`);
+    return r.type;
+  });
+  assert.deepEqual(types.sort(), [...TYPES].sort());
+});

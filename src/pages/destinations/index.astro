@@ -1,4 +1,5 @@
 ---
+import ImportedSection from '../../components/ImportedSection.astro';
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import DestCard from '../../components/DestCard.astro';
@@ -34,6 +35,7 @@ const points = destinations.map((d) => ({ n: d.name, lat: d.lat, lng: d.lng, c: 
     <div id="map" class="map" hidden></div>
     <div class="grid three" id="list">{destinations.map((d) => <DestCard d={d} />)}</div>
     <p class="small muted" style="margin-top:20px">Photos coming soon. For official descriptions see <a href="https://www.keralatourism.org/destination/" rel="noopener">Kerala Tourism destinations</a>.</p>
+    <ImportedSection type="destination" />
   </div>
 </Base>
 <style>

@@ -1,0 +1,12 @@
+{
+  "type": "itinerary",
+  "slug": "example-5-day-hills",
+  "name": "5 days: example hills trip (fictional)",
+  "who": "Who this route suits",
+  "q": "days=5&interests=hills&pace=relaxed",
+  "days": [
+    { "d": "1–2", "place": "Kochi", "what": "Arrive, heritage walk" },
+    { "d": "3–5", "place": "Munnar", "what": "Tea estates and viewpoints" }
+  ],
+  "author": "your-github-name"
+}

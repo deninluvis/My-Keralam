@@ -1,0 +1,13 @@
+{
+  "type": "festival",
+  "slug": "example-village-festival",
+  "name": "Example Village Festival (fictional)",
+  "months": [3, 4],
+  "where": "A village near Thrissur",
+  "note": "One or two sentences: what happens and what a visitor should know.",
+  "why": "Why it is worth planning a trip around.",
+  "lat": 10.52,
+  "lng": 76.21,
+  "link": "https://www.keralatourism.org/event-calendar/",
+  "author": "your-github-name"
+}

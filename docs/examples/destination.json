@@ -1,0 +1,23 @@
+{
+  "type": "destination",
+  "slug": "example-viewpoint",
+  "name": "Example Viewpoint (fictional)",
+  "summary": "A made-up hilltop used to show the file format.",
+  "why": "Explain in a few sentences why a visitor should go: the view, the walk, what makes it special.",
+  "categories": ["hills"],
+  "region": "central",
+  "district": "Idukki",
+  "lat": 10.05,
+  "lng": 77.06,
+  "bestMonths": [9, 10, 11, 12, 1, 2, 3],
+  "days": "Half a day",
+  "airport": "Kochi (COK)",
+  "fromKochi": "4 h",
+  "todo": ["Sunrise walk to the top", "Tea at the estate café"],
+  "base": "munnar",
+  "streetView": "https://www.google.com/maps/@10.05,77.06,3a,75y,90t/data=!3m1!1e1",
+  "images": [{ "url": "https://upload.wikimedia.org/example.jpg", "credit": "Your name", "license": "CC BY-SA 4.0" }],
+  "videos": ["https://www.youtube.com/watch?v=VIDEO_ID_HERE"],
+  "officialLink": "https://www.keralatourism.org/",
+  "author": "your-github-name"
+}
