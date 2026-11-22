@@ -12,7 +12,7 @@ An independent, mobile-first website that helps foreign visitors plan a trip to 
 npm install
 npm run dev
 ```
-Then open http://localhost:4321/My-Keralam/
+Then open http://localhost:4321/soul-of-keralam-Your-insider-pass-to-Kerala/
 
 ## Other commands
 | Command | What it does |

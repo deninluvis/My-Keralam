@@ -4,7 +4,7 @@ import Base from '../layouts/Base.astro';
 import PageHead from '../components/PageHead.astro';
 const raw = import.meta.glob('../../docs/examples/*.json', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
 const examples = Object.entries(raw).map(([p, text]) => ({ type: p.split('/').pop()!.replace('.json', ''), text }));
-const repo = 'https://github.com/deninluvis/My-Keralam';
+const repo = 'https://github.com/deninluvis/soul-of-keralam-Your-insider-pass-to-Kerala';
 const guide = `${repo}/blob/claude/docs/CONTRIBUTING-DATA.md`;
 ---
 <Base title="Contribute" description="Add destinations, festivals, experiences, food, itineraries, stays and traveller plans to Soul of Keralam with simple JSON files.">
