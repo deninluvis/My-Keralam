@@ -1,0 +1,39 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import journeys from '../data/journeys.json';
+import bases from '../data/bases.json';
+const name = (id: string) => bases.find((b) => b.id === id)?.name ?? id;
+const legs = Object.entries(journeys.legs).map(([k, v]) => { const [a, b] = k.split('|'); return { a: name(a), b: name(b), ...v }; })
+  .sort((x, y) => x.a.localeCompare(y.a) || x.b.localeCompare(y.b));
+---
+<Base title="Getting There & Around" description="Kerala airports, trains, buses, taxis, auto-rickshaws, ferries and journey times between the main destinations.">
+  <PageHead eyebrow="Prepare" title="Getting there & around" lead="Kerala is long and narrow: about 580 km (360 mi) from south to north. Distances look short on a map, but hill roads are slow." />
+  <div class="wrap">
+    <h2>Airports</h2>
+    <div class="grid two">
+      {Object.entries(journeys.airports).map(([code, a]) => <div class="card"><h3>{a.name}</h3><p class="small">{a.transfer}. {code === 'COK' ? 'The main international gateway, with the most flights.' : code === 'TRV' ? 'Best for Kovalam and Varkala.' : 'Handy for North Kerala (Malabar).'}</p></div>)}
+    </div>
+    <p class="small muted" style="margin-top:8px">Most long-haul travellers connect via the Gulf (Dubai, Doha, Abu Dhabi, Muscat), Singapore, Colombo or Indian hubs such as Mumbai, Delhi and Bengaluru.</p>
+
+    <h2>Ways to get around</h2>
+    <div class="grid three">
+      <div class="card"><h3>Car with driver</h3><p class="small">The most popular choice for visitors. Book through your hotel or a licensed agency. Agree the route, days, driver's food and stay, tolls and parking upfront.</p></div>
+      <div class="card"><h3>Trains</h3><p class="small">Cheap and comfortable along the coast (Trivandrum–Varkala–Kollam–Alappuzha–Ernakulam–Thrissur–Kozhikode–Kannur). Book on IRCTC. No trains reach Munnar, Thekkady or Wayanad.</p></div>
+      <div class="card"><h3>Buses</h3><p class="small">KSRTC state buses go everywhere and cost very little. Expect crowds and fast driving; good for short hops.</p></div>
+      <div class="card"><h3>Auto-rickshaws</h3><p class="small">For short trips in towns. Ask for the meter or agree the fare before you get in.</p></div>
+      <div class="card"><h3>App cabs</h3><p class="small">Ride-hailing apps work in Kochi, Trivandrum, Kozhikode and other big towns. Less reliable in hill areas.</p></div>
+      <div class="card"><h3>Boats & metro</h3><p class="small">Kochi Metro and Kochi Water Metro are clean and cheap. State (SWTD) ferries cross the backwaters for a few rupees.</p></div>
+    </div>
+    <div class="callout">Self-driving is possible with an International Driving Permit, but traffic, narrow hill roads and different road habits make a driver the easier choice for most visitors.</div>
+
+    <h2>Journey times</h2>
+    <p class="small muted">{journeys.note}</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>From</th><th>To</th><th>Time</th><th>Distance</th><th>How</th></tr></thead>
+        <tbody>{legs.map((l) => <tr><td>{l.a}</td><td>{l.b}</td><td>~{l.h} h</td><td>{l.km} km / {Math.round(l.km * 0.621)} mi</td><td class="small">{l.mode}</td></tr>)}</tbody>
+      </table>
+    </div>
+  </div>
+</Base>

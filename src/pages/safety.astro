@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import emergency from '../data/emergency.json';
+const primary = emergency.filter((e) => e.primary);
+const other = emergency.filter((e) => !e.primary);
+---
+<Base title="Safety & SOS" description="Emergency numbers for Kerala (tap to call), beach and monsoon safety, health and scam tips. Works offline.">
+  <PageHead eyebrow="Safety" title="Safety & SOS" lead="Tap a number to call. This page is saved on your phone after your first visit, so it works without internet." />
+  <div class="wrap">
+    <div class="sos-grid">
+      {primary.map((e) => <a class="sos-btn" href={`tel:${e.number}`}><span class="n">{e.display ?? e.number}</span><span>{e.label}</span></a>)}
+    </div>
+    <div class="table-wrap" style="margin-top:16px">
+      <table><tbody>{other.map((e) => <tr><td>{e.label}</td><td><a href={`tel:${e.number}`}><strong>{e.display ?? e.number}</strong></a></td></tr>)}</tbody></table>
+    </div>
+    <p class="small muted" style="margin-top:8px">Also save your embassy's emergency number and your travel insurer's 24-hour helpline.</p>
+
+    <h2>Beach safety</h2>
+    <div class="callout danger">Currents are strong, especially from June to September. People drown every year. Swim only where lifeguards are on duty, follow flag warnings and never swim after drinking.</div>
+
+    <h2>Monsoon & weather</h2>
+    <ul>
+      <li>From June to October, heavy rain can cause floods and landslides in the hills (Idukki, Wayanad).</li>
+      <li>Follow alerts from the <a href="https://sdma.kerala.gov.in/" rel="noopener">Kerala State Disaster Management Authority (KSDMA)</a> and local news. Orange and red alerts can close roads, waterfalls and treks.</li>
+      <li>Avoid night driving on hill roads in heavy rain and keep a flexible day in your plan.</li>
+    </ul>
+
+    <h2>Health</h2>
+    <div class="grid three">
+      <div class="card"><h3>Hospitals</h3><p class="small">Good private hospitals are found in Kochi, Trivandrum, Kozhikode and Thrissur. Rural areas have basic clinics only. Insurance is strongly advised.</p></div>
+      <div class="card"><h3>Mosquitoes</h3><p class="small">Dengue is present. Use repellent and cover up at dusk, especially after rain.</p></div>
+      <div class="card"><h3>Heat</h3><p class="small">Drink water often, rest at midday and use sunscreen. Heat exhaustion is common in March–May.</p></div>
+    </div>
+
+    <h2>Everyday safety</h2>
+    <div class="grid two">
+      <div class="card"><h3>General</h3><p class="small">Kerala is one of India's safer states for visitors. Normal precautions apply: watch your bag in crowds, use hotel safes and avoid isolated beaches at night.</p></div>
+      <div class="card"><h3>Women travelling alone</h3><p class="small">Many women travel solo in Kerala. Dress modestly, use registered taxis or app cabs at night, and trust your instincts. Women-only queues and seats are common on buses and trains.</p></div>
+      <div class="card"><h3>Common scams</h3><p class="small">Fake visa websites, unofficial "tourist offices", unmetered autos and commission-based shopping stops. Book through official or well-reviewed sources.</p></div>
+      <div class="card"><h3>Wildlife</h3><p class="small">Keep a safe distance from elephants, never feed monkeys and only enter forests with official guides.</p></div>
+    </div>
+  </div>
+</Base>
+<style>
+  .sos-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  @media (min-width: 700px) { .sos-grid { grid-template-columns: repeat(3, 1fr); } }
+  .sos-btn { display: grid; gap: 2px; padding: 18px 16px; border-radius: var(--radius); background: #b3261e; color: #fff; text-decoration: none; font-weight: 600; min-height: 96px; align-content: center; }
+  .sos-btn:hover { color: #fff; filter: brightness(1.1); }
+  .sos-btn .n { font-size: 2rem; line-height: 1.1; }
+</style>

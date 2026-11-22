@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import festivals from '../data/festivals.json';
+import months from '../data/months.json';
+const short = months.map((m) => m.name.slice(0, 3));
+---
+<Base title="Festivals & Events" description="Kerala festival calendar: Onam, boat races, Thrissur Pooram, Theyyam season, Christmas and more, month by month.">
+  <PageHead eyebrow="Explore" title="Festivals & events" lead="Many Kerala festivals follow the Malayalam and lunar calendars, so dates move every year. Use this to choose your months, then confirm exact dates on the official calendar." verified>
+    <p class="small"><a href="https://www.keralatourism.org/event-calendar/" rel="noopener">Official festival calendar</a> · <a href="https://www.keralatourism.org/theyyamcalendar/" rel="noopener">Official Theyyam calendar</a></p>
+  </PageHead>
+  <div class="wrap">
+    <h2>Year at a glance</h2>
+    <p class="small muted">Swipe sideways on small screens. Shaded months are when each festival usually happens.</p>
+    <div class="table-wrap">
+      <table class="gantt">
+        <thead><tr><th scope="col">Festival</th>{short.map((s) => <th scope="col">{s}</th>)}</tr></thead>
+        <tbody>
+          {festivals.map((f) => (
+            <tr class={f.name.startsWith('Theyyam') ? 'theyyam' : ''}>
+              <th scope="row">{f.name}</th>
+              {months.map((m) => <td class={f.months.includes(m.m) ? 'on' : ''}><span class="sr-only">{f.months.includes(m.m) ? 'yes' : ''}</span></td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Month by month</h2>
+    <div class="chips month-chips" role="group" aria-label="Choose a month">
+      {months.map((m) => <button class="chip" aria-pressed="false" data-m={m.m}>{m.name.slice(0, 3)}</button>)}
+    </div>
+    <div class="grid three" id="fest-cards" style="margin-top:16px">
+      {festivals.map((f) => (
+        <div class={`card${f.name.startsWith('Theyyam') ? ' hl' : ''}`} data-months={f.months.join(',')}>
+          <h3>{f.name}</h3>
+          <p class="meta"><span>{f.months.map((m) => short[m - 1]).join(', ')}</span><span>{f.where}</span></p>
+          <p class="small">{f.note}</p>
+        </div>
+      ))}
+    </div>
+    <div class="callout" style="margin-top:20px">
+      <strong>Visiting a festival?</strong> Crowds are huge at Thrissur Pooram, Onam and the boat races. Book rooms months ahead, keep valuables close and follow local guidance near elephants and fireworks.
+    </div>
+  </div>
+</Base>
+<style>
+  .gantt th[scope='row'] { white-space: nowrap; font-weight: 500; background: var(--surface); position: sticky; left: 0; }
+  .gantt td { padding: 0; min-width: 34px; border-left: 1px solid var(--line); }
+  .gantt td.on { background: var(--teal); }
+  .gantt tr.theyyam td.on { background: var(--gold); }
+  .gantt thead th { text-align: center; }
+  .hl { border: 2px solid var(--gold); }
+</style>
+<script>
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('.month-chips .chip')];
+  const cards = [...document.querySelectorAll<HTMLElement>('#fest-cards .card')];
+  function pick(m: number) {
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(Number(c.dataset.m) === m)));
+    cards.forEach((c) => (c.hidden = !c.dataset.months!.split(',').map(Number).includes(m)));
+  }
+  chips.forEach((c) => c.addEventListener('click', () => pick(Number(c.dataset.m))));
+  pick(new Date().getMonth() + 1);
+</script>

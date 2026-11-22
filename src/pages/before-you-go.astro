@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import visa from '../data/visa.json';
+import { url } from '../lib/url.js';
+---
+<Base title="Visa & Before You Go" description="How to get an Indian e-Tourist Visa for Kerala, step by step, plus health, insurance and packing advice.">
+  <PageHead eyebrow="Prepare" title="Visa & before you go" lead="Most visitors to Kerala need an Indian visa. For most nationalities the easiest option is the e-Tourist Visa, applied for online." verified>
+    <div class="toc">
+      <a class="chip" href="#types">Visa types</a><a class="chip" href="#steps">How to apply</a><a class="chip" href="#arrival">On arrival</a><a class="chip" href="#ayush">Ayurveda visa</a><a class="chip" href="#health">Health & insurance</a>
+    </div>
+  </PageHead>
+
+  <div class="wrap">
+    <div class="callout danger">
+      <strong>Use only the official portal:</strong> <a href={visa.portal} rel="noopener">indianvisaonline.gov.in/evisa</a>. Many lookalike websites charge large extra fees.
+    </div>
+
+    <h2 id="types">e-Tourist Visa types</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Type</th><th>Valid for</th><th>Entries</th><th>Typical fee</th></tr></thead>
+        <tbody>{visa.types.map((t) => <tr><td><strong>{t.name}</strong></td><td>{t.validity}</td><td>{t.entries}</td><td>{t.fee}</td></tr>)}</tbody>
+      </table>
+    </div>
+    <ul class="small" style="margin-top:12px">
+      <li>Fees depend on your nationality. Check the <a href={visa.feeTable} rel="noopener">official fee table (PDF)</a>.</li>
+      <li>On the 1-year and 5-year visas, the clock starts when the visa is <strong>granted</strong>, not when you travel.</li>
+      <li><strong>Limit per stay:</strong> on 1-year and 5-year visas, most nationalities can stay up to <strong>90 days at a time</strong>. Citizens of the USA, UK, Canada and Japan can stay up to <strong>180 days at a time</strong>. The total is limited to about 180 days per calendar year.</li>
+      <li>An e-Visa <strong>cannot be extended or converted</strong> once you are in India.</li>
+      <li>Pakistani nationals and people of Pakistani origin cannot use the e-Visa and must apply at an Indian mission.</li>
+    </ul>
+
+    <h2 id="steps">How to apply, step by step</h2>
+    <ol class="steps">
+      <li><strong>Check your passport.</strong> It must be valid for at least 6 months from arrival and have at least 2 blank pages.</li>
+      <li><strong>Prepare a photo and a passport scan.</strong> A recent colour photo on a white background (square format) and a scan of your passport's photo page.</li>
+      <li><strong>Apply on the official portal</strong> at least 4 days before you fly. Choose "e-Tourist Visa" and the duration you need.</li>
+      <li><strong>Pay the fee online</strong> by card. Note your application ID.</li>
+      <li><strong>Wait for the ETA</strong> (Electronic Travel Authorisation) by email, usually within a few days. Check its status on the portal.</li>
+      <li><strong>Print the ETA</strong> and carry it with your passport.</li>
+      <li><strong>Fill in the free e-Arrival Card</strong> online before you land.</li>
+    </ol>
+
+    <h2 id="arrival">Arriving in Kerala</h2>
+    <p>Kerala has four international airports: <strong>Kochi (COK)</strong>, <strong>Thiruvananthapuram (TRV)</strong>, <strong>Kozhikode (CCJ)</strong> and <strong>Kannur (CNN)</strong>. Kochi and Thiruvananthapuram handle e-Visa arrivals. If you plan to land at Kozhikode or Kannur, check the e-Visa portal's list of approved airports first.</p>
+    <div class="callout ok">
+      <strong>Visa on arrival:</strong> citizens of Japan, South Korea and eligible UAE nationals can get a visa on arrival (up to 60 days, about ₹2,000) at major airports. Check the conditions before relying on it.
+    </div>
+
+    <h2 id="ayush">Coming for Ayurveda treatment?</h2>
+    <p>If medical treatment is the main reason for your visit, look at the <strong>e-Ayush Visa</strong> (with an e-Ayush Attendant visa for a companion) instead of a tourist visa. <a href="https://indianfrro.gov.in/frro/medicalvaluetravel" rel="noopener">Official Ayush visa information</a>. A tourist visa is fine for short wellness stays and massages.</p>
+
+    <h2 id="health">Health & insurance</h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>Insurance</h3>
+        <p class="small">Buy travel insurance that covers medical treatment and evacuation. Private hospitals in Kochi and Trivandrum are good but expect payment upfront.</p>
+      </div>
+      <div class="card">
+        <h3>Vaccinations</h3>
+        <p class="small">See a travel clinic 6–8 weeks before you go. Commonly advised: routine vaccines, hepatitis A, typhoid. Ask about others for your situation.</p>
+      </div>
+      <div class="card">
+        <h3>Mosquitoes</h3>
+        <p class="small">Dengue is present, especially in and after the monsoon. Use repellent day and evening and cover up at dusk.</p>
+      </div>
+      <div class="card">
+        <h3>Water & sun</h3>
+        <p class="small">Drink bottled or filtered water. Use high-SPF sunscreen and drink plenty; the humidity can be tiring.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:24px">
+      Get a personal visa recommendation, packing list and checklist in the <a href={url('/plan')}>trip planner</a>.
+    </div>
+  </div>
+</Base>

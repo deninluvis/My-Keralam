@@ -1,6 +1,6 @@
 # Plan My Keralam: Website Plan (draft for approval)
 
-Status: PLAN ONLY. Nothing gets built until this plan is approved.
+Status: APPROVED (recommendations accepted). Version 1 built; see README.md.
 Source data: kerala-foreigner-travel-guide-data.md (compiled 22 Nov 2026)
 
 ## 1. Goal

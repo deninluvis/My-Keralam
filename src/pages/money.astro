@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import CurrencyConverter from '../components/CurrencyConverter.astro';
+import ISTClock from '../components/ISTClock.astro';
+---
+<Base title="Money & Practical Info" description="Money, cards, UPI, bank hours, tipping, SIM cards, plugs, alcohol rules and other practical tips for Kerala.">
+  <PageHead eyebrow="Prepare" title="Money & practical info" lead="Everyday details that make a Kerala trip smoother." verified />
+  <div class="wrap">
+    <div class="grid two"><CurrencyConverter /><ISTClock /></div>
+
+    <h2>Money</h2>
+    <div class="grid three">
+      <div class="card"><h3>Currency</h3><p class="small">Indian rupee (₹, INR). Notes: ₹10, 20, 50, 100, 200, 500. Keep small notes; drivers and stalls often have no change.</p></div>
+      <div class="card"><h3>Cards & ATMs</h3><p class="small">Cards work in hotels, bigger restaurants and shops. ATMs are common in towns; fewer in the hills. Carry two cards and tell your bank you are travelling.</p></div>
+      <div class="card"><h3>UPI (phone payments)</h3><p class="small">QR-code payments are used almost everywhere. Some foreign visitors can use prepaid options such as UPI One World. Check eligibility before you go.</p></div>
+      <div class="card"><h3>Bank hours</h3><p class="small">10:00–15:30 weekdays, plus the 1st and 3rd Saturdays. Closed on the 2nd and 4th Saturdays and Sundays.</p></div>
+      <div class="card"><h3>Tipping</h3><p class="small">Not required but appreciated: around 5–10% in restaurants, and a daily tip for drivers and houseboat crews.</p></div>
+      <div class="card"><h3>Bargaining</h3><p class="small">Normal in markets and small shops, not in fixed-price stores. Stay friendly; start at about two-thirds of the asking price.</p></div>
+    </div>
+
+    <h2>Typical prices</h2>
+    <p class="small muted">Rough guide for planning; peak season and holidays cost more.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Item</th><th>Budget</th><th>Mid-range</th><th>Luxury</th></tr></thead>
+        <tbody>
+          <tr><td>Double room per night</td><td>₹1,000–2,500</td><td>₹4,000–9,000</td><td>₹15,000+</td></tr>
+          <tr><td>Houseboat, 1 night (1 bedroom, meals)</td><td>₹7,000–10,000</td><td>₹12,000–18,000</td><td>₹30,000+</td></tr>
+          <tr><td>Meal per person</td><td>₹150–300</td><td>₹500–1,200</td><td>₹2,500+</td></tr>
+          <tr><td>Car with driver per day</td><td colspan="3">About ₹2,500–4,500 depending on car and distance</td></tr>
+          <tr><td>Kathakali show</td><td colspan="3">About ₹300–600</td></tr>
+          <tr><td>Ayurveda massage (1 hour)</td><td>₹1,000–2,000</td><td>₹2,500–5,000</td><td>₹6,000+</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Staying connected</h2>
+    <div class="grid three">
+      <div class="card"><h3>SIM & eSIM</h3><p class="small">Buy at the airport or official stores; you need your passport, visa and a photo. Travel eSIMs are easier but check they cover India.</p></div>
+      <div class="card"><h3>Wi-Fi</h3><p class="small">Common in hotels and cafés. Slower in remote hills and on houseboats.</p></div>
+      <div class="card"><h3>Power</h3><p class="small">230 V, 50 Hz. Plug types C, D and M. Bring a universal adapter.</p></div>
+    </div>
+
+    <h2>Good to know</h2>
+    <div class="grid three">
+      <div class="card"><h3>Alcohol</h3><p class="small">Sold at government (Bevco) outlets and licensed bars. Kerala has a <strong>dry day on the 1st of every month</strong> when alcohol is not sold.</p></div>
+      <div class="card"><h3>Drones</h3><p class="small">Flying drones needs government permission and is banned near airports, military sites and many heritage sites. Leave it at home unless you have registered.</p></div>
+      <div class="card"><h3>Shopping</h3><p class="small">Spices, tea, coffee, coir products, handloom (kasavu sarees and mundu), handicrafts, Ayurvedic oils and banana chips.</p></div>
+    </div>
+  </div>
+</Base>

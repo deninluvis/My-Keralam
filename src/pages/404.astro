@@ -1,0 +1,11 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/url.js';
+---
+<Base title="Page not found">
+  <div class="wrap" style="padding:48px 16px;text-align:center">
+    <h1>Lost in the backwaters?</h1>
+    <p class="lead" style="margin:0 auto 20px">That page doesn't exist.</p>
+    <div class="btn-row" style="justify-content:center"><a class="btn" href={url('/')}>Home</a><a class="btn ghost" href={url('/plan')}>Plan My Trip</a><a class="btn ghost" href={url('/safety')}>Emergency numbers</a></div>
+  </div>
+</Base>

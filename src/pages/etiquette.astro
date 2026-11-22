@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import phrases from '../data/phrases.json';
+---
+<Base title="Culture & Etiquette" description="Kerala dress code, temple etiquette, photography, and useful Malayalam phrases.">
+  <PageHead eyebrow="Prepare" title="Culture & etiquette" lead="Kerala is friendly and relaxed, but also traditional. A few simple habits go a long way." />
+  <div class="wrap">
+    <div class="grid two">
+      <div class="card"><h3>Dress</h3><p class="small">Light, loose cotton works best. Cover shoulders and knees in towns, villages and religious sites. Swimwear is for the beach only.</p></div>
+      <div class="card"><h3>Temples</h3><p class="small">Remove shoes. Many temples ask men to remove their shirts, and some temples do not admit non-Hindus. Look for signs and ask before entering.</p></div>
+      <div class="card"><h3>Churches & mosques</h3><p class="small">Dress modestly; women may be asked to cover their heads in mosques. Visit outside prayer times.</p></div>
+      <div class="card"><h3>Photography</h3><p class="small">Ask before photographing people, especially at rituals and festivals. Some temples ban photography inside.</p></div>
+      <div class="card"><h3>Hands & feet</h3><p class="small">Eat and give things with your right hand. Take shoes off before entering homes. Don't point your feet at people or shrines.</p></div>
+      <div class="card"><h3>Public behaviour</h3><p class="small">Public displays of affection are frowned upon. Stay calm and polite; raising your voice rarely helps.</p></div>
+    </div>
+
+    <h2>Useful Malayalam phrases</h2>
+    <p class="small muted">English is widely spoken in tourist areas, but locals love it when you try a few words.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>English</th><th>Say</th><th>Malayalam</th></tr></thead>
+        <tbody>{phrases.map((p) => <tr><td>{p.en}</td><td><strong>{p.ml}</strong></td><td lang="ml">{p.script}</td></tr>)}</tbody>
+      </table>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import { url } from '../lib/url.js';
+const faqs: [string, string][] = [
+  ['Do I need a visa for Kerala?', 'Yes, Kerala is part of India and most nationalities need an Indian visa. The e-Tourist Visa, applied for online, is the easiest option for most visitors.'],
+  ['Is "Keralam" the same as Kerala?', 'Yes. Keralam is the Malayalam name of the state, and the state government has asked for it to become the official name. Kerala is still the name most often used in English.'],
+  ['What is the best time to visit?', 'November to February has the most comfortable weather. The monsoon (June–August) is green and quiet, and the traditional season for Ayurveda.'],
+  ['How many days do I need?', 'Seven days covers Kochi, Munnar, Thekkady and a houseboat night. Ten days adds the beaches. Fourteen days lets you add North Kerala.'],
+  ['Is Kerala safe for tourists?', 'Kerala is generally considered one of the safer Indian states for visitors. Take normal precautions, be careful in the sea and follow monsoon alerts.'],
+  ['Which airport should I fly into?', 'Kochi (COK) has the most flights and is central. Fly into Kochi and out of Thiruvananthapuram (TRV) if you end at the southern beaches.'],
+  ['Can I use my credit card?', 'Yes, in hotels and larger shops and restaurants. Carry cash for autos, small shops and tips.'],
+  ['How much does a houseboat cost?', 'Very roughly ₹7,000–18,000 per night for a one-bedroom boat with meals, and much more for luxury boats or in peak holidays.'],
+  ['Can non-Hindus enter temples?', 'Some temples, including Padmanabhaswamy and Guruvayur, admit only Hindus. Many others welcome visitors who follow the dress code.'],
+  ['Is the food very spicy?', 'It can be. Ask for "less spicy" (erivu kurachu mathi). There are many mild dishes, such as appam with stew.'],
+  ['Do I need to tip?', 'Tipping isn\'t required but is appreciated: around 5–10% in restaurants, and a tip for drivers and houseboat crews.'],
+  ['Can I drink alcohol?', 'Yes, at licensed bars and government (Bevco) shops, but not on the 1st of each month (dry day).'],
+  ['Where is the nearest place to see Theyyam?', 'Theyyam happens in village shrines in Kannur and Kasaragod, roughly November to May. Check the official Theyyam calendar.'],
+  ['Does this site sell tours?', 'No. It is an independent planning guide. We link to official sources and don\'t take bookings.'],
+];
+const links: [string, string][] = [
+  ['Kerala Tourism (official)', 'https://www.keralatourism.org/'],
+  ['Kerala Tourism visa information', 'https://www.keralatourism.org/visa-requirement'],
+  ['Travel tips', 'https://www.keralatourism.org/travel-tips/'],
+  ['20 things to know before you visit', 'https://www.keralatourism.org/faq/20-things-to-know-before-you-visit-kerala'],
+  ['Destinations', 'https://www.keralatourism.org/destination/'],
+  ['Events & festival calendar', 'https://www.keralatourism.org/event-calendar/'],
+  ['Theyyam calendar', 'https://www.keralatourism.org/theyyamcalendar/'],
+  ['Kerala food & recipes', 'https://www.keralatourism.org/kerala-food'],
+  ['Wellness & Ayurveda', 'https://www.keralatourism.org/wellness-kerala/'],
+  ['E-brochures', 'https://www.keralatourism.org/ebrochures/'],
+  ['Sabarimala', 'https://www.keralatourism.org/sabarimala'],
+  ['Champions Boat League', 'https://www.keralatourism.org/champions-boat-league'],
+  ['Government of India e-Visa portal', 'https://indianvisaonline.gov.in/evisa/'],
+  ['e-Visa fee table (PDF)', 'https://indianvisaonline.gov.in/evisa/images/Etourist_fee_final.pdf'],
+  ['Ayush visa registration', 'https://indianfrro.gov.in/frro/medicalvaluetravel'],
+  ['Kerala State Disaster Management Authority', 'https://sdma.kerala.gov.in/'],
+];
+---
+<Base title="FAQ & Official Links" description="Answers to common questions about visiting Kerala, plus links to official sources.">
+  <PageHead eyebrow="Help" title="FAQ & official links" lead="Quick answers to the questions visitors ask most." />
+  <div class="wrap">
+    <div class="faq">
+      {faqs.map(([q, a]) => <details class="card"><summary>{q}</summary><p>{a}</p></details>)}
+    </div>
+    <p style="margin-top:16px">Still planning? <a href={url('/plan')}>Try the trip planner</a>.</p>
+    <h2>Official links</h2>
+    <div class="grid two">
+      {links.map(([t, h]) => <a class="card link-card" href={h} rel="noopener"><strong>{t}</strong><span class="small muted">{new URL(h).hostname}</span></a>)}
+    </div>
+  </div>
+</Base>
+<style>
+  .faq { display: grid; gap: 10px; }
+  .faq summary { cursor: pointer; font-weight: 600; list-style-position: outside; }
+  .faq details p { margin: 10px 0 0; }
+  .link-card { display: grid; gap: 2px; padding: 14px 16px; }
+</style>

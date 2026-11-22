@@ -1,0 +1,66 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import months from '../data/months.json';
+import seasons from '../data/seasons.json';
+import { url } from '../lib/url.js';
+const f = (c: number) => Math.round((c * 9) / 5 + 32);
+const inch = (mm: number) => (mm / 25.4).toFixed(1);
+const maxRain = Math.max(...months.map((m) => m.rainMm));
+---
+<Base title="When to Go" description="Month-by-month guide to Kerala weather, seasons, crowds and what each month is best for.">
+  <PageHead eyebrow="Prepare" title="When to go" lead="Kerala is tropical: warm all year with two monsoons. November to February is the most comfortable, but every season has something special." />
+  <div class="wrap">
+    <div class="grid four">
+      {Object.entries(seasons).map(([id, s]) => (
+        <div class={`card season s-${id}`}><p class="tag">{s.months}</p><h3>{s.label}</h3><p class="small">{s.text}</p></div>
+      ))}
+    </div>
+
+    <h2>Month by month</h2>
+    <p class="small muted">Temperatures are typical daytime highs and night lows. "Coast" is Kochi; "Hills" is Munnar (about 1,600 m / 5,200 ft). Rainfall is the average for Kochi.</p>
+    <div class="months-list">
+      {months.map((m) => (
+        <div class={`card month s-${m.season}`} id={m.name.toLowerCase()}>
+          <div class="mhead"><h3>{m.name}</h3><span class="tag">{seasons[m.season as keyof typeof seasons].short}</span><span class="tag">Crowds: {m.crowds}</span></div>
+          <div class="temps">
+            <span><strong>Coast</strong> {m.coastHigh}° / {m.coastLow}°C <span class="muted">({f(m.coastHigh)}° / {f(m.coastLow)}°F)</span></span>
+            <span><strong>Hills</strong> {m.hillHigh}° / {m.hillLow}°C <span class="muted">({f(m.hillHigh)}° / {f(m.hillLow)}°F)</span></span>
+          </div>
+          <div class="rain" aria-label={`Rainfall about ${m.rainMm} millimetres`}>
+            <span class="rbar"><span style={`width:${Math.max(3, (m.rainMm / maxRain) * 100)}%`}></span></span>
+            <span class="small muted">{m.rainMm} mm ({inch(m.rainMm)} in) rain</span>
+          </div>
+          <p class="small">{m.note}</p>
+          <div class="chips">{m.bestFor.map((b) => <span class="tag gold">{b}</span>)}</div>
+        </div>
+      ))}
+    </div>
+
+    <h2>Quick answers</h2>
+    <div class="grid three">
+      <div class="card"><h3>Houseboats</h3><p class="small">Best October to February. Monsoon cruises are atmospheric but wet.</p></div>
+      <div class="card"><h3>Hill stations</h3><p class="small">Munnar and Thekkady are best November to February. March to May is a cool escape from the coastal heat.</p></div>
+      <div class="card"><h3>Ayurveda</h3><p class="small">The monsoon (June–August) is the traditional season: cool, damp air is said to help treatments.</p></div>
+      <div class="card"><h3>Beaches</h3><p class="small">October to March. Avoid swimming June to August when the sea is rough.</p></div>
+      <div class="card"><h3>Theyyam</h3><p class="small">Roughly November to May in North Kerala. Use the official Theyyam calendar.</p></div>
+      <div class="card"><h3>Lowest prices</h3><p class="small">June to September, outside Onam. Many resorts discount heavily.</p></div>
+    </div>
+    <p style="margin-top:20px"><a class="btn" href={url('/plan')}>Check your dates in the planner</a></p>
+  </div>
+</Base>
+<style>
+  .season { border-top: 4px solid var(--gold); }
+  .s-peak { border-top-color: var(--green); } .s-monsoon { border-top-color: var(--teal); } .s-summer { border-top-color: #d07a2a; } .s-shoulder { border-top-color: var(--gold); }
+  .months-list { display: grid; gap: 12px; }
+  @media (min-width: 760px) { .months-list { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1060px) { .months-list { grid-template-columns: repeat(3, 1fr); } }
+  .month { border-left: 4px solid var(--gold); }
+  .month.s-peak { border-left-color: var(--green); } .month.s-monsoon { border-left-color: var(--teal); } .month.s-summer { border-left-color: #d07a2a; }
+  .mhead { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 6px; }
+  .mhead h3 { margin: 0 8px 0 0; }
+  .temps { display: grid; gap: 2px; font-size: .9rem; margin-bottom: 8px; }
+  .rain { display: grid; gap: 4px; margin-bottom: 8px; }
+  .rbar { height: 8px; background: var(--surface-2); border-radius: 99px; overflow: hidden; }
+  .rbar span { display: block; height: 100%; background: var(--teal); border-radius: 99px; }
+</style>

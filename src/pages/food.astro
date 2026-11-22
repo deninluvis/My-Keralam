@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import food from '../data/food.json';
+const spiceLabel = ['Not spicy', 'Mild', 'Medium', 'Hot'];
+---
+<Base title="Food Guide" description="What to eat in Kerala: Sadya, appam, karimeen, Malabar biryani and more, with spice levels and vegetarian tags.">
+  <PageHead eyebrow="Explore" title="Food guide" lead="Kerala cooking is built on coconut, rice, seafood and spices. Here's what to try, how spicy it is, and whether it's vegetarian." />
+  <div class="wrap">
+    <div class="chips" role="group" aria-label="Filter dishes">
+      <button class="chip" aria-pressed="true" data-f="all">All dishes</button>
+      <button class="chip" aria-pressed="false" data-f="veg">Vegetarian</button>
+      <button class="chip" aria-pressed="false" data-f="mild">Mild or not spicy</button>
+    </div>
+    <div class="grid three" id="dishes" style="margin-top:16px">
+      {food.map((d) => (
+        <div class="card dish" data-veg={String(d.veg)} data-spice={d.spice}>
+          <div class="meta"><span class="tag">{d.type}</span>{d.veg ? <span class="tag veg">Vegetarian</span> : <span class="tag">Non-veg</span>}</div>
+          <h3>{d.name}</h3>
+          <p class="small">{d.desc}</p>
+          <p class="small"><span class="spice" aria-hidden="true">{'●'.repeat(d.spice)}{'○'.repeat(3 - d.spice)}</span> {spiceLabel[d.spice]}</p>
+        </div>
+      ))}
+    </div>
+
+    <h2>Sadya etiquette</h2>
+    <ol class="steps">
+      <li>The banana leaf is placed with its narrow end to your left.</li>
+      <li>Eat with your <strong>right hand</strong>. Wash before and after.</li>
+      <li>Dishes come in a set order; rice with parippu (dal) and ghee first, then sambar, then other curries, with payasam near the end.</li>
+      <li>When you've finished, fold the leaf towards you to say you enjoyed the meal.</li>
+    </ol>
+
+    <h2>Eating tips</h2>
+    <div class="grid three">
+      <div class="card"><h3>Ask for less spice</h3><p class="small">Say <strong>"Erivu kurachu mathi"</strong> (less spicy, please). Most cooks are happy to adjust.</p></div>
+      <div class="card"><h3>Vegetarian & vegan</h3><p class="small">Easy to find: many restaurants are fully vegetarian. Ask about ghee, curd and fish sauce-like additions if you are vegan.</p></div>
+      <div class="card"><h3>Coconut oil</h3><p class="small">Used in most cooking. Tell restaurants clearly if you have a nut or coconut allergy.</p></div>
+      <div class="card"><h3>Toddy shops</h3><p class="small">Rustic places serving palm toddy and very spicy food. Fun, but go with a local guide.</p></div>
+      <div class="card"><h3>Street food safety</h3><p class="small">Choose busy stalls where food is cooked fresh and hot. Skip ice and raw salads if you have a sensitive stomach.</p></div>
+      <div class="card"><h3>Recipes</h3><p class="small">Kerala Tourism publishes about 200 <a href="https://www.keralatourism.org/kerala-food" rel="noopener">traditional recipes</a>.</p></div>
+    </div>
+  </div>
+</Base>
+<style>.tag.veg { background: var(--ok-soft); color: var(--green); } .spice { color: #c0392b; }</style>
+<script>
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-f]')];
+  const cards = [...document.querySelectorAll<HTMLElement>('.dish')];
+  chips.forEach((c) => c.addEventListener('click', () => {
+    chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+    const f = c.dataset.f;
+    cards.forEach((d) => (d.hidden = f === 'veg' ? d.dataset.veg !== 'true' : f === 'mild' ? Number(d.dataset.spice) > 1 : false));
+  }));
+</script>

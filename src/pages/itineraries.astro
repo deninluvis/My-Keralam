@@ -1,0 +1,46 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Icon from '../components/Icon.astro';
+import { url } from '../lib/url.js';
+const its = [
+  { id: 'classic-7', title: '7 days: the classic loop', who: 'First-timers who want the highlights', q: 'days=7&interests=backwaters,hills,culture&pace=balanced',
+    days: [['1–2', 'Kochi', 'Fort Kochi heritage walk, Chinese fishing nets, Mattancherry, Kathakali show'], ['3–4', 'Munnar', 'Tea estates, tea museum, Eravikulam National Park'], ['5', 'Thekkady', 'Spice plantation, Periyar Lake boat ride'], ['6', 'Alappuzha', 'Overnight houseboat through Kuttanad'], ['7', 'Kochi', 'Last shopping, fly home from Kochi (COK)']] },
+  { id: 'south-10', title: '10 days: classics plus the south coast', who: 'Add beach time at the end', q: 'days=10&interests=backwaters,hills,beaches,culture&pace=balanced',
+    days: [['1–2', 'Kochi', 'Heritage, food and a Kathakali show'], ['3–4', 'Munnar', 'Tea hills and viewpoints'], ['5', 'Thekkady', 'Wildlife and spices'], ['6', 'Alappuzha', 'Houseboat night'], ['7–8', 'Varkala', 'Cliff-top beach, yoga, sunset walks'], ['9–10', 'Kovalam & Trivandrum', 'Ayurveda massage, museums, fly home from Trivandrum (TRV)']] },
+  { id: 'grand-14', title: '14 days: south to north', who: 'Culture lovers; best November–March for Theyyam', q: 'days=14&interests=culture,hills,backwaters,food&pace=balanced',
+    days: [['1–2', 'Kochi', 'Heritage and food'], ['3–4', 'Munnar', 'Tea hills'], ['5', 'Thekkady', 'Wildlife and spices'], ['6', 'Alappuzha', 'Houseboat night'], ['7', 'Thrissur', 'Athirappilly Falls, Kalamandalam arts school'], ['8', 'Kozhikode', 'Malabar food, Beypore boatyards'], ['9–10', 'Wayanad', 'Plantations, Edakkal Caves, wildlife'], ['11–12', 'Kannur', 'Theyyam rituals, handloom, beaches'], ['13–14', 'Bekal', 'Fort and beach, fly home from Kannur (CNN) or Mangaluru']] },
+  { id: 'wellness', title: 'Wellness: 14–21 days of Ayurveda', who: 'Rest and treatment; the monsoon is the traditional season', q: 'days=14&interests=ayurveda,backwaters&pace=relaxed',
+    days: [['1', 'Kochi', 'Arrive and rest'], ['2–12', 'Approved Ayurveda centre', 'Doctor consultation, then a daily programme of treatments, yoga and diet. Popular areas: Kovalam, Varkala, Kumarakom, Kottakkal.'], ['13', 'Kumarakom', 'A gentle day on the backwaters'], ['14', 'Kochi', 'Fly home']] },
+];
+---
+<Base title="Itineraries" description="Ready-made Kerala itineraries: 7, 10 and 14 days, plus a wellness trip.">
+  <PageHead eyebrow="Plan" title="Ready-made itineraries" lead="Tried-and-tested routes. Open any of them in the planner to set your own dates and get a budget, visa notes and packing list." />
+  <div class="wrap its">
+    {its.map((it) => (
+      <section class="card it" id={it.id}>
+        <h2>{it.title}</h2>
+        <p class="muted">{it.who}</p>
+        <ol class="tl">{it.days.map(([d, place, what]) => <li><span class="d">Day {d}</span><div><strong>{place}</strong><p class="small">{what}</p></div></li>)}</ol>
+        <a class="btn small open-plan" href={`${url('/my-trip')}?${it.q}`} data-q={it.q}>Open in planner <Icon name="arrow" /></a>
+      </section>
+    ))}
+    <p class="small muted">Driving times: Kochi–Munnar about 4 h; Munnar–Thekkady about 3.5 h; Thekkady–Alappuzha about 4 h. See <a href={url('/getting-around')}>getting around</a>.</p>
+  </div>
+</Base>
+<style>
+  .its { display: grid; gap: 16px; }
+  .it { scroll-margin-top: 80px; } .it h2 { margin-top: 0; }
+  .tl { list-style: none; padding: 0; margin: 0 0 16px; border-left: 3px solid var(--line); }
+  .tl li { display: grid; grid-template-columns: 90px 1fr; gap: 8px; padding: 6px 0 6px 14px; position: relative; }
+  .tl li::before { content: ''; position: absolute; left: -8px; top: 12px; width: 12px; height: 12px; border-radius: 50%; background: var(--green); border: 2px solid var(--surface); }
+  .tl .d { font-weight: 600; color: var(--muted); font-size: .9rem; }
+  .tl p { margin: 0; }
+</style>
+<script>
+  // Start the trip 60 days from today unless a plan already exists.
+  document.querySelectorAll<HTMLAnchorElement>('.open-plan').forEach((a) => a.addEventListener('click', () => {
+    const start = new Date(Date.now() + 60 * 864e5).toISOString().slice(0, 10);
+    a.href = `${a.href.split('?')[0]}?${a.dataset.q}&start=${start}&budget=mid&people=2`;
+  }));
+</script>
