@@ -3,8 +3,8 @@
 import Icon from './Icon.astro';
 import { url } from '../lib/url.js';
 
-interface Props { festivals: unknown[] }
-const { festivals } = Astro.props;
+interface Props { festivals: unknown[]; destinations: { slug: string; name: string; lat: number; lng: number; base?: string | null }[] }
+const { festivals, destinations } = Astro.props;
 ---
     <article id="trip" hidden>
       <header class="page-head trip-head">
@@ -15,7 +15,7 @@ const { festivals } = Astro.props;
           <button class="btn small" id="print" type="button"><Icon name="print" />Print</button>
           <button class="btn small ghost" id="share" type="button"><Icon name="share" />Share link</button>
           <button class="btn small ghost" id="edit" type="button">Edit answers</button>
-          <a class="btn small ghost" id="gmaps" href="https://www.google.com/maps" target="_blank" rel="noopener">Open route in Google Maps</a>
+          <span id="gmaps" class="gmaps"></span>
         </div>
         <p class="small muted" id="share-msg" aria-live="polite"></p>
         <form class="save-row no-print" id="save-form">
@@ -40,7 +40,7 @@ const { festivals } = Astro.props;
           <ol class="days" id="days"></ol>
           <div>
             <div id="route-map" class="map" role="img" aria-label="Map of your route"></div>
-            <p class="small" style="margin:8px 0 0"><a id="gmaps-2" href="https://www.google.com/maps" target="_blank" rel="noopener">Open this route in Google Maps →</a> <span class="muted">(driving directions, stop by stop)</span></p>
+            <p class="small" style="margin:8px 0 0"><span id="gmaps-2"></span> <span class="muted">Driving directions through every place on the map. Google Maps takes up to 11 places per link, so longer trips come in parts.</span></p>
             <div class="card" style="margin-top:16px">
               <h3>Festivals during your trip</h3>
               <ul id="fests" class="small"></ul>
@@ -74,8 +74,10 @@ const { festivals } = Astro.props;
       </section>
     </article>
     <script type="application/json" id="fest-data" set:html={JSON.stringify(festivals)}></script>
+    <script type="application/json" id="dest-data" set:html={JSON.stringify(destinations)}></script>
 
 <style>
+  .gmaps { display: contents; }
   .save-row { display: flex; gap: 10px; align-items: end; flex-wrap: wrap; margin-top: 12px; }
   .save-row .field { margin: 0; flex: 1 1 220px; }
   .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin: 20px 0 16px; overflow-x: auto; }
@@ -93,12 +95,14 @@ const { festivals } = Astro.props;
 <script>
   import L from 'leaflet';
   import 'leaflet/dist/leaflet.css';
-  import { buildTrip, decodeInput, encodeInput, mapsLink } from '../lib/planner.js';
+  import { buildTrip, decodeInput, encodeInput, tripPlaces, mapsLinks } from '../lib/planner.js';
+  import { listImported } from '../lib/community.js';
   import { listTrips, saveTrip } from '../lib/trips.js';
   import bases from '../data/bases.json';
   import journeys from '../data/journeys.json';
   import months from '../data/months.json';
   const festivals = JSON.parse(document.getElementById('fest-data')!.textContent!);
+  const destinations = [...JSON.parse(document.getElementById('dest-data')!.textContent!), ...listImported('destination')];
   import visa from '../data/visa.json';
   import seasons from '../data/seasons.json';
   import meta from '../data/meta.json';
@@ -116,11 +120,13 @@ const { festivals } = Astro.props;
 
   if (query) {
     const trip = buildTrip(decodeInput(query), data);
+    const places = tripPlaces(trip, destinations);
     const shareQuery = encodeInput(trip.input);
-    render(trip);
-    const route = mapsLink(trip.stops);
-    ($('gmaps') as HTMLAnchorElement).href = route;
-    ($('gmaps-2') as HTMLAnchorElement).href = route;
+    render(trip, places);
+    const links = mapsLinks(places);
+    const linkHtml = (cls: string) => links.map((u, i) => `<a class="${cls}" href="${esc(u)}" target="_blank" rel="noopener">${links.length > 1 ? `Google Maps route, part ${i + 1}` : 'Open route in Google Maps'}</a>`).join(' ');
+    $('gmaps').innerHTML = linkHtml('btn small ghost');
+    $('gmaps-2').innerHTML = linkHtml('');
     setupTabs();
     const nameInput = $('trip-name') as HTMLInputElement;
     const savedTrip = tid ? listTrips().find((t) => t.id === tid) : undefined;
@@ -150,7 +156,7 @@ const { festivals } = Astro.props;
     return new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-GB', { ...opts, timeZone: 'UTC' });
   }
 
-  function render(t: ReturnType<typeof buildTrip>) {
+  function render(t: ReturnType<typeof buildTrip>, places: ReturnType<typeof tripPlaces>) {
     $('trip').hidden = false;
     $('t-title').textContent = `Your ${t.input.days}-day Keralam trip`;
     $('t-sub').textContent = `${fmtDate(t.input.start, { day: 'numeric', month: 'short', year: 'numeric' })} – ${fmtDate(t.end, { day: 'numeric', month: 'short', year: 'numeric' })} · ${t.input.people} traveller${t.input.people > 1 ? 's' : ''} · ${t.input.budget === 'mid' ? 'mid-range' : t.input.budget} · ${t.season.label}`;
@@ -208,10 +214,12 @@ const { festivals } = Astro.props;
     try {
       const map = L.map('route-map', { scrollWheelZoom: false });
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
-      const pts = t.stops.map((s) => [s.lat, s.lng] as [number, number]);
+      // One pin per place, numbered in route order; the dashed line follows the same order as the Google Maps link.
+      const pts = places.map((p) => [p.lat, p.lng] as [number, number]);
       L.polyline(pts, { color: '#2a7f86', weight: 4, dashArray: '6 8' }).addTo(map);
-      t.stops.forEach((s, i) => L.circleMarker([s.lat, s.lng], { radius: 9, color: '#fff', weight: 2, fillColor: '#1f5e4a', fillOpacity: 1 })
-        .addTo(map).bindTooltip(`${i + 1}. ${s.name} (${s.days} day${s.days > 1 ? 's' : ''})`, { permanent: false }));
+      const stopName = (id: string) => t.stops.find((s) => s.id === id)?.name ?? '';
+      places.forEach((p, i) => L.circleMarker([p.lat, p.lng], { radius: 8, color: '#fff', weight: 2, fillColor: '#1f5e4a', fillOpacity: 1 })
+        .addTo(map).bindTooltip(`${i + 1}. ${p.name}${p.slug ? ` (near ${stopName(p.stopId)})` : ''}`, { permanent: false }));
       const bounds = L.latLngBounds(pts).pad(0.3);
       map.fitBounds(bounds);
       // The map may be drawn while its panel is hidden (size 0); redraw once it has a real size.

@@ -27,7 +27,7 @@ import TripResult from '../components/TripResult.astro';
     </section>
   </div>
 
-  <div class="wrap" id="result-wrap" hidden><TripResult festivals={festivals} /></div>
+  <div class="wrap" id="result-wrap" hidden><TripResult festivals={festivals} destinations={destinations.map(({ slug, name, lat, lng, base }) => ({ slug, name, lat, lng, base }))} /></div>
 
   <div class="wrap planner" id="wizard">
     <form id="planner" class="card" action={url('/plan')} method="get" novalidate>
@@ -163,7 +163,7 @@ import TripResult from '../components/TripResult.astro';
 </style>
 
 <script>
-  import { buildTrip, encodeInput, decodeInput } from '../lib/planner.js';
+  import { buildTrip, encodeInput, decodeInput, nearestBase } from '../lib/planner.js';
   import { listTrips, renameTrip, deleteTrip } from '../lib/trips.js';
   import { listImported } from '../lib/community.js';
   import { esc } from '../lib/render.js';
@@ -249,9 +249,7 @@ import TripResult from '../components/TripResult.astro';
 
   // A place uses its base town, or the nearest base by distance when it has none.
   function baseFor(el: HTMLInputElement) {
-    if (el.dataset.base && bases.some((b) => b.id === el.dataset.base)) return el.dataset.base;
-    const lat = Number(el.dataset.lat), lng = Number(el.dataset.lng);
-    return bases.reduce((best, b) => (Math.hypot(b.lat - lat, b.lng - lng) < Math.hypot(best.lat - lat, best.lng - lng) ? b : best)).id;
+    return nearestBase({ base: el.dataset.base, lat: Number(el.dataset.lat), lng: Number(el.dataset.lng) }, bases);
   }
   function stopsFromPlaces() {
     const days = new Map<string, number>();
@@ -292,7 +290,7 @@ import TripResult from '../components/TripResult.astro';
     return {
       start: String(fd.get('start') || ''), days: fd.get('days'), people: fd.get('people'),
       interests: fd.getAll('interests').map(String), budget: fd.get('budget'), pace: fd.get('pace'), nat: fd.get('nat'),
-      ...(mode() === 'choose' && { stops: stopsFromPlaces() }),
+      ...(mode() === 'choose' && { stops: stopsFromPlaces(), places: [...form.querySelectorAll<HTMLInputElement>('input[name=place]:checked')].map((c) => c.value).join(',') }),
     };
   }
 

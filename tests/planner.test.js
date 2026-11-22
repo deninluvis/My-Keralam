@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { loadFolder } from './load-content.js';
-import { buildTrip, encodeInput, decodeInput, mapsLink } from '../src/lib/planner.js';
+import { buildTrip, encodeInput, decodeInput, tripPlaces, mapsLinks, nearestBase } from '../src/lib/planner.js';
 
 const load = (f) => JSON.parse(readFileSync(new URL(`../src/data/${f}.json`, import.meta.url)));
 const data = {
@@ -126,19 +126,48 @@ test('stops survive encode and decode', () => {
   assert.equal(new URLSearchParams(encodeInput(base)).has('stops'), false);
 });
 
-test('mapsLink gives a Google Maps driving route through every stop in order', () => {
-  const trip = buildTrip({ ...base, stops: 'kochi:1,munnar:2,alappuzha:1' }, data);
-  const u = new URL(mapsLink(trip.stops));
-  assert.equal(u.origin + u.pathname, 'https://www.google.com/maps/dir/');
-  assert.equal(u.searchParams.get('api'), '1');
-  assert.equal(u.searchParams.get('travelmode'), 'driving');
-  assert.equal(u.searchParams.get('origin'), 'Kochi, Kerala, India');
-  assert.equal(u.searchParams.get('waypoints'), 'Munnar, Kerala, India');
-  assert.equal(u.searchParams.get('destination'), 'Alappuzha, Kerala, India');
+const destinations = loadFolder('destinations');
+
+test('picked places survive encode and decode', () => {
+  const q = encodeInput({ ...base, stops: 'munnar:3', places: 'munnar,eravikulam' });
+  assert.deepEqual(decodeInput(q).places, ['munnar', 'eravikulam']);
+  assert.equal(new URLSearchParams(encodeInput(base)).has('places'), false);
 });
 
-test('mapsLink with one stop just points at it', () => {
-  const u = new URL(mapsLink([{ name: 'Munnar', lat: 10.1, lng: 77.06 }]));
-  assert.equal(u.searchParams.get('destination'), 'Munnar, Kerala, India');
-  assert.equal(u.searchParams.has('waypoints'), false);
+test('nearestBase uses the place base, else the closest base', () => {
+  assert.equal(nearestBase({ base: 'munnar', lat: 0, lng: 0 }, data.bases), 'munnar');
+  assert.equal(nearestBase({ base: null, lat: 10.09, lng: 77.06 }, data.bases), 'munnar');
+});
+
+test('suggested trip lists every destination near each stop, in route order', () => {
+  const trip = buildTrip({ ...base, stops: 'kochi:2,munnar:2' }, data);
+  const places = tripPlaces(trip, destinations);
+  const at = (id) => places.filter((p) => p.stopId === id).map((p) => p.slug);
+  assert.ok(at('kochi').includes('fort-kochi'));
+  assert.ok(at('munnar').includes('eravikulam'));
+  assert.ok(places.findIndex((p) => p.stopId === 'munnar') > places.findLastIndex((p) => p.stopId === 'kochi'));
+  places.forEach((p) => assert.ok(Number.isFinite(p.lat) && Number.isFinite(p.lng)));
+});
+
+test('hand-picked trip lists only the picked places; a stop with none uses the town', () => {
+  const trip = buildTrip({ ...base, stops: 'kochi:1,munnar:2', places: 'eravikulam' }, data);
+  const places = tripPlaces(trip, destinations);
+  assert.deepEqual(places.map((p) => p.slug ?? p.stopId), ['kochi', 'eravikulam']);
+});
+
+test('mapsLinks routes through exact points, split into linked parts of at most 11', () => {
+  const pts = Array.from({ length: 15 }, (_, i) => ({ lat: 9 + i / 10, lng: 76 }));
+  const links = mapsLinks(pts).map((l) => new URL(l));
+  assert.equal(links.length, 2);
+  const count = (u) => 2 + (u.searchParams.get('waypoints')?.split('|').length || 0);
+  assert.equal(count(links[0]), 11);
+  assert.equal(links[0].searchParams.get('origin'), '9,76');
+  assert.equal(links[1].searchParams.get('origin'), links[0].searchParams.get('destination'));
+  assert.equal(links[1].searchParams.get('destination'), `${9 + 14 / 10},76`);
+  assert.equal(links[0].searchParams.get('travelmode'), 'driving');
+});
+
+test('mapsLinks with one point gives one link to it', () => {
+  const [u] = mapsLinks([{ lat: 10.1, lng: 77.06 }]).map((l) => new URL(l));
+  assert.equal(u.searchParams.get('destination'), '10.1,77.06');
 });

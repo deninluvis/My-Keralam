@@ -251,6 +251,7 @@ export function normalise(raw = {}) {
   let interests = Array.isArray(raw.interests) ? raw.interests : String(raw.interests || '').split(',');
   interests = INTERESTS.filter((i) => interests.includes(i));
   const stops = parseStops(raw.stops);
+  const places = String(raw.places || '').split(',').filter((p) => /^[a-z0-9-]+$/.test(p)).slice(0, 40);
   return {
     start,
     days: clampInt(raw.days, 3, 21, 7),
@@ -260,14 +261,16 @@ export function normalise(raw = {}) {
     people: clampInt(raw.people, 1, 12, 2),
     nat: /^[A-Z]{2,5}$/.test(raw.nat || '') ? raw.nat : 'OTHER',
     ...(stops && { stops }),
+    ...(places.length && { places }),
   };
 }
 
 export function encodeInput(input) {
   const p = new URLSearchParams();
-  const { stops, ...n } = normalise(input);
+  const { stops, places, ...n } = normalise(input);
   for (const [k, v] of Object.entries(n)) p.set(k, Array.isArray(v) ? v.join(',') : String(v));
   if (stops) p.set('stops', stops.map((s) => `${s.id}:${s.days}`).join(','));
+  if (places) p.set('places', places.join(','));
   return p.toString();
 }
 
@@ -276,11 +279,39 @@ export function decodeInput(query) {
   return normalise(Object.fromEntries(p.entries()));
 }
 
-// Google Maps driving route through the stops in order (Maps URLs API; up to 9 waypoints, the planner has at most 9 stops).
-export function mapsLink(stops) {
-  const at = (s) => `${s.name}, Kerala, India`; // town names read better in Google than coordinates (which show the nearest shop)
-  const p = new URLSearchParams({ api: '1', travelmode: 'driving', destination: at(stops[stops.length - 1]) });
-  if (stops.length > 1) p.set('origin', at(stops[0]));
-  if (stops.length > 2) p.set('waypoints', stops.slice(1, -1).map(at).join('|'));
-  return `https://www.google.com/maps/dir/?${p}`;
+// A place's planner base: its own `base`, else the closest base by straight-line distance.
+export function nearestBase(place, bases) {
+  if (place.base && bases.some((b) => b.id === place.base)) return place.base;
+  const d = (b) => Math.hypot(b.lat - place.lat, b.lng - place.lng);
+  return bases.reduce((best, b) => (d(b) < d(best) ? b : best)).id;
+}
+
+// Every place to pin for a trip, in route order. Hand-picked trips: only the picked places.
+// Suggested trips: every destination whose base is a stop. A stop with no places is pinned as the town itself.
+export function tripPlaces(trip, destinations) {
+  const picked = trip.input.places;
+  const ids = trip.stops.map((s) => s.id);
+  const chosen = destinations
+    .filter((d) => (picked ? picked.includes(d.slug) : ids.includes(d.base)))
+    .map((d) => ({ slug: d.slug, name: d.name, lat: d.lat, lng: d.lng, stopId: nearestBase(d, trip.stops) }));
+  return trip.stops.flatMap((s) => {
+    const here = chosen.filter((p) => p.stopId === s.id);
+    return here.length ? here : [{ stopId: s.id, name: s.name, lat: s.lat, lng: s.lng }];
+  });
+}
+
+// Google Maps driving routes through the exact points, in order (Maps URLs API).
+// A link holds at most 11 points (origin, 9 waypoints, destination), so longer routes are split into parts
+// where each part starts where the previous one ended.
+export function mapsLinks(points) {
+  const at = (p) => `${p.lat},${p.lng}`;
+  const links = [];
+  for (let i = 0; i === 0 || i < points.length - 1; i += 10) {
+    const part = points.slice(i, i + 11);
+    const p = new URLSearchParams({ api: '1', travelmode: 'driving', destination: at(part[part.length - 1]) });
+    if (part.length > 1) p.set('origin', at(part[0]));
+    if (part.length > 2) p.set('waypoints', part.slice(1, -1).map(at).join('|'));
+    links.push(`https://www.google.com/maps/dir/?${p}`);
+  }
+  return links;
 }
