@@ -1,0 +1,87 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import ImportedSection from '../components/ImportedSection.astro';
+import { url } from '../lib/url.js';
+import { all } from '../lib/content.js';
+const stays = await all('stays');
+const kinds = [['hotel', 'Hotels'], ['homestay', 'Homestays'], ['rental', 'Rentals'], ['houseboat', 'Houseboats']];
+const areas = [...new Set(stays.map((s) => s.area))].sort();
+const pins = stays.map((s) => ({ slug: s.slug, name: s.name, lat: s.lat, lng: s.lng }));
+---
+<Base title="Hotels & stays" description="Hotels, homestays, rentals and houseboats in Kerala, added by the community.">
+  <PageHead eyebrow="Explore" title="Hotels & stays" lead="Hotels, homestays, rentals and houseboats added by the community.">
+    <p class="callout small">Listings are added by the community and are not checked or endorsed. Check reviews and licences, and book directly with the property or a trusted platform. Look for Kerala Tourism approval on houseboats.</p>
+  </PageHead>
+  <div class="wrap">
+    <div class="card filters">
+      <div class="chips" role="group" aria-label="Type of stay">
+        <button class="chip" type="button" aria-pressed="true" data-kind="">All</button>
+        {kinds.map(([k, l]) => <button class="chip" type="button" aria-pressed="false" data-kind={k}>{l}</button>)}
+      </div>
+      <div class="field" style="margin:12px 0 0">
+        <label for="area">Area</label>
+        <select id="area"><option value="">All areas</option>{areas.map((a) => <option value={a}>{a}</option>)}</select>
+      </div>
+    </div>
+    <div id="stay-map" class="map" role="img" aria-label="Map of the listed stays"></div>
+    <p class="small muted" id="stay-count" aria-live="polite"></p>
+    <div class="grid three" id="stay-list">
+      {stays.map((s) => (
+        <article class="card stay" id={s.slug} data-kind={s.kind} data-area={s.area}>
+          <div class="meta"><span class="tag">{s.kind}</span><span>{s.area}</span>{s.priceRange && <span>{s.priceRange}</span>}</div>
+          <h3>{s.name}</h3>
+          <p class="small">{s.summary}</p>
+          {s.why && <p class="small"><strong>Why stay:</strong> {s.why}</p>}
+          <p class="small">
+            {s.website && <a href={s.website} rel="noopener nofollow">Website</a>}
+            {s.streetView && <> · <a href={s.streetView} rel="noopener">Street View</a></>}
+          </p>
+          {s.author && <p class="small muted">Added by {s.author}</p>}
+        </article>
+      ))}
+    </div>
+    <p class="small muted" style="margin-top:20px">Run a homestay or know a good place? Add it on the <a href={url('/contribute')}>Contribute</a> page.</p>
+    <ImportedSection type="stay" />
+  </div>
+  <script type="application/json" id="stay-data" set:html={JSON.stringify(pins)}></script>
+</Base>
+<style>
+  .filters { margin-bottom: 16px; }
+  .map { height: 300px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--surface-2); z-index: 0; margin-bottom: 8px; }
+  .stay h3 { margin: 8px 0 4px; }
+</style>
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+  const pins: { slug: string; name: string; lat: number; lng: number }[] = JSON.parse(document.getElementById('stay-data')!.textContent!);
+  const cards = [...document.querySelectorAll<HTMLElement>('.stay')];
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-kind]')].filter((c) => c.tagName === 'BUTTON');
+  const area = document.getElementById('area') as HTMLSelectElement;
+  let kind = '';
+
+  let map: L.Map | null = null, layer: L.LayerGroup | null = null;
+  try {
+    map = L.map('stay-map', { scrollWheelZoom: false }).setView([10.3, 76.4], 7);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap contributors' }).addTo(map);
+    layer = L.layerGroup().addTo(map);
+  } catch (e) { document.getElementById('stay-map')!.textContent = 'Map unavailable offline.'; }
+
+  function apply() {
+    const shown = cards.filter((c) => (c.hidden = !((!kind || c.dataset.kind === kind) && (!area.value || c.dataset.area === area.value)), !c.hidden));
+    document.getElementById('stay-count')!.textContent = `${shown.length} listing${shown.length === 1 ? '' : 's'}`;
+    if (!map || !layer) return;
+    layer.clearLayers();
+    const ids = new Set(shown.map((c) => c.id));
+    const pts = pins.filter((p) => ids.has(p.slug));
+    pts.forEach((p) => L.circleMarker([p.lat, p.lng], { radius: 8, color: '#fff', weight: 2, fillColor: '#1f5e4a', fillOpacity: 1 }).addTo(layer!).bindTooltip(p.name));
+    if (pts.length) map.fitBounds(L.latLngBounds(pts.map((p) => [p.lat, p.lng] as [number, number])).pad(0.3), { maxZoom: 11 });
+  }
+  chips.forEach((c) => c.addEventListener('click', () => {
+    kind = c.dataset.kind || '';
+    chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+    apply();
+  }));
+  area.addEventListener('change', apply);
+  apply();
+</script>

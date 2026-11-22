@@ -10,4 +10,6 @@ export const collections = {
   festivals: folder('festivals', 'festival'),
   experiences: folder('experiences', 'experience'),
   itineraries: folder('itineraries', 'itinerary'),
+  stays: folder('stays', 'stay'),
+  travellerPlans: folder('traveller-plans', 'traveller-plan'),
 };
