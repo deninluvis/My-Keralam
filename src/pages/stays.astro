@@ -27,6 +27,7 @@ const pins = stays.map((s) => ({ slug: s.slug, name: s.name, lat: s.lat, lng: s.
     </div>
     <div id="stay-map" class="map" role="img" aria-label="Map of the listed stays"></div>
     <p class="small muted" id="stay-count" aria-live="polite"></p>
+    <p class="card small" id="stay-none" hidden>No listings match these filters yet. Know a good place? Add it on the <a href={url('/contribute')}>Contribute</a> page.</p>
     <div class="grid three" id="stay-list">
       {stays.map((s) => (
         <article class="card stay" id={s.slug} data-kind={s.kind} data-area={s.area}>
@@ -72,6 +73,7 @@ const pins = stays.map((s) => ({ slug: s.slug, name: s.name, lat: s.lat, lng: s.
   function apply() {
     const shown = cards.filter((c) => (c.hidden = !((!kind || c.dataset.kind === kind) && (!area.value || c.dataset.area === area.value)), !c.hidden));
     document.getElementById('stay-count')!.textContent = `${shown.length} listing${shown.length === 1 ? '' : 's'}`;
+    document.getElementById('stay-none')!.hidden = shown.length > 0;
     if (!map || !layer) return;
     layer.clearLayers();
     const ids = new Set(shown.map((c) => c.id));

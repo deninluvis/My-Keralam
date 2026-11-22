@@ -224,3 +224,16 @@ input[type='file']::file-selector-button {
 input[type='file']::file-selector-button:hover { background: var(--terra); border-color: var(--terra); }
 input[type='file']:focus-visible { outline: none; }
 input[type='file']:focus-visible::file-selector-button { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+/* Phone menu: every page the desktop menus list, in one panel */
+.mobile-nav { margin-left: auto; }
+@media (min-width: 900px) { .mobile-nav { display: none; } }
+.mobile-nav > summary { list-style: none; width: auto; padding: 0 14px; border-radius: 999px; font-weight: 600; font-size: .9rem; color: var(--green); }
+.mobile-nav > summary::-webkit-details-marker { display: none; }
+.mobile-nav[open] > summary { background: var(--green); color: var(--green-ink); border-color: var(--green); }
+.mobile-menu { position: absolute; left: 0; right: 0; top: 64px; max-height: calc(100vh - 64px - 72px); overflow-y: auto; background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: var(--shadow); padding: 16px 20px 20px; display: grid; gap: 16px; }
+.mobile-menu .eyebrow { margin: 0 0 4px; }
+.mobile-menu a { display: block; padding: 10px 0; color: var(--ink); text-decoration: none; font-weight: 500; border-bottom: 1px solid var(--line); }
+.mobile-menu a[aria-current='page'] { color: var(--green); font-weight: 600; }
+.mobile-menu .sos-link { color: var(--danger); }
+.mobile-nav + .icon-btn { margin-left: 8px; }

@@ -52,6 +52,15 @@ const verified = new Date(meta.lastVerified).toLocaleDateString('en-GB', { day: 
         ))}
         <a class="sos" href={url('/safety')} aria-current={cur('/safety')}>SOS</a>
       </nav>
+      <details class="mobile-nav">
+        <summary class="icon-btn" aria-label="Menu"><span aria-hidden="true">Menu</span></summary>
+        <nav class="mobile-menu" aria-label="All pages">
+          {groups.map((g) => (
+            <div><p class="eyebrow">{g.label}</p>{g.links.map(([href, text]) => <a href={url(href)} aria-current={cur(href)}>{text}</a>)}</div>
+          ))}
+          <div><p class="eyebrow">Help</p><a class="sos-link" href={url('/safety')}>Safety & SOS numbers</a></div>
+        </nav>
+      </details>
       <button class="icon-btn" id="theme-toggle" type="button" aria-label="Switch light or dark mode">
         <span class="t-sun"><Icon name="sun" /></span>
       </button>
