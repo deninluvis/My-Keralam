@@ -11,7 +11,7 @@ const here = Astro.url.pathname.replace(/\/$/, '');
 const cur = (p: string) => (here === url(p).replace(/\/$/, '') ? 'page' : undefined);
 
 const groups = [
-  { label: 'Plan', links: [['/plan', 'Plan My Trip & my trips'], ['/itineraries', 'Ready-made itineraries']] },
+  { label: 'Plan', links: [['/plan', 'Plan My Trip & my trips'], ['/itineraries', 'Ready-made itineraries'], ['/traveller-plans', 'Plans by travellers']] },
   { label: 'Explore', links: [['/destinations', 'Destinations'], ['/experiences', 'Experiences'], ['/festivals', 'Festivals & events'], ['/food', 'Food guide'], ['/contribute', 'Contribute']] },
   { label: 'Prepare', links: [['/before-you-go', 'Visa & before you go'], ['/when-to-go', 'When to go'], ['/getting-around', 'Getting there & around'], ['/money', 'Money & practical'], ['/etiquette', 'Culture & etiquette'], ['/responsible-travel', 'Responsible travel'], ['/faq', 'FAQ & official links']] },
 ];

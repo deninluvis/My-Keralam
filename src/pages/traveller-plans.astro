@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import Icon from '../components/Icon.astro';
+import ImportedSection from '../components/ImportedSection.astro';
+import { url } from '../lib/url.js';
+import { all } from '../lib/content.js';
+import { INTERESTS } from '../lib/planner.js';
+const plans = await all('travellerPlans');
+const tags = [...new Set(plans.flatMap((p) => p.tags))].sort();
+const label = (t: string) => t[0].toUpperCase() + t.slice(1);
+const plannerQuery = (p: (typeof plans)[number]) => `stops=${p.stops}&interests=${p.tags.filter((t) => INTERESTS.includes(t)).join(',')}`;
+---
+<Base title="Plans by travellers" description="Kerala trip plans shared by well-known travellers, writers and experts, tagged by theme: Ayurveda, culture, trekking and more.">
+  <PageHead eyebrow="Plan" title="Plans by travellers" lead="Routes shared by well-known travellers, writers and experts, with a note from each of them. Pick a theme, read the plan, then open it in the planner to set your own dates.">
+    <p class="small muted">Real people appear here only with their permission. Entries marked <em>fictional</em> are examples of the format.</p>
+  </PageHead>
+  <div class="wrap">
+    <div class="chips" role="group" aria-label="Filter by theme">
+      <button class="chip" type="button" aria-pressed="true" data-tag="">All</button>
+      {tags.map((t) => <button class="chip" type="button" aria-pressed="false" data-tag={t}>{label(t)}</button>)}
+    </div>
+    <div class="tp-list" id="tp-list">
+      {plans.map((p) => (
+        <article class="card tp" data-tags={p.tags.join(' ')} id={p.slug}>
+          <div class="meta">{p.fictional && <span class="tag warn">Fictional example</span>}{p.tags.map((t) => <span class="tag">{label(t)}</span>)}</div>
+          <h2>{p.name}</h2>
+          <div class="person">
+            <p><strong>{p.person.name}</strong>: {p.person.knownFor}</p>
+            <blockquote>{p.person.note}</blockquote>
+            {p.person.works.length > 0 && <p class="small"><strong>Work:</strong> {p.person.works.join(' · ')}</p>}
+            {p.person.links.length > 0 && <p class="small">{p.person.links.map((l) => <a href={l} rel="noopener nofollow">{new URL(l).hostname}</a>)}</p>}
+          </div>
+          <ol class="tp-days">{p.days.map((d) => <li><span class="d">Day {d.d}</span><div><strong>{d.place}</strong><p class="small">{d.what}</p></div></li>)}</ol>
+          <a class="btn small open-plan" href={`${url('/plan')}?${plannerQuery(p)}`} data-q={plannerQuery(p)}>Open in planner <Icon name="arrow" /></a>
+          {p.author && <p class="small muted">Added by {p.author}</p>}
+        </article>
+      ))}
+    </div>
+    <p class="small muted" style="margin-top:20px">Know someone who would share their Kerala route? See <a href={url('/contribute')}>Contribute</a>.</p>
+    <ImportedSection type="traveller-plan" />
+  </div>
+</Base>
+<style>
+  .tp-list { display: grid; gap: 16px; margin-top: 16px; }
+  .tp h2 { margin: 8px 0; }
+  .person { border-left: 3px solid var(--gold); padding-left: 14px; margin: 12px 0; }
+  .person blockquote { margin: 8px 0; font-style: italic; }
+  .person a { margin-right: 12px; }
+  .tag.warn { background: var(--gold-soft); color: var(--ink); }
+  .tp-days { list-style: none; padding: 0; margin: 0 0 16px; }
+  .tp-days li { display: grid; grid-template-columns: 90px 1fr; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+  .tp-days .d { font-weight: 600; color: var(--muted); font-size: .9rem; }
+  .tp-days p { margin: 0; }
+</style>
+<script>
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-tag]')];
+  const cards = [...document.querySelectorAll<HTMLElement>('.tp')];
+  chips.forEach((c) => c.addEventListener('click', () => {
+    chips.forEach((x) => x.setAttribute('aria-pressed', String(x === c)));
+    cards.forEach((card) => (card.hidden = !!c.dataset.tag && !card.dataset.tags!.split(' ').includes(c.dataset.tag!)));
+  }));
+  // Start the trip 60 days from today, like the ready-made itineraries.
+  document.querySelectorAll<HTMLAnchorElement>('.open-plan').forEach((a) => a.addEventListener('click', () => {
+    const start = new Date(Date.now() + 60 * 864e5).toISOString().slice(0, 10);
+    a.href = `${a.href.split('?')[0]}?${a.dataset.q}&start=${start}&budget=mid&people=2`;
+  }));
+</script>

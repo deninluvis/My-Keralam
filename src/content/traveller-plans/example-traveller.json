@@ -1,0 +1,41 @@
+{
+  "slug": "example-traveller",
+  "name": "A slow week of Ayurveda and art (fictional example)",
+  "fictional": true,
+  "tags": [
+    "ayurveda",
+    "culture"
+  ],
+  "person": {
+    "name": "Example Traveller (fictional)",
+    "knownFor": "Not a real person: this entry only shows the file format.",
+    "note": "A short note in the person's own words about why they love this route.",
+    "works": [
+      "Book or film title",
+      "Series name"
+    ],
+    "links": [
+      "https://example.com/"
+    ]
+  },
+  "stops": "kochi:2,kumarakom:2,varkala:3",
+  "days": [
+    {
+      "d": "1–2",
+      "place": "Kochi",
+      "what": "Kathakali make-up session and a heritage walk"
+    },
+    {
+      "d": "3–4",
+      "place": "Kumarakom",
+      "what": "Village canoe ride and a gentle Ayurveda massage"
+    },
+    {
+      "d": "5–7",
+      "place": "Varkala",
+      "what": "Daily yoga, cliff walks and sunsets"
+    }
+  ],
+  "consent": "Fictional example. Real entries must link to or quote the person's permission.",
+  "author": "your-github-name"
+}
